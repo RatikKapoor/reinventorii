@@ -54,4 +54,21 @@ public class Database {
         }
     }
 
+    public void getLamps() {
+        ArrayList<Lamp> l = new ArrayList<Lamp>();
+        try {
+            Statement queryStatment = dbConnect.createStatement();
+            results = queryStatment.executeQuery("SELECT * FROM LAMP");
+            while (results.next()) {
+                l.add(new Lamp(results.getString("ID"), results.getString("Type"), results.getString("Base"),
+                        results.getString("Bulb"), results.getInt("Price"), results.getString("ManuID")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Lamp lamp : l) {
+            lamp.printLamp();
+        }
+    }
+
 }
