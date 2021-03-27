@@ -1,0 +1,12 @@
+name: Run App.java on PR
+"on": pull_request
+
+run:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: "11.0.9.1"
+        architecture: x64
+    - run: javac -cp "lib/mysql-connector-java-8.0.23.jar:." edu/ucalgary/ensf409/App.java && java -cp "lib/mysql-connector-java-8.0.23.jar:." edu.ucalgary.ensf409.App
