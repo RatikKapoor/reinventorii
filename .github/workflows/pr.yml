@@ -11,5 +11,4 @@ jobs:
           java-version: "11.0.9"
           architecture: x64
       - run: |
-          javac -cp ".:lib/mysql-connector-java-8.0.23.jar:lib/junit-4.13.2.jar:lib/junit-toolbox-2.4.jar:." edu/ucalgary/ensf409/*.java tests/*.java \
-          && java -cp ".:lib/mysql-connector-java-8.0.23.jar:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar:." org.junit.runner.JUnitCore tests.AllTests
+          ./mvnw clean test
