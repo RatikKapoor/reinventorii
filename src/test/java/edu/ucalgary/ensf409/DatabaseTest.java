@@ -21,7 +21,7 @@ public class DatabaseTest {
 
     @Test
     public void testFailDBConnect() {
-        Database testDb = new Database("jdbc:mysql://server.ratik.me:25565/db", "ensf409", "java123");
+        Database testDb = new Database("jdbc:mysql://server.ratik.me:12345/db", "ensf409", "java123");
         Boolean err = false;
         try {
             testDb.connect();
