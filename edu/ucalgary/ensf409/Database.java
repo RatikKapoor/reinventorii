@@ -29,12 +29,9 @@ public class Database {
     /**
      * a method to connect to the database
      */
-    public void connect() {
-        try {
-            dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
-        } catch (Exception e) {
-            System.err.println(e.toString());
-        }
+    public void connect() throws SQLException {
+        DriverManager.setLoginTimeout(5);
+        dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
     }
 
 }
