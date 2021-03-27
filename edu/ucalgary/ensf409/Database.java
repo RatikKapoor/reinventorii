@@ -1,6 +1,8 @@
 package edu.ucalgary.ensf409;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * a class for connecting to the Database
@@ -35,18 +37,18 @@ public class Database {
     }
 
     public void getManufacturers() {
+        ArrayList<Manufacturer> m = new ArrayList<Manufacturer>();
         try {
             Statement queryStatment = dbConnect.createStatement();
             results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
             while (results.next()) {
-
-                System.out.println(results.getString("ManuID"));
-                System.out.print(results.getString("Name"));
-                System.out.print(results.getString("Phone"));
-                System.out.print(results.getString("Province"));
+                m.add(new Manufacturer(results.getString("ManuID"), results.getString("Name"), results.getString("Phone"), results.getString("Province")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        for (Manufacturer manufacturer : m) {
+            manufacturer.printManufacturer();
         }
     } 
 
