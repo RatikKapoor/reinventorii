@@ -3,5 +3,8 @@
         "node_modules",
         ".git",
         "ui"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "maven.view": "hierarchical",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
