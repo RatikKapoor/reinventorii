@@ -1,10 +1,13 @@
 package edu.ucalgary.ensf409;
 
-import org.junit.*;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 
+@SpringBootTest
 public class DatabaseTest {
     @Test
     public void testDBConnect() {
