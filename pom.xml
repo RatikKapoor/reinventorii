@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.ucalgary.ensf409</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>inventorymanagment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>inventorymanagment</name>
 	<description>ENSF 409 Final Project</description>
 	<properties>
 		<java.version>11</java.version>
