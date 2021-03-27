@@ -34,4 +34,20 @@ public class Database {
         dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
     }
 
+    public void getManufacturers() {
+        try {
+            Statement queryStatment = dbConnect.createStatement();
+            results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
+            while (results.next()) {
+
+                System.out.println(results.getString("ManuID"));
+                System.out.print(results.getString("Name"));
+                System.out.print(results.getString("Phone"));
+                System.out.print(results.getString("Province"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    } 
+
 }
