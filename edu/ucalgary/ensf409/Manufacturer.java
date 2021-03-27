@@ -11,6 +11,7 @@ public class Manufacturer {
 
     /**
      * a constructor for manufacturer
+     * 
      * @param manuid
      * @param name
      * @param phone

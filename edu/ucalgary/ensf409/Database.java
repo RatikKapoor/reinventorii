@@ -2,10 +2,10 @@ package edu.ucalgary.ensf409;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * a class for connecting to the Database
+ * 
  * @author Robert Brown
  */
 public class Database {
@@ -18,9 +18,10 @@ public class Database {
 
     /**
      * constructor fo the database class
-     * @param DBURL url of the database
-     * @param USERNAME  username for access to the database
-     * @param PASSWORD  password for access to the database
+     * 
+     * @param DBURL    url of the database
+     * @param USERNAME username for access to the database
+     * @param PASSWORD password for access to the database
      */
     public Database(String DBURL, String USERNAME, String PASSWORD) {
         this.DBURL = DBURL;
@@ -42,7 +43,8 @@ public class Database {
             Statement queryStatment = dbConnect.createStatement();
             results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
             while (results.next()) {
-                m.add(new Manufacturer(results.getString("ManuID"), results.getString("Name"), results.getString("Phone"), results.getString("Province")));
+                m.add(new Manufacturer(results.getString("ManuID"), results.getString("Name"),
+                        results.getString("Phone"), results.getString("Province")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,6 +52,6 @@ public class Database {
         for (Manufacturer manufacturer : m) {
             manufacturer.printManufacturer();
         }
-    } 
+    }
 
 }
