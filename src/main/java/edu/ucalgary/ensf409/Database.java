@@ -45,7 +45,7 @@ public class Database {
         }
     }
 
-    public void getManufacturers() {
+    public ArrayList<Manufacturer> getManufacturers() {
         ArrayList<Manufacturer> m = new ArrayList<Manufacturer>();
         try {
             Statement queryStatment = dbConnect.createStatement();
@@ -57,9 +57,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for (Manufacturer manufacturer : m) {
-            manufacturer.printManufacturer();
-        }
+        return m;
     }
 
     /**

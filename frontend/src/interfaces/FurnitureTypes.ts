@@ -28,3 +28,15 @@ export interface Filing extends FurniturePart {
   drawers: boolean;
   cabinet: boolean;
 }
+
+export interface Manufacturer {
+  manuid: string;
+  name: string;
+  phone: string;
+  province: string;
+}
+
+export interface IRESTMessage {
+  success: boolean;
+  items: Array<Chair | Desk | Lamp | Filing>;
+}
