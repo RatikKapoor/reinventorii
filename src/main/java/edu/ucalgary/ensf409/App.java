@@ -11,7 +11,7 @@ public class App {
         // });
         // ;
         Lamp l = new Lamp("desk");
-        Builder b = new Builder<FurniturePart>(l);
+        Builder b = new Builder<Lamp>(l);
         b.setParts(test.getListByType(Types.Lamp, "Desk"));
         b.getParts().forEach(item -> {
             System.out.println(Lamp.class.cast(item).getId());
