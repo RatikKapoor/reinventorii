@@ -1,6 +1,5 @@
 import {
   IonButton,
-  IonCol,
   IonContent,
   IonGrid,
   IonHeader,
@@ -11,25 +10,25 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useEffect, useLayoutEffect, useState } from "react";
 import { refreshOutline } from "ionicons/icons";
-import ChairComponent from "../components/ChairComponent";
-import { Chair } from "../interfaces/FurnitureTypes";
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import FilingComponent from "../components/FilingComponent";
+import { Filing } from "../interfaces/FurnitureTypes";
 
-const Chairs: React.FC = () => {
-  const [chairs, setChairs] = useState<Array<Chair>>();
+const Filings: React.FC = () => {
+  const [filings, setFilings] = useState<Array<Filing>>();
 
-  const updateChairs = () => {
-    fetch(`http://localhost:8080/chairs`)
+  const updateFilings = () => {
+    fetch(`http://localhost:8080/filings`)
       .then((data) => data.json())
       .then((data) => {
-        console.log("Got new chairs:", data);
-        setChairs(data as Array<Chair>);
+        console.log("Got new lamps:", data);
+        setFilings(data as Array<Filing>);
       });
   };
 
   useLayoutEffect(() => {
-    updateChairs();
+    updateFilings();
   }, []);
 
   return (
@@ -38,8 +37,8 @@ const Chairs: React.FC = () => {
         <IonToolbar>
           <IonGrid>
             <IonRow>
-              <IonTitle>Available Chairs</IonTitle>
-              <IonButton onClick={updateChairs}>
+              <IonTitle>Available Filing Cabinets</IonTitle>
+              <IonButton onClick={updateFilings}>
                 <IonIcon src={refreshOutline} />
               </IonButton>
             </IonRow>
@@ -48,8 +47,8 @@ const Chairs: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <IonList>
-          {chairs?.map((v, k) => {
-            return <ChairComponent chair={v} key={k} />;
+          {filings?.map((v, k) => {
+            return <FilingComponent filing={v} key={k} />;
           })}
         </IonList>
       </IonContent>
@@ -57,4 +56,4 @@ const Chairs: React.FC = () => {
   );
 };
 
-export default Chairs;
+export default Filings;
