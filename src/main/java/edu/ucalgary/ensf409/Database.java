@@ -69,7 +69,7 @@ public class Database {
      * @return returns arrayList
      */
     public ArrayList<String> getManufacturerNames() {
-        ArrayList<String> m;
+        ArrayList<String> m = new ArrayList<>();
         try {
             Statement queryStatment = dbConnect.createStatement();
             results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
