@@ -11,7 +11,7 @@ public class Chair extends FurniturePart {
     private static String[] chairParts = { "legs", "cushion", "arms", "seat" };
 
     /**
-     * Constructor for Chair
+     * Constructor for Chair Class
      * 
      * @param id
      * @param type
