@@ -2,12 +2,22 @@ package edu.ucalgary.ensf409;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public abstract class FurniturePart {
     public enum Types {
         Chair(new String[] { "Task", "Mesh", "Kneeling", "Executive", "Ergonomic" }),
         Desk(new String[] { "Traditional", "Adjustable", "Standing" }),
         Filing(new String[] { "Small", "Medium", "Large" }), Lamp(new String[] { "Desk", "Swing Arm", "Study" });
+
+        public static Types fromString(String input) {
+            for (Types t : Types.values()) {
+                if (t.toString().equals(input)) {
+                    return t;
+                }
+            }
+            return null;
+        }
 
         private final List<String> types;
 

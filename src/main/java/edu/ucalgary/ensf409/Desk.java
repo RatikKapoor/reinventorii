@@ -74,3 +74,17 @@ enum DeskType {
         return this.name().replace("_", " ");
     }
 }
+
+/**
+ * an enumeration for the parts of the desk
+ * 
+ * @author Robert Brown
+ */
+enum DeskParts {
+    Legs, Top, Drawer;
+
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}
