@@ -10,11 +10,11 @@ public class App {
         // System.out.println(item.getId());
         // });
         // ;
-        Lamp l = new Lamp("desk");
-        Builder b = new Builder<Lamp>(l);
-        b.setParts(test.getListByType(Types.Lamp, "Desk"));
+        Filing l = new Filing("Large");
+        Builder b = new Builder<Filing>(l);
+        b.setParts(test.getListByType(Types.Filing, "Large"));
         b.getParts().forEach(item -> {
-            System.out.println(Lamp.class.cast(item).getId());
+            System.out.println(Filing.class.cast(item).getId());
         });
         ;
         b.setItems();
@@ -22,5 +22,7 @@ public class App {
             System.out.println(item.toString());
         });
         ;
+        b.BuildItem();
+        System.out.println(b.getCost());
     }
 }
