@@ -45,6 +45,7 @@ public class FileOutput {
             for (int i = 0; i < partsList.size(); i++) {
                 receipt.append("ID: " + partsList.get(i) + "\n");
             }
+            receipt.append("Final Cost: " + cost);
         } else {
             /**
              * [Optional] - Add a Dynamic implementation of manufacturers Calling the
