@@ -54,21 +54,66 @@ public class Database {
         }
     }
 
-    public void getLamps() {
-        ArrayList<Lamp> l = new ArrayList<Lamp>();
+    public int countCols(String table) {
+        int i = 0;
         try {
-            Statement queryStatment = dbConnect.createStatement();
-            results = queryStatment.executeQuery("SELECT * FROM LAMP");
+            String query = "DESCRIBE ?";
+            PreparedStatement queryStatment = dbConnect.prepareStatement(query);
+            queryStatment.setString(1, table.toUpperCase());
+            results = queryStatment.executeQuery();
             while (results.next()) {
-                l.add(new Lamp(results.getString("ID"), results.getString("Type"), results.getString("Base"),
-                        results.getString("Bulb"), results.getInt("Price"), results.getString("ManuID")));
+                i++;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for (Lamp lamp : l) {
-            lamp.printLamp();
-        }
+        return i;
     }
+
+    public <T extends FurniturePart> ArrayList<T> getList(String item, String type) {
+        ArrayList<T> parts = new ArrayList<T>();
+        try {
+            Statement queryStatment = dbConnect.createStatement();
+            results = queryStatment.executeQuery("SELECT * FROM " + item.toUpperCase());
+            int j = 0;
+            for (int i = 3; i < results.findColumn("Price"); i++) {
+                j++;
+            }
+            while (results.next()) {
+                ArrayList<String> params = new ArrayList<String>();
+                params.add(results.getString("ID"));
+                params.add(results.getString("Type"));
+                params.add(results.getString("ManuID"));
+                for (int i = 3; i < j + 3; i++) {
+                    params.add(results.getString(i));
+                }
+                int price = results.getInt("Price");
+                Lamp l = new Lamp(params, price);
+                l.printLamp();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return parts;
+    }
+
+    // public void getLamps() {
+    // ArrayList<Lamp> l = new ArrayList<Lamp>();
+    // try {
+    // Statement queryStatment = dbConnect.createStatement();
+    // results = queryStatment.executeQuery("SELECT * FROM LAMP");
+    // while (results.next()) {
+    // l.add(new Lamp(results.getString("ID"), results.getString("Type"),
+    // results.getString("Base"),
+    // results.getString("Bulb"), results.getInt("Price"),
+    // results.getString("ManuID")));
+    // }
+    // } catch (SQLException e) {
+    // e.printStackTrace();
+    // }
+    // for (Lamp lamp : l) {
+    // lamp.printLamp();
+    // }
+    // }
 
 }
