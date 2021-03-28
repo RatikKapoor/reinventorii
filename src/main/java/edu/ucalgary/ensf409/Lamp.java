@@ -42,7 +42,7 @@ public class Lamp extends FurniturePart {
     }
 
     public Lamp(String id, String type, String base, String bulb, int price, String manuid) {
-        super(id, type, price, manuid);
+        super(id, type, price, manuid, lampParts);
         // if (base.equals("Y")) {
         // this.base = true;
         // } else if (base.equals("N")) {
