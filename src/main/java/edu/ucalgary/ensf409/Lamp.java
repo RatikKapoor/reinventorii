@@ -29,30 +29,13 @@ public class Lamp extends FurniturePart {
 
     public Lamp(ArrayList<String> data, int price) {
         super(data.get(0), data.get(1), price, data.get(4), lampParts);
-        if (data.get(2).equals("Y")) {
-            this.base = true;
-        } else if (data.get(2).equals("N")) {
-            this.base = false;
-        }
-        if (data.get(3).equals("Y")) {
-            this.bulb = true;
-        } else if (data.get(3).equals("N")) {
-            this.bulb = false;
-        }
+
+        this.base = stringToBoolean(data.get(2));
+        this.bulb = stringToBoolean(data.get(3));
     }
 
     public Lamp(String id, String type, String base, String bulb, int price, String manuid) {
         super(id, type, price, manuid, lampParts);
-        // if (base.equals("Y")) {
-        // this.base = true;
-        // } else if (base.equals("N")) {
-        // this.base = false;
-        // }
-        // if (bulb.equals("Y")) {
-        // this.bulb = true;
-        // } else if (bulb.equals("N")) {
-        // this.bulb = false;
-        // }
 
         this.base = stringToBoolean(base);
         this.bulb = stringToBoolean(bulb);
