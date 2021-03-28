@@ -11,9 +11,10 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { ellipse, square, triangle } from "ionicons/icons";
 import Chairs from "./pages/Chairs";
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
-import OrderItem from './pages/OrderItem';
+import Desks from "./pages/Desks";
+import OrderItem from "./pages/OrderItem";
+import { GiOfficeChair, GiDeskLamp, GiDesk } from "react-icons/gi";
+import { FcFilingCabinet } from "react-icons/fc";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -33,33 +34,49 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import Lamps from "./pages/Lamps";
+import Filings from "./pages/Filing";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
+          <Route exact path="/chairs">
             <Chairs />
           </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route exact path="/desks">
+            <Desks />
+          </Route>
+          <Route exact path="/lamps">
+            <Lamps />
+          </Route>
+          <Route exact path="/filings">
+            <Filings />
           </Route>
           <Route path="/order">
             <OrderItem />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/chairs" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+          <IonTabButton tab="chairs" href="/chairs">
+            <GiOfficeChair size="30" />
+            <IonLabel>Chairs</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+          <IonTabButton tab="desks" href="/desks">
+            <GiDesk size="30" />
+            <IonLabel>Desks</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="lamps" href="/lamps">
+            <GiDeskLamp size="30" />
+            <IonLabel>Lamps</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="filings" href="/filings">
+            <FcFilingCabinet size="30" />
+            <IonLabel>Filings</IonLabel>
           </IonTabButton>
           <IonTabButton tab="order" href="/order">
             <IonIcon icon={square} />

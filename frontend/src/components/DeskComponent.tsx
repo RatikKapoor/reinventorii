@@ -10,11 +10,10 @@ import { sunnyOutline } from "ionicons/icons";
 import { GiOfficeChair, GiDeskLamp, GiDesk } from "react-icons/gi";
 import { BsArchive } from "react-icons/bs";
 import "./ItemComponent.css";
+import { Desk } from "../interfaces/FurnitureTypes";
 
 interface ContainerProps {
-  id: string;
-  type: string;
-  price: Number;
+  desk: Desk;
 }
 
 /**
@@ -23,20 +22,21 @@ interface ContainerProps {
  *  chair: GiOfficeChair
  */
 
-const ItemComponent: React.FC<ContainerProps> = ({ id, type, price }) => {
+const DeskComponent: React.FC<ContainerProps> = ({ desk }) => {
   return (
     <>
       <IonItem>
-        <GiOfficeChair />
-        <IonLabel>{type}</IonLabel>
-        <IonChip>Base</IonChip>
-        <IonChip>Bulb</IonChip>
+        <GiDesk size="40" />
+        <IonLabel>{desk.type}</IonLabel>
+        {desk.legs && <IonChip>Legs</IonChip>}
+        {desk.top && <IonChip>Top</IonChip>}
+        {desk.drawer && <IonChip>Drawer</IonChip>}
         <IonNote slot="end" color="secondary" className="itemPrice">
-          ${price.toString()}
+          ${desk.price.toString()}
         </IonNote>
       </IonItem>
     </>
   );
 };
 
-export default ItemComponent;
+export default DeskComponent;
