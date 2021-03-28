@@ -37,6 +37,14 @@ public class Database {
         dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
     }
 
+    public void disconnect() {
+        try {
+            dbConnect.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
     public void getManufacturers() {
         ArrayList<Manufacturer> m = new ArrayList<Manufacturer>();
         try {
@@ -70,10 +78,11 @@ public class Database {
         return i;
     }
 
-    public ArrayList<FurniturePart> getList(FurniturePart.Types item) {
+    public <T extends FurniturePart> ArrayList<T> getList(FurniturePart.Types item) {
         return getListByType(item, "");
     }
 
+    @SuppressWarnings("unchecked")
     public <T extends FurniturePart> ArrayList<T> getListByType(FurniturePart.Types item, String type)
             throws IllegalArgumentException {
 
@@ -114,6 +123,7 @@ public class Database {
 
                 case Desk:
                     parts.add((T) new Desk(params, price));
+                    break;
 
                 default:
                     throw new IllegalArgumentException("Item type " + item.toString() + ", parser does not exist!");
@@ -122,7 +132,7 @@ public class Database {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return parts;
+        return ArrayList.class.cast(parts);
     }
 
     /**
