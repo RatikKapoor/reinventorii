@@ -26,8 +26,8 @@ const DeskComponent: React.FC<ContainerProps> = ({ desk }) => {
   return (
     <>
       <IonItem>
-        <GiDesk size="40"className="itemIcon" />
-        <IonLabel>{desk.type}</IonLabel>
+        <GiDesk size="40" className="itemIcon" />
+        <IonLabel>{`${desk.type}: ${desk.id}`}</IonLabel>
         {desk.legs && <IonChip>Legs</IonChip>}
         {desk.top && <IonChip>Top</IonChip>}
         {desk.drawer && <IonChip>Drawer</IonChip>}

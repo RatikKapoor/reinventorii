@@ -27,7 +27,7 @@ const FilingComponent: React.FC<ContainerProps> = ({ filing }) => {
     <>
       <IonItem>
         <FcFilingCabinet size="40" className="itemIcon" />
-        <IonLabel>{filing.type}</IonLabel>
+        <IonLabel>{`${filing.type}: ${filing.id}`}</IonLabel>
         {filing.cabinet && <IonChip>Cabinet</IonChip>}
         {filing.drawers && <IonChip>Drawers</IonChip>}
         {filing.rails && <IonChip>Rails</IonChip>}

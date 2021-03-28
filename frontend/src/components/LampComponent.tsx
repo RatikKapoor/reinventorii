@@ -27,7 +27,7 @@ const LampComponent: React.FC<ContainerProps> = ({ lamp }) => {
     <>
       <IonItem>
         <GiDeskLamp size={40} className="itemIcon" />
-        <IonLabel>{lamp.type}</IonLabel>
+        <IonLabel>{`${lamp.type}: ${lamp.id}`}</IonLabel>
         {lamp.base && <IonChip>Base</IonChip>}
         {lamp.bulb && <IonChip>Bulb</IonChip>}
         <IonNote slot="end" color="secondary" className="itemPrice">

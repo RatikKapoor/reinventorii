@@ -13,7 +13,7 @@ import {
   IonSelect,
   IonButton,
 } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChairComponent from "../components/ChairComponent";
 import DeskComponent from "../components/DeskComponent";
 import FilingComponent from "../components/FilingComponent";
@@ -51,6 +51,10 @@ const OrderItem: React.FC = () => {
         setManus(data);
       });
   };
+
+  useEffect(() => {
+    getManufacturers();
+  }, []);
 
   return (
     <IonPage>
