@@ -1,6 +1,7 @@
 package edu.ucalgary.ensf409;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
 
@@ -11,17 +12,41 @@ public class Builder<T extends FurniturePart> {
     private int cost;
     private String typeName;
 
+    private ArrayList<T> allCombinations = new ArrayList<T>();
+
     public Builder(T toBuild) {
         this.object = toBuild;
         this.typeName = object.getClass().getSimpleName();
     }
 
     public void BuildItem() {
-        this.items.forEach(item -> {
-            for (T t : parts) {
-            }
-        });
-        ;
+        switch (FurniturePart.Types.fromString(this.typeName)) {
+        case Lamp:
+            Lamp lamp = Lamp.class.cast(object);
+
+            break;
+
+        case Desk:
+            Desk desk = Desk.class.cast(object);
+
+            break;
+
+        case Chair:
+            Chair chair = Chair.class.cast(object);
+            break;
+
+        case Filing:
+            Filing filing = Filing.class.cast(object);
+            break;
+
+        default:
+            break;
+        }
+        // this.items.forEach(item -> {
+        // for (T t : parts) {
+        // }
+        // });
+        // ;
     }
 
     public void setItems() {
