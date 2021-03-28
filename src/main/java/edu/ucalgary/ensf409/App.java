@@ -10,19 +10,23 @@ public class App {
         // System.out.println(item.getId());
         // });
         // ;
-        Filing l = new Filing("Large");
-        Builder<Filing> b = new Builder<Filing>(l);
-        b.setParts(test.getListByType(Types.Filing, "Large"));
-        // b.getParts().forEach(item -> {
-        // System.out.println(Filing.class.cast(item).getId());
-        // });
+        Lamp l = new Lamp("Desk");
+        Builder b = new Builder<Lamp>(l);
+        b.setParts(test.getListByType(Types.Lamp, "Desk"));
+        b.getParts().forEach(item -> {
+            System.out.println(Lamp.class.cast(item).getId());
+        });
         ;
         b.setItems();
         // b.getItems().forEach(item -> {
         // System.out.println(item.toString());
         // });
         ;
-        b.BuildItem();
+        b.BuildMultipleItems(4);
+        // b.BuildItem();
         System.out.println(b.getCost());
     }
 }
+// if (Desk.class.cast(item).getDrawer()) {
+// drawer.add(Desk.class.cast(item).getId());
+// }

@@ -21,33 +21,66 @@ public class Builder<T extends FurniturePart> {
     // private ArrayList<T> allCombinations = new ArrayList<T>();
     ArrayList<ArrayList<String>> allCombinations = new ArrayList<>();
     // FOR BULB
-    private ArrayList<String> bulb = new ArrayList<>();
-    private ArrayList<String> base = new ArrayList<>();
+    private ArrayList<String> bulb;
+    private ArrayList<String> base;
     // FOR DESK
-    private ArrayList<String> legs = new ArrayList<>();
-    private ArrayList<String> top = new ArrayList<>();
-    private ArrayList<String> drawer = new ArrayList<>();
+    private ArrayList<String> legs;
+    private ArrayList<String> top;
+    private ArrayList<String> drawer;
     // FOR CHAIR
-    private ArrayList<String> chairLegs = new ArrayList<>();
-    private ArrayList<String> arms = new ArrayList<>();
-    private ArrayList<String> seat = new ArrayList<>();
-    private ArrayList<String> cushion = new ArrayList<>();
+    private ArrayList<String> chairLegs;
+    private ArrayList<String> arms;
+    private ArrayList<String> seat;
+    private ArrayList<String> cushion;
     // FOR FILING
-    private ArrayList<String> rails = new ArrayList<>();
-    private ArrayList<String> drawers = new ArrayList<>();
-    private ArrayList<String> cabinet = new ArrayList<>();
+    private ArrayList<String> rails;
+    private ArrayList<String> drawers;
+    private ArrayList<String> cabinet;
+    // FOR IDCOMBINATION
+    private ArrayList<String> idCombination = new ArrayList<>();
+    //
+    private ArrayList<String> oneD = new ArrayList<>();
 
     public Builder(T toBuild) {
         this.object = toBuild;
         this.typeName = object.getClass().getSimpleName();
     }
 
+    public void BuildMultipleItems(int count) {
+        while (count != 0) {
+            BuildItem();
+            count--;
+        }
+    }
+
+    // if id doesnt equal one of these then add it
     public void BuildItem() {
         HashMap<String, Integer> hash = new HashMap<String, Integer>();
+        // FOR BULB
+        bulb = new ArrayList<>();
+        base = new ArrayList<>();
+        // FOR DESK
+        legs = new ArrayList<>();
+        top = new ArrayList<>();
+        drawer = new ArrayList<>();
+        // FOR CHAIR
+        chairLegs = new ArrayList<>();
+        arms = new ArrayList<>();
+        seat = new ArrayList<>();
+        cushion = new ArrayList<>();
+        // FOR FILING
+        rails = new ArrayList<>();
+        drawers = new ArrayList<>();
+        cabinet = new ArrayList<>();
+        //
+
+        for (String combinations : idCombination) {
+            oneD.add(combinations);
+        }
+        idCombination = new ArrayList<>();
+        allCombinations = new ArrayList<>();
         switch (FurniturePart.Types.fromString(this.typeName)) {
         case Lamp:
-            Lamp lamp = Lamp.class.cast(object);
-
             getParts().forEach(item -> {
 
                 // populate array bulb and base
@@ -57,11 +90,20 @@ public class Builder<T extends FurniturePart> {
                 if (Lamp.class.cast(item).getBase()) {
                     base.add(Lamp.class.cast(item).getId());
                 }
+
                 hash.put(Lamp.class.cast(item).getId(), Lamp.class.cast(item).getPrice());
             });
             ;
-            // System.out.println(items.size());
-            // System.out.println(getParts().get(0).ge);
+            for (String val : oneD) {
+                bulb.remove(val);
+                base.remove(val);
+            }
+            // System.out.println("Bulb" + bulb);
+            if (bulb.isEmpty() || base.isEmpty()) {
+                System.out.println("Cannot be completed");
+                cost = -1;
+                break;
+            }
             boolean[] features = new boolean[items.size()];
             for (int i = 0; i < base.size(); i++) {
                 String id = base.get(i);
@@ -92,8 +134,9 @@ public class Builder<T extends FurniturePart> {
                 allIDs = (ArrayList<String>) allIDs.stream().distinct().collect(Collectors.toList());
                 allCombinations.add(allIDs);
             }
+
             ArrayList<Integer> finalPrice = new ArrayList<>();
-            System.out.println(allCombinations);
+            // System.out.println("All Combinations: " + allCombinations);
             for (ArrayList<String> combination : allCombinations) {
                 int price = 0;
                 for (String s : combination) {
@@ -105,12 +148,19 @@ public class Builder<T extends FurniturePart> {
                 }
                 finalPrice.add(price);
             }
-            cost = Collections.min(finalPrice);
+            cost += Collections.min(finalPrice);
+            int index = 0;
+            for (Integer price : finalPrice) {
+                if (price.equals(Collections.min(finalPrice))) {
+                    break;
+                }
+                index++;
+            }
+            idCombination.addAll(allCombinations.get(index));
+            // System.out.println("ID Combinations" + idCombination);
             break;
 
         case Desk:
-            Desk desk = Desk.class.cast(object);
-            // System.out.println("reached?");
 
             getParts().forEach(item -> {
 
@@ -127,11 +177,18 @@ public class Builder<T extends FurniturePart> {
                 hash.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
             });
             ;
-            // System.out.println(items.size());
-            // System.out.println(getParts().get(0).ge);
+            for (String val : oneD) {
+                legs.remove(val);
+                top.remove(val);
+                drawer.remove(val);
+            }
+            if (top.isEmpty() || drawer.isEmpty() || legs.isEmpty()) {
+                System.out.println("Cannot be completed");
+                cost = -1;
+                break;
+            }
             features = new boolean[items.size()];
-            // System.out.println(items.size());
-            // System.out.println(legs.size());
+
             for (int i = 0; i < legs.size(); i++) {
                 String id = legs.get(i);
                 ArrayList<String> allIDs = new ArrayList<>();
@@ -189,14 +246,19 @@ public class Builder<T extends FurniturePart> {
                 }
                 finalPrice.add(price);
             }
-            cost = Collections.min(finalPrice);
-
+            cost += Collections.min(finalPrice);
+            index = 0;
+            for (Integer price : finalPrice) {
+                if (price.equals(Collections.min(finalPrice))) {
+                    break;
+                }
+                index++;
+            }
+            idCombination.addAll(allCombinations.get(index));
+            // System.out.println(idCombination);
             break;
 
         case Chair:
-            Chair chair = Chair.class.cast(object);
-            // System.out.println("reached?");
-
             getParts().forEach(item -> {
 
                 // populate array bulb and base
@@ -215,11 +277,19 @@ public class Builder<T extends FurniturePart> {
                 hash.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
             });
             ;
-            // System.out.println(items.size());
-            // System.out.println(getParts().get(0).ge);
+            for (String val : oneD) {
+                chairLegs.remove(val);
+                arms.remove(val);
+                seat.remove(val);
+                cushion.remove(val);
+            }
+            if (chairLegs.isEmpty() || arms.isEmpty() || seat.isEmpty() || cushion.isEmpty()) {
+                System.out.println("Cannot be completed");
+                cost = -1;
+                break;
+            }
             features = new boolean[items.size()];
-            // System.out.println(items.size());
-            // System.out.println(legs.size());
+
             for (int i = 0; i < chairLegs.size(); i++) {
                 String id = chairLegs.get(i);
                 ArrayList<String> allIDs = new ArrayList<>();
@@ -291,13 +361,19 @@ public class Builder<T extends FurniturePart> {
                 }
                 finalPrice.add(price);
             }
-            cost = Collections.min(finalPrice);
+            cost += Collections.min(finalPrice);
+            index = 0;
+            for (Integer price : finalPrice) {
+                if (price.equals(Collections.min(finalPrice))) {
+                    break;
+                }
+                index++;
+            }
+            idCombination.addAll(allCombinations.get(index));
+            // System.out.println(idCombination);
             break;
 
         case Filing:
-            Filing filing = Filing.class.cast(object);
-            // System.out.println("reached?");
-
             getParts().forEach(item -> {
 
                 // populate array bulb and base
@@ -313,11 +389,20 @@ public class Builder<T extends FurniturePart> {
                 hash.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
             });
             ;
-            // System.out.println(items.size());
-            // System.out.println(getParts().get(0).ge);
+            for (String val : oneD) {
+                rails.remove(val);
+                drawers.remove(val);
+                cabinet.remove(val);
+
+            }
+            if (rails.isEmpty() || drawers.isEmpty() || cabinet.isEmpty()) {
+                System.out.println("Cannot be completed");
+                cost = -1;
+                break;
+            }
+
             features = new boolean[items.size()];
-            // System.out.println(items.size());
-            // System.out.println(legs.size());
+
             for (int i = 0; i < rails.size(); i++) {
                 String id = rails.get(i);
                 ArrayList<String> allIDs = new ArrayList<>();
@@ -376,8 +461,16 @@ public class Builder<T extends FurniturePart> {
                 }
                 finalPrice.add(price);
             }
-            cost = Collections.min(finalPrice);
-
+            cost += Collections.min(finalPrice);
+            index = 0;
+            for (Integer price : finalPrice) {
+                if (price.equals(Collections.min(finalPrice))) {
+                    break;
+                }
+                index++;
+            }
+            idCombination.addAll(allCombinations.get(index));
+            // System.out.println(idCombination);
             break;
 
         default:
@@ -442,6 +535,10 @@ public class Builder<T extends FurniturePart> {
         return this.object;
     }
 
+    public ArrayList<String> getidCombination() {
+        return this.idCombination;
+    }
+
     // FOR LAMP
     public String bulbID() {
         String id = "";
@@ -461,8 +558,8 @@ public class Builder<T extends FurniturePart> {
             }
         }
         id = bulb.get(i);
-        System.out.println(prices);
-        System.out.println(id);
+        // System.out.println(prices);
+        // System.out.println(id);
         return id;
     }
 
