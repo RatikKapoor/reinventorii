@@ -70,11 +70,12 @@ public class Database {
         return i;
     }
 
-    public <T extends FurniturePart> ArrayList<T> getList(String item, String type) {
+    public <T extends FurniturePart> ArrayList<T> getListByType(String item, String type) {
         ArrayList<T> parts = new ArrayList<T>();
         try {
             Statement queryStatment = dbConnect.createStatement();
-            results = queryStatment.executeQuery("SELECT * FROM " + item.toUpperCase());
+            results = queryStatment
+                    .executeQuery("SELECT * FROM " + item.toUpperCase() + " WHERE Type=\"" + type + "\"");
             int j = 0;
             for (int i = 3; i < results.findColumn("Price"); i++) {
                 j++;
