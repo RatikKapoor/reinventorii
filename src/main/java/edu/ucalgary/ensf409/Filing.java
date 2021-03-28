@@ -1,13 +1,14 @@
 package edu.ucalgary.ensf409;
 
+import java.util.ArrayList;
+
 /**
  * Implementation of class Filing extending from FurniturePart
  */
 public class Filing extends FurniturePart {
     private boolean rails;
-    private boolean cabinets;
+    private boolean drawers;
     private boolean cabinet;
-    private static String[] filingParts = { "rails", "cabinerts", "cabinet" };
 
     /**
      * Constructor for Filing
@@ -20,16 +21,21 @@ public class Filing extends FurniturePart {
      * @param price
      * @param manuID
      */
-    public Filing(String id, String type, String rails, String cabinets, String cabinet, int price, String manuID) {
-
-        super(id, type, price, manuID, filingParts);
+    public Filing(String id, String type, String rails, String drawers, String cabinet, int price, String manuID) {
+        super(id, type, price, manuID);
         this.rails = stringToBoolean(rails);
-        this.cabinets = stringToBoolean(cabinets);
+        this.drawers = stringToBoolean(drawers);
         this.cabinet = stringToBoolean(cabinet);
-
     }
 
-    public Boolean getRails() {
+    public Filing(ArrayList<String> data, int price) {
+        super(data.get(0), data.get(1), price, data.get(2));
+        this.rails = stringToBoolean(data.get(3));
+        this.drawers = stringToBoolean(data.get(4));
+        this.cabinet = stringToBoolean(data.get(5));
+    }
+
+    public boolean getRails() {
         return this.rails;
     }
 
@@ -37,15 +43,15 @@ public class Filing extends FurniturePart {
         this.rails = rails;
     }
 
-    public Boolean getCabinets() {
-        return this.cabinets;
+    public boolean getDrawers() {
+        return this.drawers;
     }
 
-    public void setCabinets(Boolean cabinets) {
-        this.cabinets = cabinets;
+    public void setDrawers(Boolean drawers) {
+        this.drawers = drawers;
     }
 
-    public Boolean getCabinet() {
+    public boolean getCabinet() {
         return this.cabinet;
     }
 
@@ -53,4 +59,18 @@ public class Filing extends FurniturePart {
         this.cabinet = cabinet;
     }
 
+}
+
+/**
+ * an enumeration for filing types
+ * 
+ * @author Robert Brown
+ */
+enum FilingType {
+    Small, Medium, Large;
+
+    @Override
+    public String toString() {
+        return this.name().replace("_", " ");
+    }
 }
