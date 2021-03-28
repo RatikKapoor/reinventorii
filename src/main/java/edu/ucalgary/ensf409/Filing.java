@@ -7,6 +7,7 @@ public class Filing extends FurniturePart {
     private boolean rails;
     private boolean cabinets;
     private boolean cabinet;
+    private static String[] filingParts = { "rails", "cabinerts", "cabinet" };
 
     /**
      * Constructor for Filing
@@ -21,7 +22,7 @@ public class Filing extends FurniturePart {
      */
     public Filing(String id, String type, String rails, String cabinets, String cabinet, int price, String manuID) {
 
-        super(id, type, price, manuID);
+        super(id, type, price, manuID, filingParts);
         this.rails = stringToBoolean(rails);
         this.cabinets = stringToBoolean(cabinets);
         this.cabinet = stringToBoolean(cabinet);

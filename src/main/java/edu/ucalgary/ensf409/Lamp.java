@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Lamp extends FurniturePart {
     private Boolean base;
     private Boolean bulb;
-    private static String[] lampParts = { "base", "bulb " };
+    private static String[] lampParts = { "base", "bulb" };
 
     public Boolean getBase() {
         return this.base;
