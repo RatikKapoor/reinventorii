@@ -1,12 +1,13 @@
 package edu.ucalgary.ensf409;
 
 /**
- * Implementation of class Chair extending from FurniturePart
+ * Implementation of class Desk extending from FurniturePart
  */
 public class Desk extends FurniturePart {
     private boolean legs;
     private boolean top;
     private boolean drawer;
+    private static String[] deskParts = { "legs", "top", "drawer" };
 
     /**
      * Constructor for Chair
@@ -21,7 +22,7 @@ public class Desk extends FurniturePart {
      */
     public Desk(String id, String type, String legs, String top, String drawer, int price, String manuID) {
 
-        super(id, type, price, manuID);
+        super(id, type, price, manuID, deskParts);
         this.legs = stringToBoolean(legs);
         this.top = stringToBoolean(top);
         this.drawer = stringToBoolean(drawer);

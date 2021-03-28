@@ -8,6 +8,7 @@ public class Chair extends FurniturePart {
     private boolean cushion;
     private boolean arms;
     private boolean seat;
+    private static String[] chairParts = { "legs", "cushion", "arms", "seat" };
 
     /**
      * Constructor for Chair
@@ -24,7 +25,7 @@ public class Chair extends FurniturePart {
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
             String manuid) {
 
-        super(id, type, price, manuid);
+        super(id, type, price, manuid, chairParts);
         this.legs = stringToBoolean(legs);
         this.cushion = stringToBoolean(cushion);
         this.arms = stringToBoolean(arms);
