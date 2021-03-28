@@ -63,18 +63,18 @@ public class Database {
     }
 
     /**
-     * Method getManufacturerNames creates an ArrayList of all MANUFACTURER names 
+     * Method getManufacturerNames creates an ArrayList of all MANUFACTURER names
      * from the Manufacturer Table in SQL Database.
+     * 
      * @return returns arrayList
      */
-
-    public ArrayList<String> getManufacturerNames(){
+    public ArrayList<String> getManufacturerNames() {
         ArrayList<String> m;
         try {
             Statement queryStatment = dbConnect.createStatement();
             results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
             while (results.next()) {
-                m.add(results.getString("name");
+                m.add(results.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
