@@ -5,6 +5,7 @@ public abstract class FurniturePart {
     private String type;
     private int price;
     private String ManuID;
+    public String[] params;
 
     public String getId() {
         return this.id;
@@ -38,11 +39,16 @@ public abstract class FurniturePart {
         this.ManuID = ManuID;
     }
 
-    public FurniturePart(String id, String type, int price, String ManuID) {
+    public FurniturePart(String type) {
+        this.type = type;
+    }
+
+    public FurniturePart(String id, String type, int price, String ManuID, String[] params) {
         this.id = id;
         this.type = type;
         this.price = price;
         this.ManuID = ManuID;
+        this.params = params;
     }
 
     /**
