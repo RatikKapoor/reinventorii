@@ -125,23 +125,23 @@ public class Database {
         return parts;
     }
 
-    // public void getLamps() {
-    // ArrayList<Lamp> l = new ArrayList<Lamp>();
-    // try {
-    // Statement queryStatment = dbConnect.createStatement();
-    // results = queryStatment.executeQuery("SELECT * FROM LAMP");
-    // while (results.next()) {
-    // l.add(new Lamp(results.getString("ID"), results.getString("Type"),
-    // results.getString("Base"),
-    // results.getString("Bulb"), results.getInt("Price"),
-    // results.getString("ManuID")));
-    // }
-    // } catch (SQLException e) {
-    // e.printStackTrace();
-    // }
-    // for (Lamp lamp : l) {
-    // lamp.printLamp();
-    // }
-    // }
+    /**
+     * a method to remove
+     * 
+     * @author Robert Brown
+     * @param item the name of the table the item is from
+     * @param id   th id of the item
+     */
+    public void removeItemByID(String item, String id) {
+        try {
+            String query = "DELETE FROM " + item.trim().toUpperCase() + " WHERE ID = ?";
+            PreparedStatement delete = dbConnect.prepareStatement(query);
+            delete.setString(1, id);
 
+            delete.executeUpdate();
+            delete.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
