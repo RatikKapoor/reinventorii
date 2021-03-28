@@ -27,12 +27,12 @@ public class RESTManager {
     }
 
     @GetMapping("/desks")
-    public ArrayList<Chair> desk(@RequestParam(value = "type", defaultValue = "") String type) {
+    public ArrayList<Chair> desks(@RequestParam(value = "type", defaultValue = "") String type) {
         return type.length() == 0 ? database.getList(Types.Desk) : database.getListByType(Types.Desk, type);
     }
 
     @GetMapping("/filings")
-    public ArrayList<Chair> filing(@RequestParam(value = "type", defaultValue = "") String type) {
+    public ArrayList<Chair> filings(@RequestParam(value = "type", defaultValue = "") String type) {
         return type.length() == 0 ? database.getList(Types.Filing) : database.getListByType(Types.Filing, type);
     }
 
