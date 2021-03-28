@@ -74,14 +74,14 @@ public class Database {
         return getListByType(item, "");
     }
 
-    public ArrayList<FurniturePart> getListByType(FurniturePart.Types item, String type)
+    public <T extends FurniturePart> ArrayList<T> getListByType(FurniturePart.Types item, String type)
             throws IllegalArgumentException {
 
         if (!type.equals("") && !item.hasType(type)) {
             throw new IllegalArgumentException("Item " + item.toString() + " does not have type " + type);
         }
 
-        ArrayList<FurniturePart> parts = new ArrayList<FurniturePart>();
+        ArrayList<T> parts = new ArrayList<T>();
         try {
             Statement queryStatment = dbConnect.createStatement();
             results = queryStatment.executeQuery("SELECT * FROM " + item.toString().toUpperCase()
@@ -101,19 +101,19 @@ public class Database {
                 int price = results.getInt("Price");
                 switch (item) {
                 case Lamp:
-                    parts.add(new Lamp(params, price));
+                    parts.add((T) new Lamp(params, price));
                     break;
 
                 case Chair:
-                    parts.add(new Chair(params, price));
+                    parts.add((T) new Chair(params, price));
                     break;
 
                 case Filing:
-                    parts.add(new Filing(params, price));
+                    parts.add((T) new Filing(params, price));
                     break;
 
                 case Desk:
-                    parts.add(new Desk(params, price));
+                    parts.add((T) new Desk(params, price));
 
                 default:
                     throw new IllegalArgumentException("Item type " + item.toString() + ", parser does not exist!");
