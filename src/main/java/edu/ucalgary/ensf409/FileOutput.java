@@ -1,5 +1,8 @@
 package edu.ucalgary.ensf409;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -18,7 +21,7 @@ public class FileOutput {
     private ArrayList<String> manuNameList;
     private int cost;
 
-    private StringBuilder receipt;
+    private StringBuilder receipt = new StringBuilder();
 
     public FileOutput(String inputFurniture, String inputFurnitureType, String inputQuantity,
             ArrayList<String> partsList, int cost) {
@@ -61,4 +64,25 @@ public class FileOutput {
         return receipt.toString();
     }
 
+    public void createFile() {
+        try {
+            File myObj = new File("orderform.txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter myWriter = new FileWriter("orderform.txt");
+            myWriter.write(createReceipt());
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 }
