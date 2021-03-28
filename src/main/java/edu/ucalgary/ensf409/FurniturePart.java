@@ -5,17 +5,18 @@ import java.util.List;
 
 public abstract class FurniturePart {
     public enum Types {
-        Chair(new String[] { "Legs", "Arms", "Seat", "Cushion" }), Desk(new String[] { "Legs", "Top", "Drawer" }),
-        Filing(new String[] { "Rails", "Drawers", "Cabinet" }), Lamp(new String[] { "Base", "Bulb" });
+        Chair(new String[] { "Task", "Mesh", "Kneeling", "Executive", "Ergonomic" }),
+        Desk(new String[] { "Traditional", "Adjustable", "Standing" }),
+        Filing(new String[] { "Small", "Medium", "Large" }), Lamp(new String[] { "Desk", "Swing Arm", "Study" });
 
-        private final List<String> properties;
+        private final List<String> types;
 
-        Types(String[] properties) {
-            this.properties = Arrays.asList(properties);
+        Types(String[] types) {
+            this.types = Arrays.asList(types);
         }
 
-        public boolean hasProperty(String property) {
-            return this.properties.contains(property);
+        public boolean hasType(String type) {
+            return this.types.contains(type);
         }
 
         @Override

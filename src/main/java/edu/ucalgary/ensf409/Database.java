@@ -70,12 +70,22 @@ public class Database {
         return i;
     }
 
-    public <T extends FurniturePart> ArrayList<T> getListByType(String item, String type) {
-        ArrayList<T> parts = new ArrayList<T>();
+    public ArrayList<FurniturePart> getList(FurniturePart.Types item) {
+        return getListByType(item, "");
+    }
+
+    public ArrayList<FurniturePart> getListByType(FurniturePart.Types item, String type)
+            throws IllegalArgumentException {
+
+        if (!type.equals("") && !item.hasType(type)) {
+            throw new IllegalArgumentException("Item " + item.toString() + " does not have type " + type);
+        }
+
+        ArrayList<FurniturePart> parts = new ArrayList<FurniturePart>();
         try {
             Statement queryStatment = dbConnect.createStatement();
-            results = queryStatment
-                    .executeQuery("SELECT * FROM " + item.toUpperCase() + " WHERE Type=\"" + type + "\"");
+            results = queryStatment.executeQuery("SELECT * FROM " + item.toString().toUpperCase()
+                    + (type.equals("") ? "" : (" WHERE Type=\"" + type + "\"")));
             int j = 0;
             for (int i = 3; i < results.findColumn("Price"); i++) {
                 j++;
@@ -89,8 +99,25 @@ public class Database {
                     params.add(results.getString(i));
                 }
                 int price = results.getInt("Price");
-                Lamp l = new Lamp(params, price);
-                l.printLamp();
+                switch (item) {
+                case Lamp:
+                    parts.add(new Lamp(params, price));
+                    break;
+
+                case Chair:
+                    parts.add(new Chair(params, price));
+                    break;
+
+                case Filing:
+                    parts.add(new Filing(params, price));
+                    break;
+
+                case Desk:
+                    parts.add(new Desk(params, price));
+
+                default:
+                    throw new IllegalArgumentException("Item type " + item.toString() + ", parser does not exist!");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

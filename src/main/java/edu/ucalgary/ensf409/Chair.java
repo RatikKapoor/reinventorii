@@ -1,5 +1,7 @@
 package edu.ucalgary.ensf409;
 
+import java.util.ArrayList;
+
 /**
  * Implementation of class Chair extending from FurniturePart
  */
@@ -8,7 +10,6 @@ public class Chair extends FurniturePart {
     private boolean cushion;
     private boolean arms;
     private boolean seat;
-    private static String[] chairParts = { "legs", "cushion", "arms", "seat" };
 
     /**
      * Constructor for Chair Class extending from FurniturePart
@@ -25,12 +26,20 @@ public class Chair extends FurniturePart {
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
             String manuid) {
 
-        super(id, type, price, manuid, chairParts);
+        super(id, type, price, manuid);
         this.legs = stringToBoolean(legs);
         this.cushion = stringToBoolean(cushion);
         this.arms = stringToBoolean(arms);
         this.seat = stringToBoolean(seat);
 
+    }
+
+    public Chair(ArrayList<String> data, int price) {
+        super(data.get(0), data.get(1), price, data.get(2));
+        this.legs = stringToBoolean(data.get(3));
+        this.arms = stringToBoolean(data.get(4));
+        this.seat = stringToBoolean(data.get(5));
+        this.cushion = stringToBoolean(data.get(6));
     }
 
     public Boolean getLegs() {
@@ -63,5 +72,19 @@ public class Chair extends FurniturePart {
 
     public void setSeat(Boolean seat) {
         this.seat = seat;
+    }
+}
+
+/**
+ * an enumeration for the types of chairs
+ * 
+ * @author Robert Brown
+ */
+enum ChairType {
+    Kneeling, Task, Mesh, Ergonomic, Executive;
+
+    @Override
+    public String toString() {
+        return this.name().replace("_", " ");
     }
 }
