@@ -14,7 +14,7 @@
 	<description>ENSF 409 Final Project</description>
 	<properties>
 		<java.version>11</java.version>
-		<!-- <start-class>edu.ucalgary.ensf409.App</start-class> -->
+		<start-class>edu.ucalgary.ensf409.App</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
