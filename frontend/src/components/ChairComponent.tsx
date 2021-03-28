@@ -27,7 +27,7 @@ const ChairComponent: React.FC<ContainerProps> = ({ chair }) => {
     <>
       <IonItem>
         <GiOfficeChair size="40" className="itemIcon" />
-        <IonLabel>{chair.type}</IonLabel>
+        <IonLabel>{`${chair.type}: ${chair.id}`}</IonLabel>
         {chair.arms && <IonChip>Arms</IonChip>}
         {chair.cushion && <IonChip>Cushion</IonChip>}
         {chair.legs && <IonChip>Legs</IonChip>}
