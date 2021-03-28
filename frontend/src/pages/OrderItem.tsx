@@ -11,6 +11,7 @@ import {
   IonInput,
   IonSelectOption,
   IonSelect,
+  IonButton,
 } from "@ionic/react";
 
 const OrderItem: React.FC = () => {
@@ -23,14 +24,24 @@ const OrderItem: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonList>
           <IonItem>
             <IonLabel>Item</IonLabel>
+            <IonSelect>
+                <IonSelectOption value="Chair">Chair</IonSelectOption>
+                <IonSelectOption value="Desk">Desk</IonSelectOption>
+                <IonSelectOption value="Filing">Filing</IonSelectOption>
+                <IonSelectOption value="Lamp">Lamp</IonSelectOption>
+            </IonSelect>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Type</IonLabel>
             <IonSelect>
                 <IonSelectOption value="chair">Chair</IonSelectOption>
             </IonSelect>
           </IonItem>
-        </IonList>
+          <IonItem>
+            <IonButton>Request</IonButton>
+          </IonItem>
       </IonContent>
     </IonPage>
   );

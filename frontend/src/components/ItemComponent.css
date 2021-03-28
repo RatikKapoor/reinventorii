@@ -1,7 +1,8 @@
 .itemIcon {
-    padding-right: 2.5vw;
+    margin-right: 2vw;
 }
 
 .itemPrice {
     font-size: large;
+    padding-left: 2vw;
 }

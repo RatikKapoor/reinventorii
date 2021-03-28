@@ -26,7 +26,7 @@ const LampComponent: React.FC<ContainerProps> = ({ lamp }) => {
   return (
     <>
       <IonItem>
-        <GiDesk size="40" />
+        <GiDeskLamp size={40} className="itemIcon" />
         <IonLabel>{lamp.type}</IonLabel>
         {lamp.base && <IonChip>Base</IonChip>}
         {lamp.bulb && <IonChip>Bulb</IonChip>}
