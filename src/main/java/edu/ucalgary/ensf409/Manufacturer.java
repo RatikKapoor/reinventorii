@@ -9,6 +9,38 @@ public class Manufacturer {
     private String phone;
     private String province;
 
+    public String getManuid() {
+        return this.manuid;
+    }
+
+    public void setManuid(String manuid) {
+        this.manuid = manuid;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getProvince() {
+        return this.province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     /**
      * a constructor for manufacturer
      * 

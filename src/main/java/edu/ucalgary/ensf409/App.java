@@ -11,16 +11,16 @@ public class App {
         // });
         // ;
         Filing l = new Filing("Large");
-        Builder b = new Builder<Filing>(l);
+        Builder<Filing> b = new Builder<Filing>(l);
         b.setParts(test.getListByType(Types.Filing, "Large"));
-        b.getParts().forEach(item -> {
-            System.out.println(Filing.class.cast(item).getId());
-        });
+        // b.getParts().forEach(item -> {
+        // System.out.println(Filing.class.cast(item).getId());
+        // });
         ;
         b.setItems();
-        b.getItems().forEach(item -> {
-            System.out.println(item.toString());
-        });
+        // b.getItems().forEach(item -> {
+        // System.out.println(item.toString());
+        // });
         ;
         b.BuildItem();
         System.out.println(b.getCost());

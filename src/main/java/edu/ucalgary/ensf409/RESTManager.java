@@ -34,21 +34,63 @@ public class RESTManager {
     @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping("/desks")
     @RequestMapping(value = "/desks", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<Chair> desks(@RequestParam(value = "type", defaultValue = "") String type) {
+    public ArrayList<Desk> desks(@RequestParam(value = "type", defaultValue = "") String type) {
         return type.length() == 0 ? database.getList(Types.Desk) : database.getListByType(Types.Desk, type);
     }
 
     @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping("/filings")
     @RequestMapping(value = "/filings", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<Chair> filings(@RequestParam(value = "type", defaultValue = "") String type) {
+    public ArrayList<Filing> filings(@RequestParam(value = "type", defaultValue = "") String type) {
         return type.length() == 0 ? database.getList(Types.Filing) : database.getListByType(Types.Filing, type);
     }
 
     @CrossOrigin(origins = "http://localhost:8100")
     @GetMapping("/lamps")
     @RequestMapping(value = "/lamps", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<Chair> lamps(@RequestParam(value = "type", defaultValue = "") String type) {
+    public ArrayList<Lamp> lamps(@RequestParam(value = "type", defaultValue = "") String type) {
         return type.length() == 0 ? database.getList(Types.Lamp) : database.getListByType(Types.Lamp, type);
+    }
+
+    // Manufacturers
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping("/manufacturers")
+    @RequestMapping(value = "/manufacturers", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<Manufacturer> manufacturers() {
+        return database.getManufacturers();
+    }
+
+    // Builders
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping("/builder/chair")
+    @RequestMapping(value = "/builder/chair", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<Chair> chairBuilder(@RequestParam(value = "type", defaultValue = "") String type,
+            @RequestParam(value = "number", defaultValue = "1") String number) {
+
+        return null;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping("/builder/desk")
+    @RequestMapping(value = "/builder/desk", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<Desk> deskBuilder(@RequestParam(value = "type", defaultValue = "") String type,
+            @RequestParam(value = "number", defaultValue = "1") String number) {
+        return null;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping("/builder/filing")
+    @RequestMapping(value = "/builder/filing", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<Filing> filingBuilder(@RequestParam(value = "type", defaultValue = "") String type,
+            @RequestParam(value = "number", defaultValue = "1") String number) {
+        return null;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8100")
+    @GetMapping("/builder/lamp")
+    @RequestMapping(value = "/builder/lamp", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ArrayList<Lamp> lampBuilder(@RequestParam(value = "type", defaultValue = "") String type,
+            @RequestParam(value = "number", defaultValue = "1") String number) {
+        return null;
     }
 }

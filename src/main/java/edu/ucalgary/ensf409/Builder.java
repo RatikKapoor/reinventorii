@@ -110,7 +110,7 @@ public class Builder<T extends FurniturePart> {
 
         case Desk:
             Desk desk = Desk.class.cast(object);
-            System.out.println("reached?");
+            // System.out.println("reached?");
 
             getParts().forEach(item -> {
 
@@ -195,7 +195,7 @@ public class Builder<T extends FurniturePart> {
 
         case Chair:
             Chair chair = Chair.class.cast(object);
-            System.out.println("reached?");
+            // System.out.println("reached?");
 
             getParts().forEach(item -> {
 
@@ -296,7 +296,7 @@ public class Builder<T extends FurniturePart> {
 
         case Filing:
             Filing filing = Filing.class.cast(object);
-            System.out.println("reached?");
+            // System.out.println("reached?");
 
             getParts().forEach(item -> {
 
