@@ -74,3 +74,17 @@ enum FilingType {
         return this.name().replace("_", " ");
     }
 }
+
+/**
+ * an enumeration for the parts of the Filing
+ * 
+ * @author Robert Brown
+ */
+enum FilingParts {
+    Rails, Drawers, Cabinet;
+
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}

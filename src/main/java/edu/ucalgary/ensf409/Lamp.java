@@ -58,3 +58,17 @@ enum LampType {
         return this.name().replace("_", " ");
     }
 }
+
+/**
+ * an enumeration for the parts of the lamp
+ * 
+ * @author Robert Brown
+ */
+enum LampParts {
+    Base, Bulb;
+
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}

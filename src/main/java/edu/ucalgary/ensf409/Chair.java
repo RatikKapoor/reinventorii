@@ -88,3 +88,17 @@ enum ChairType {
         return this.name().replace("_", " ");
     }
 }
+
+/**
+ * an enumeration for the parts of the chair
+ * 
+ * @author Robert Brown
+ */
+enum ChairParts {
+    Legs, Cushion, Arms, Seat;
+
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}
