@@ -10,7 +10,7 @@ public class Chair extends FurniturePart {
     private boolean seat;
 
     /**
-     * Constructor for Chair
+     * Constructor for Chair Class
      * 
      * @param id
      * @param type
