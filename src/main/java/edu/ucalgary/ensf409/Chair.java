@@ -23,6 +23,10 @@ public class Chair extends FurniturePart {
      * @param price
      * @param manuid
      */
+    public Chair(String type) {
+        super(type);
+    }
+
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
             String manuid) {
 

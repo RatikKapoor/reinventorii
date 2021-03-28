@@ -21,6 +21,10 @@ public class Filing extends FurniturePart {
      * @param price
      * @param manuID
      */
+    public Filing(String type) {
+        super(type);
+    }
+
     public Filing(String id, String type, String rails, String drawers, String cabinet, int price, String manuID) {
         super(id, type, price, manuID);
         this.rails = stringToBoolean(rails);

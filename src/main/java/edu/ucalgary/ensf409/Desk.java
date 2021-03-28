@@ -21,6 +21,10 @@ public class Desk extends FurniturePart {
      * @param price
      * @param manuID
      */
+    public Desk(String type) {
+        super(type);
+    }
+
     public Desk(String id, String type, String legs, String top, String drawer, int price, String manuID) {
         super(id, type, price, manuID);
         this.legs = stringToBoolean(legs);
