@@ -2,11 +2,13 @@ import {
   IonButton,
   IonContent,
   IonHeader,
+  IonList,
   IonPage,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
 import { useEffect, useState } from "react";
+import ItemComponent from '../components/ItemComponent';
 import { Chair } from "../interfaces/FurnitureTypes";
 import "./Tab1.css";
 
@@ -37,6 +39,9 @@ const Chairs: React.FC = () => {
       <IonContent fullscreen>
         <IonTitle>Available Chairs</IonTitle>
         <IonButton onClick={updateChairs}>Get chairs</IonButton>
+        <IonList>
+          <ItemComponent id="123" type="desk" price={12} ></ItemComponent>
+        </IonList>
       </IonContent>
     </IonPage>
   );
