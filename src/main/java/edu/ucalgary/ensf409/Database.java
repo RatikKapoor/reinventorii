@@ -132,9 +132,9 @@ public class Database {
      * @param item the name of the table the item is from
      * @param id   th id of the item
      */
-    public void removeItemByID(String item, String id) {
+    public void removeItemByID(FurniturePart.Types item, String id) {
         try {
-            String query = "DELETE FROM " + item.trim().toUpperCase() + " WHERE ID = ?";
+            String query = "DELETE FROM " + item.toString().toUpperCase() + " WHERE ID = ?";
             PreparedStatement delete = dbConnect.prepareStatement(query);
             delete.setString(1, id);
 
