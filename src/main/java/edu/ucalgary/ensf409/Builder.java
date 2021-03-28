@@ -74,9 +74,6 @@ public class Builder<T extends FurniturePart> {
         cabinet = new ArrayList<>();
         //
 
-        for (String combinations : idCombination) {
-            oneD.add(combinations);
-        }
         idCombination = new ArrayList<>();
         allCombinations = new ArrayList<>();
         switch (FurniturePart.Types.fromString(this.typeName)) {
@@ -158,6 +155,9 @@ public class Builder<T extends FurniturePart> {
             }
             idCombination.addAll(allCombinations.get(index));
             // System.out.println("ID Combinations" + idCombination);
+            for (String combinations : idCombination) {
+                oneD.add(combinations);
+            }
             break;
 
         case Desk:
@@ -256,6 +256,9 @@ public class Builder<T extends FurniturePart> {
             }
             idCombination.addAll(allCombinations.get(index));
             // System.out.println(idCombination);
+            for (String combinations : idCombination) {
+                oneD.add(combinations);
+            }
             break;
 
         case Chair:
@@ -371,6 +374,9 @@ public class Builder<T extends FurniturePart> {
             }
             idCombination.addAll(allCombinations.get(index));
             // System.out.println(idCombination);
+            for (String combinations : idCombination) {
+                oneD.add(combinations);
+            }
             break;
 
         case Filing:
@@ -471,6 +477,9 @@ public class Builder<T extends FurniturePart> {
             }
             idCombination.addAll(allCombinations.get(index));
             // System.out.println(idCombination);
+            for (String combinations : idCombination) {
+                oneD.add(combinations);
+            }
             break;
 
         default:
@@ -536,7 +545,7 @@ public class Builder<T extends FurniturePart> {
     }
 
     public ArrayList<String> getidCombination() {
-        return this.idCombination;
+        return this.oneD;
     }
 
     // FOR LAMP
