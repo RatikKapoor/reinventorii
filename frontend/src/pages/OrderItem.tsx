@@ -22,25 +22,27 @@ import {
   Chair,
   Desk,
   Filing,
-  IRESTMessage,
   Lamp,
   Manufacturer,
 } from "../interfaces/FurnitureTypes";
 
 const OrderItem: React.FC = () => {
-  const [selectedItem, setSelectedItem] = useState<string>();
-  const [selectedType, setSelectedType] = useState<string>();
+  const [selectedItem, setSelectedItem] = useState<string>("");
+  const [selectedType, setSelectedType] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
-  const [output, setOutput] = useState<IRESTMessage | undefined>(undefined);
+  const [output, setOutput] = useState<
+    Array<Chair | Desk | Filing | Lamp> | undefined
+  >(undefined);
   const [manus, setManus] = useState<Array<Manufacturer>>();
 
   const requestItem = () => {
     fetch(
-      `http://localhost:8080/builder/${selectedItem}?quantity=${quantity.toString()}`
+      `http://localhost:8080/builder/${selectedItem.toLowerCase()}?quantity=${quantity.toString()}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setOutput(data as IRESTMessage);
+        setOutput(data);
+        console.log(data);
       });
   };
 
@@ -130,29 +132,29 @@ const OrderItem: React.FC = () => {
           />
         </IonItem>
         <IonItem>
-          <IonButton>Request</IonButton>
+          <IonButton onClick={requestItem}>Request</IonButton>
         </IonItem>
         {output && (
           <>
-            {output.success === true ? (
+            {output && output.length > 0 ? (
               <>
-                <IonLabel>Success</IonLabel>
+                <IonLabel>Success! </IonLabel>
                 <IonLabel>Components used:</IonLabel>
                 {selectedItem === "Chair" &&
-                  output.items.map((v, k) => {
-                    <ChairComponent chair={v as Chair} key={k} />;
+                  output.map((v, k) => {
+                    return <ChairComponent chair={v as Chair} key={k} />;
                   })}
                 {selectedItem === "Desk" &&
-                  output.items.map((v, k) => {
-                    <DeskComponent desk={v as Desk} key={k} />;
+                  output.map((v, k) => {
+                    return <DeskComponent desk={v as Desk} key={k} />;
                   })}
                 {selectedItem === "Filing" &&
-                  output.items.map((v, k) => {
-                    <FilingComponent filing={v as Filing} key={k} />;
+                  output.map((v, k) => {
+                    return <FilingComponent filing={v as Filing} key={k} />;
                   })}
                 {selectedItem === "Lamp" &&
-                  output.items.map((v, k) => {
-                    <LampComponent lamp={v as Lamp} key={k} />;
+                  output.map((v, k) => {
+                    return <LampComponent lamp={v as Lamp} key={k} />;
                   })}
               </>
             ) : (

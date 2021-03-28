@@ -67,7 +67,21 @@ public class RESTManager {
     public ArrayList<Chair> chairBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
 
-        return null;
+        Chair l = new Chair(type);
+        ArrayList<Chair> allLamps = database.getListByType(Types.Chair, type);
+        Builder<Chair> b = new Builder<Chair>(l);
+        b.setParts(allLamps);
+        b.setItems();
+        b.BuildMultipleItems(Integer.parseInt(number));
+        ArrayList<Chair> temp = new ArrayList<>();
+        for (String id : b.getidCombination()) {
+            for (Chair la : allLamps) {
+                if (la.getId().equals(id)) {
+                    temp.add(la);
+                }
+            }
+        }
+        return temp;
     }
 
     @CrossOrigin(origins = "http://localhost:8100")
@@ -75,7 +89,21 @@ public class RESTManager {
     @RequestMapping(value = "/builder/desk", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Desk> deskBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
-        return null;
+        Desk l = new Desk(type);
+        ArrayList<Desk> allLamps = database.getListByType(Types.Desk, type);
+        Builder<Desk> b = new Builder<Desk>(l);
+        b.setParts(allLamps);
+        b.setItems();
+        b.BuildMultipleItems(Integer.parseInt(number));
+        ArrayList<Desk> temp = new ArrayList<>();
+        for (String id : b.getidCombination()) {
+            for (Desk la : allLamps) {
+                if (la.getId().equals(id)) {
+                    temp.add(la);
+                }
+            }
+        }
+        return temp;
     }
 
     @CrossOrigin(origins = "http://localhost:8100")
@@ -83,7 +111,21 @@ public class RESTManager {
     @RequestMapping(value = "/builder/filing", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Filing> filingBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
-        return null;
+        Filing l = new Filing(type);
+        ArrayList<Filing> allLamps = database.getListByType(Types.Lamp, type);
+        Builder<Filing> b = new Builder<Filing>(l);
+        b.setParts(allLamps);
+        b.setItems();
+        b.BuildMultipleItems(Integer.parseInt(number));
+        ArrayList<Filing> temp = new ArrayList<>();
+        for (String id : b.getidCombination()) {
+            for (Filing la : allLamps) {
+                if (la.getId().equals(id)) {
+                    temp.add(la);
+                }
+            }
+        }
+        return temp;
     }
 
     @CrossOrigin(origins = "http://localhost:8100")
@@ -91,6 +133,20 @@ public class RESTManager {
     @RequestMapping(value = "/builder/lamp", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Lamp> lampBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
-        return null;
+        Lamp l = new Lamp(type);
+        ArrayList<Lamp> allLamps = database.getListByType(Types.Lamp, type);
+        Builder<Lamp> b = new Builder<Lamp>(l);
+        b.setParts(allLamps);
+        b.setItems();
+        b.BuildMultipleItems(Integer.parseInt(number));
+        ArrayList<Lamp> temp = new ArrayList<>();
+        for (String id : b.getidCombination()) {
+            for (Lamp la : allLamps) {
+                if (la.getId().equals(id)) {
+                    temp.add(la);
+                }
+            }
+        }
+        return temp;
     }
 }

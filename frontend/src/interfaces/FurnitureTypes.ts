@@ -35,8 +35,3 @@ export interface Manufacturer {
   phone: string;
   province: string;
 }
-
-export interface IRESTMessage {
-  success: boolean;
-  items: Array<Chair | Desk | Lamp | Filing>;
-}
