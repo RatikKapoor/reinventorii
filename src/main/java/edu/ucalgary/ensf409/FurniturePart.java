@@ -44,4 +44,17 @@ public abstract class FurniturePart {
         this.price = price;
         this.ManuID = ManuID;
     }
+
+    /**
+     * stringToBoolean converts "Y" into true, everything else into false
+     * 
+     * @param input
+     * @return
+     */
+    protected boolean stringToBoolean(String input) {
+        if (input.equals("Y")) {
+            return true;
+        }
+        return false;
+    }
 }
