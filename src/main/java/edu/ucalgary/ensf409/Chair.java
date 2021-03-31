@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Implementation of class Chair extending from FurniturePart
+ * 
+ * @since 1.3
  */
 public class Chair extends FurniturePart {
     private boolean legs;
@@ -12,21 +14,27 @@ public class Chair extends FurniturePart {
     private boolean seat;
 
     /**
-     * Constructor for Chair Class extending from FurniturePart
+     * query constructor for chair (only requires type)
      * 
-     * @param id
-     * @param type
-     * @param legs
-     * @param cushion
-     * @param arms
-     * @param seat
-     * @param price
-     * @param manuid
+     * @param type string type of chair
      */
     public Chair(String type) {
+        // TODO add type checking against enums in constructor
         super(type);
     }
 
+    /**
+     * full constructor for chair (includes all paramaters)
+     * 
+     * @param id      string id of chair
+     * @param type    string type of chair
+     * @param legs    string legs of chair (will be converted to boolean)
+     * @param cushion string cushion of chair (will be converted to boolean)
+     * @param arms    string arms of chair (will be converted to boolean)
+     * @param seat    string seat of chair (will be converted to boolean)
+     * @param price   int price of chair
+     * @param manuid  string manufacturer id of chair
+     */
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
             String manuid) {
 
@@ -38,6 +46,15 @@ public class Chair extends FurniturePart {
 
     }
 
+    /**
+     * chair constructor from database
+     * 
+     * @param data  arraylist of strings from DB -> data[0] - id of item, data[1] -
+     *              type of chair, data[2] - id of manufacturer, data[3] - legs?
+     *              (y/n), data[4] - arms? (y/n), data[5] - seat? (y/n), data[6] -
+     *              cushion? (y/n)
+     * @param price integer price of chair
+     */
     public Chair(ArrayList<String> data, int price) {
         super(data.get(0), data.get(1), price, data.get(2));
         this.legs = stringToBoolean(data.get(3));
@@ -46,34 +63,74 @@ public class Chair extends FurniturePart {
         this.cushion = stringToBoolean(data.get(6));
     }
 
+    /**
+     * getter for legs
+     * 
+     * @return true if legs are usable, false otherwise
+     */
     public Boolean getLegs() {
         return this.legs;
     }
 
+    /**
+     * setter for legs
+     * 
+     * @param legs true if legs useable, false otherwise
+     */
     public void setLegs(Boolean legs) {
         this.legs = legs;
     }
 
+    /**
+     * getter for cushion
+     * 
+     * @return true if cushion are usable, false otherwise
+     */
     public Boolean getCushion() {
         return this.cushion;
     }
 
+    /**
+     * setter for cushion
+     * 
+     * @param cushion true if cushion useable, false if not
+     */
     public void setCushion(Boolean cushion) {
         this.cushion = cushion;
     }
 
+    /**
+     * getter for arms
+     * 
+     * @return true if arms are usable, false otherwise
+     */
     public Boolean getArms() {
         return this.arms;
     }
 
+    /**
+     * setter for arms
+     * 
+     * @param arms true if arms are useable, false if not
+     */
     public void setArms(Boolean arms) {
         this.arms = arms;
     }
 
+    /**
+     * getter for seat
+     * 
+     * @return true if seat is useable, false otherwise
+     */
     public Boolean getSeat() {
         return this.seat;
     }
 
+    /**
+     * setter for seat
+     * 
+     * @param seat true if seat is useable, false if not
+     */
     public void setSeat(Boolean seat) {
         this.seat = seat;
     }

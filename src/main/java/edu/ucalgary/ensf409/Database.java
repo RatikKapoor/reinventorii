@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * a class for connecting to the Database
  * 
  * @author Robert Brown
+ * @since 1.0
  */
 public class Database {
     public final String DBURL;
@@ -37,6 +38,9 @@ public class Database {
         dbConnect = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
     }
 
+    /**
+     * a method to disconnect from the database by closing the connection
+     */
     public void disconnect() {
         try {
             dbConnect.close();
@@ -45,6 +49,11 @@ public class Database {
         }
     }
 
+    /**
+     * a method to get the list of manufacturers from the database
+     * 
+     * @return
+     */
     public ArrayList<Manufacturer> getManufacturers() {
         ArrayList<Manufacturer> m = new ArrayList<Manufacturer>();
         try {
@@ -80,6 +89,12 @@ public class Database {
         return m;
     }
 
+    /**
+     * a method to count the columns in a specific table of the database
+     * 
+     * @param table string table to count columns (corresponds to furniture item)
+     * @return number of columns (params) in the table
+     */
     public int countCols(String table) {
         int i = 0;
         try {
@@ -96,6 +111,13 @@ public class Database {
         return i;
     }
 
+    /**
+     * a generic function for
+     * 
+     * @param <T>
+     * @param item
+     * @return
+     */
     public <T extends FurniturePart> ArrayList<T> getList(FurniturePart.Types item) {
         return getListByType(item, "");
     }
