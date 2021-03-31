@@ -90,14 +90,14 @@ public class RESTManager {
     public ArrayList<Desk> deskBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
         Desk l = new Desk(type);
-        ArrayList<Desk> allLamps = database.getListByType(Types.Desk, type);
+        ArrayList<Desk> allDesks = database.getListByType(Types.Desk, type);
         Builder<Desk> b = new Builder<Desk>(l);
-        b.setParts(allLamps);
+        b.setParts(allDesks);
         b.setItems();
         b.BuildMultipleItems(Integer.parseInt(number));
         ArrayList<Desk> temp = new ArrayList<>();
         for (String id : b.getidCombination()) {
-            for (Desk la : allLamps) {
+            for (Desk la : allDesks) {
                 if (la.getId().equals(id)) {
                     temp.add(la);
                 }
@@ -111,15 +111,15 @@ public class RESTManager {
     @RequestMapping(value = "/builder/filing", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Filing> filingBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
-        Filing l = new Filing(type);
-        ArrayList<Filing> allLamps = database.getListByType(Types.Lamp, type);
-        Builder<Filing> b = new Builder<Filing>(l);
-        b.setParts(allLamps);
+        Filing f = new Filing(type);
+        ArrayList<Filing> allFiling = database.getListByType(Types.Filing, type);
+        Builder<Filing> b = new Builder<Filing>(f);
+        b.setParts(allFiling);
         b.setItems();
         b.BuildMultipleItems(Integer.parseInt(number));
         ArrayList<Filing> temp = new ArrayList<>();
         for (String id : b.getidCombination()) {
-            for (Filing la : allLamps) {
+            for (Filing la : allFiling) {
                 if (la.getId().equals(id)) {
                     temp.add(la);
                 }
