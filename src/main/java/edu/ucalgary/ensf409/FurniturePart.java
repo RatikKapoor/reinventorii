@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * @since 1.1
+ */
 public abstract class FurniturePart {
     public enum Types {
         Chair(new String[] { "Task", "Mesh", "Kneeling", "Executive", "Ergonomic" }),
