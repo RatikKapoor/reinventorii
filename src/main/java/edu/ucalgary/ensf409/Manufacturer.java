@@ -2,6 +2,8 @@ package edu.ucalgary.ensf409;
 
 /**
  * a class for a manufacturer
+ * 
+ * @since 1.1
  */
 public class Manufacturer {
     private String manuid;
