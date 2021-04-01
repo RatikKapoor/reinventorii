@@ -73,6 +73,9 @@ public class RESTManager {
         b.setParts(allLamps);
         b.setItems();
         b.BuildMultipleItems(Integer.parseInt(number));
+        if (b.getCost() == -1) {
+            return new ArrayList<Chair>();
+        }
         ArrayList<Chair> temp = new ArrayList<>();
         for (String id : b.getidCombination()) {
             for (Chair la : allLamps) {
@@ -95,6 +98,9 @@ public class RESTManager {
         b.setParts(allDesks);
         b.setItems();
         b.BuildMultipleItems(Integer.parseInt(number));
+        if (b.getCost() == -1) {
+            return new ArrayList<Desk>();
+        }
         ArrayList<Desk> temp = new ArrayList<>();
         for (String id : b.getidCombination()) {
             for (Desk la : allDesks) {
@@ -117,6 +123,9 @@ public class RESTManager {
         b.setParts(allFiling);
         b.setItems();
         b.BuildMultipleItems(Integer.parseInt(number));
+        if (b.getCost() == -1) {
+            return new ArrayList<Filing>();
+        }
         ArrayList<Filing> temp = new ArrayList<>();
         for (String id : b.getidCombination()) {
             for (Filing la : allFiling) {
@@ -139,6 +148,9 @@ public class RESTManager {
         b.setParts(allLamps);
         b.setItems();
         b.BuildMultipleItems(Integer.parseInt(number));
+        if (b.getCost() == -1) {
+            return new ArrayList<Lamp>();
+        }
         ArrayList<Lamp> temp = new ArrayList<>();
         for (String id : b.getidCombination()) {
             for (Lamp la : allLamps) {
