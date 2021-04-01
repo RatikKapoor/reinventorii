@@ -1,3 +1,3 @@
 # /bin/sh
 
-./mvnw spring-boot:run
+docker-compose up
