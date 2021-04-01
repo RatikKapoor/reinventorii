@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  maven:
+    tty: true
+    container_name: ensf409-finalProject-maven-container
+    build:
+      context: .
+      dockerfile: Dockerfile.maven
+    volumes:
+      - ".:/app"
+    ports:
+      - 25565:25565
+      - 8080:8080
+    networks:
+      ensf409-net:
+        aliases:
+          - maven
+
+  react:
+    # stdin_open: true # docker run -i
+    tty: true # docker run -t
+    container_name: ensf409-finalProject-react-container
+    build:
+      context: .
+      dockerfile: Dockerfile.react
+      target: dev
+    volumes:
+      - "./frontend/:/app"
+      - "/app/node_modules"
+    ports:
+      - 3000:3000
+      - 5000:5000
+    networks:
+      ensf409-net:
+        aliases:
+          - react
+    depends_on:
+      - maven
+    # environment:
+    #   - CHOKIDAR_USEPOLLING=true
+
+networks:
+  ensf409-net:
+    name: ensf409-network
