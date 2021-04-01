@@ -10,15 +10,14 @@ services:
     volumes:
       - ".:/app"
     ports:
-      - 25565:25565
-      - 8080:8080
+      - 36295:36295
     networks:
       ensf409-net:
         aliases:
           - maven
 
   react:
-    # stdin_open: true # docker run -i
+    stdin_open: true # docker run -i
     tty: true # docker run -t
     container_name: ensf409-finalProject-react-container
     build:
@@ -30,15 +29,14 @@ services:
       - "/app/node_modules"
     ports:
       - 3000:3000
-      - 5000:5000
     networks:
       ensf409-net:
         aliases:
           - react
     depends_on:
       - maven
-    # environment:
-    #   - CHOKIDAR_USEPOLLING=true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 networks:
   ensf409-net:
