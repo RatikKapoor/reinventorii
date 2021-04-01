@@ -9,10 +9,10 @@ import java.sql.SQLException;
 
 @SpringBootTest
 public class DeskTest {
-    Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
 
     @Test
     public void DeskConstructorInheritance() {
+        Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
 
         String actual = aTestDesk.getType();
         String expect = "Standing";
@@ -22,6 +22,7 @@ public class DeskTest {
 
     @Test
     public void DeskGetPrice() {
+        Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
 
         int actual = aTestDesk.getPrice();
         int expect = 150;
