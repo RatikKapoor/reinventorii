@@ -9,11 +9,11 @@ import java.sql.SQLException;
 
 @SpringBootTest
 public class ChairTest {
-    Chair aTestChair = new Chair("C1320", "Kneeling", "Y", "N", "N", "N", 50, "002");
 
     @Test
     public void ChairConstructorInheritance() {
 
+        Chair aTestChair = new Chair("C1320", "Kneeling", "Y", "N", "N", "N", 50, "002");
         String actual = aTestChair.getManuID();
         String expect = "002";
 
@@ -23,6 +23,7 @@ public class ChairTest {
     @Test
     public void ChairCushionStringToBoolean() {
 
+        Chair aTestChair = new Chair("C1320", "Kneeling", "Y", "N", "N", "N", 50, "002");
         boolean actual = aTestChair.getCushion();
         boolean expect = false;
 

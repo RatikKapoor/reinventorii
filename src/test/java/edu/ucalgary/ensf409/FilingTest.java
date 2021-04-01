@@ -9,10 +9,9 @@ import java.sql.SQLException;
 
 @SpringBootTest
 public class FilingTest {
-    Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
-
     @Test
     public void FilingConstructorInheritance() {
+        Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
 
         String actual = aTestFiling.getManuID();
         String expect = "005";
@@ -22,6 +21,7 @@ public class FilingTest {
 
     @Test
     public void FilingGetPrice() {
+        Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
 
         int actual = aTestFiling.getPrice();
         int expect = 50;

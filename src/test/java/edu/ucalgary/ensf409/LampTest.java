@@ -9,11 +9,10 @@ import java.sql.SQLException;
 
 @SpringBootTest
 public class LampTest {
-    Lamp aTestLamp;
 
     @Test
     public void lampConstructorInheritance() {
-        aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
+        Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
 
         String actual = aTestLamp.getManuID();
         String expect = "005";
@@ -23,7 +22,7 @@ public class LampTest {
 
     @Test
     public void lampBaseStringToBoolean() {
-        aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
+        Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
 
         boolean actual = aTestLamp.getBase();
         boolean expect = true;
