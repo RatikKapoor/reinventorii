@@ -9,6 +9,7 @@ services:
       dockerfile: Dockerfile.maven
     volumes:
       - ".:/app"
+      - "/app/target"
     ports:
       - 36295:36295
     networks:
