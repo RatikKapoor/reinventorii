@@ -19,7 +19,7 @@ const Filings: React.FC = () => {
   const [filings, setFilings] = useState<Array<Filing>>();
 
   const updateFilings = () => {
-    fetch(`http://localhost:8080/filings`)
+    fetch(`http://localhost:36295/filings`)
       .then((data) => data.json())
       .then((data) => {
         console.log("Got new lamps:", data);

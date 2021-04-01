@@ -19,7 +19,7 @@ const Desks: React.FC = () => {
   const [desks, setDesks] = useState<Array<Desk>>();
 
   const updateDesks = () => {
-    fetch(`http://localhost:8080/desks`)
+    fetch(`http://localhost:36295/desks`)
       .then((data) => data.json())
       .then((data) => {
         console.log("Got new desks:", data);

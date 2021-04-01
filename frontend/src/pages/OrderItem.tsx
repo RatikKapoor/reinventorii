@@ -37,7 +37,7 @@ const OrderItem: React.FC = () => {
 
   const requestItem = () => {
     fetch(
-      `http://localhost:8080/builder/${selectedItem.toLowerCase()}?type=${selectedType}&number=${quantity.toString()}`
+      `http://localhost:36295/builder/${selectedItem.toLowerCase()}?type=${selectedType}&number=${quantity.toString()}`
     )
       .then((res) => res.json())
       .then((data) => {

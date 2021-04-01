@@ -19,7 +19,7 @@ const Lamps: React.FC = () => {
   const [lamps, setLamps] = useState<Array<Lamp>>();
 
   const updateLamps = () => {
-    fetch(`http://localhost:8080/lamps`)
+    fetch(`http://localhost:36295/lamps`)
       .then((data) => data.json())
       .then((data) => {
         console.log("Got new lamps:", data);

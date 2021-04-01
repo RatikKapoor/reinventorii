@@ -20,7 +20,7 @@ const Chairs: React.FC = () => {
   const [chairs, setChairs] = useState<Array<Chair>>();
 
   const updateChairs = () => {
-    fetch(`http://localhost:8080/chairs`)
+    fetch(`http://localhost:36295/chairs`)
       .then((data) => data.json())
       .then((data) => {
         console.log("Got new chairs:", data);
