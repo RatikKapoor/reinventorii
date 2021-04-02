@@ -36,6 +36,7 @@ public class Builder<T extends FurniturePart> {
     // FOR CHEAPEST ID COMBINATIONS
     private ArrayList<String> idCombination = new ArrayList<>();
 
+    // TODO: Documentation for the constructor
     public Builder(T toBuild) {
         this.object = toBuild;
         this.typeName = object.getClass().getSimpleName();
@@ -133,7 +134,6 @@ public class Builder<T extends FurniturePart> {
                         String bulbID = "";
                         if (k == 1) {
                             bulbID = bulbID();
-                            // System.out.println("Reached");
                             if (!bulbID.isEmpty()) {
                                 allIDs.add(bulbID);
                             }
@@ -457,7 +457,8 @@ public class Builder<T extends FurniturePart> {
     }
 
     /**
-     * 
+     * Method that populates array items with all components in the requested
+     * furniture
      */
     public void setItems() {
         items = new ArrayList<String>();
@@ -491,219 +492,276 @@ public class Builder<T extends FurniturePart> {
         }
     }
 
+    /**
+     * @return final cost of requested furnitures
+     */
     public int getCost() {
         return this.cost;
     }
 
+    /**
+     * @return components in the furniture
+     */
     public ArrayList<String> getItems() {
         return this.items;
     }
 
+    /**
+     * @param parts first argument for setParts
+     */
     public void setParts(ArrayList<T> parts) {
         this.parts = parts;
     }
 
+    /**
+     * @return object part
+     */
     public ArrayList<T> getParts() {
         return this.parts;
     }
 
+    /**
+     * @return type of furniture
+     */
     public String getTypeName() {
         return this.typeName;
     }
 
+    /**
+     * Returns object
+     */
     public T getObject() {
         return this.object;
     }
 
+    /**
+     * @return cheapest ids that make the furniture(s)
+     */
     public ArrayList<String> getidCombination() {
         return this.idCombination;
     }
 
-    // FOR LAMP
+    /**
+     * PROMISES: Cheapest id that has a bulb in lamp
+     * 
+     * @return cheapest id
+     */
     public String bulbID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Lamp.class.cast(item).getBulb()) {
+                // add prices of ids that have a bulb
                 prices.add(Lamp.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < bulb.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = bulb.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
-    // FOR DESK
+    /**
+     * PROMISES: Cheapest id that has a top in desk
+     * 
+     * @return cheapest id
+     */
     public String topID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Desk.class.cast(item).getTop()) {
+                // add prices of ids that have a top
                 prices.add(Desk.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < top.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = top.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
+    /**
+     * PROMISES: Cheapest id that has a drawer in desk
+     * 
+     * @return cheapest id
+     */
     public String drawerID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Desk.class.cast(item).getDrawer()) {
+                // add prices of ids that have a drawer
                 prices.add(Desk.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < drawer.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = drawer.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
-    // FOR CHAIR
+    /**
+     * PROMISES: Cheapest id that has arms in chair
+     * 
+     * @return cheapest id
+     */
     public String armsID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Chair.class.cast(item).getArms()) {
+                // add prices of ids that have arms
                 prices.add(Chair.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < arms.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = arms.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
+    /**
+     * PROMISES: Cheapest id that has a seat in chair
+     * 
+     * @return cheapest id
+     */
     public String seatID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Chair.class.cast(item).getSeat()) {
+                // add prices of ids that have a seat
                 prices.add(Chair.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < seat.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = seat.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
+    /**
+     * PROMISES: Cheapest id that has a cushion in chair
+     * 
+     * @return cheapest id
+     */
     public String cushionID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Chair.class.cast(item).getCushion()) {
+                // add prices of ids that have cushion
                 prices.add(Chair.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < cushion.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = cushion.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
-    // FOR FILING
+    /**
+     * PROMISES: Cheapest id that has drawers in filing
+     * 
+     * @return cheapest id
+     */
     public String drawersID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Filing.class.cast(item).getDrawers()) {
+                // add prices of ids that have drawers
                 prices.add(Filing.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < drawers.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = drawers.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 
+    /**
+     * PROMISES: Cheapest id that has a cabinet in filing
+     * 
+     * @return cheapest id
+     */
     public String cabinetID() {
         String id = "";
         ArrayList<Integer> prices = new ArrayList<>();
         getParts().forEach(item -> {
-            // populate array bulb and base
             if (Filing.class.cast(item).getCabinet()) {
+                // add prices of ids that have a cabinet
                 prices.add(Filing.class.cast(item).getPrice());
             }
         });
         ;
+        // find cheapest price
         int price = Collections.min(prices);
-        int i = 0;
+        // find index of cheapest price
+        int i;
         for (i = 0; i < cabinet.size(); i++) {
             if (prices.get(i) == price) {
                 break;
             }
         }
         id = cabinet.get(i);
-        // System.out.println(prices);
-        // System.out.println(id);
         return id;
     }
 }
