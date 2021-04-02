@@ -37,7 +37,7 @@ public class Builder<T extends FurniturePart> {
     private ArrayList<String> drawers;
     private ArrayList<String> cabinet;
     // FOR IDCOMBINATION
-    private ArrayList<String> idCombination = new ArrayList<>();
+    private ArrayList<String> idCombination;
     //
     private ArrayList<String> oneD = new ArrayList<>();
 
@@ -72,10 +72,10 @@ public class Builder<T extends FurniturePart> {
         rails = new ArrayList<>();
         drawers = new ArrayList<>();
         cabinet = new ArrayList<>();
-        //
 
         idCombination = new ArrayList<>();
         allCombinations = new ArrayList<>();
+
         switch (FurniturePart.Types.fromString(this.typeName)) {
         case Lamp:
             getParts().forEach(item -> {
@@ -130,33 +130,6 @@ public class Builder<T extends FurniturePart> {
                 allIDs.add(id);
                 allIDs = (ArrayList<String>) allIDs.stream().distinct().collect(Collectors.toList());
                 allCombinations.add(allIDs);
-            }
-
-            ArrayList<Integer> finalPrice = new ArrayList<>();
-            // System.out.println("All Combinations: " + allCombinations);
-            for (ArrayList<String> combination : allCombinations) {
-                int price = 0;
-                for (String s : combination) {
-                    for (String id : hash.keySet()) {
-                        if (id.equals(s)) {
-                            price += hash.get(id);
-                        }
-                    }
-                }
-                finalPrice.add(price);
-            }
-            cost += Collections.min(finalPrice);
-            int index = 0;
-            for (Integer price : finalPrice) {
-                if (price.equals(Collections.min(finalPrice))) {
-                    break;
-                }
-                index++;
-            }
-            idCombination.addAll(allCombinations.get(index));
-            // System.out.println("ID Combinations" + idCombination);
-            for (String combinations : idCombination) {
-                oneD.add(combinations);
             }
             break;
 
@@ -233,32 +206,7 @@ public class Builder<T extends FurniturePart> {
                 allCombinations.add(allIDs);
 
             }
-            finalPrice = new ArrayList<>();
-            System.out.println(allCombinations);
-            for (ArrayList<String> combination : allCombinations) {
-                int price = 0;
-                for (String s : combination) {
-                    for (String id : hash.keySet()) {
-                        if (id.equals(s)) {
-                            price += hash.get(id);
-                        }
-                    }
-                }
-                finalPrice.add(price);
-            }
-            cost += Collections.min(finalPrice);
-            index = 0;
-            for (Integer price : finalPrice) {
-                if (price.equals(Collections.min(finalPrice))) {
-                    break;
-                }
-                index++;
-            }
-            idCombination.addAll(allCombinations.get(index));
-            // System.out.println(idCombination);
-            for (String combinations : idCombination) {
-                oneD.add(combinations);
-            }
+
             break;
 
         case Chair:
@@ -351,32 +299,7 @@ public class Builder<T extends FurniturePart> {
                 allCombinations.add(allIDs);
 
             }
-            finalPrice = new ArrayList<>();
-            System.out.println(allCombinations);
-            for (ArrayList<String> combination : allCombinations) {
-                int price = 0;
-                for (String s : combination) {
-                    for (String id : hash.keySet()) {
-                        if (id.equals(s)) {
-                            price += hash.get(id);
-                        }
-                    }
-                }
-                finalPrice.add(price);
-            }
-            cost += Collections.min(finalPrice);
-            index = 0;
-            for (Integer price : finalPrice) {
-                if (price.equals(Collections.min(finalPrice))) {
-                    break;
-                }
-                index++;
-            }
-            idCombination.addAll(allCombinations.get(index));
-            // System.out.println(idCombination);
-            for (String combinations : idCombination) {
-                oneD.add(combinations);
-            }
+
             break;
 
         case Filing:
@@ -454,38 +377,38 @@ public class Builder<T extends FurniturePart> {
                 allCombinations.add(allIDs);
 
             }
-            finalPrice = new ArrayList<>();
-            System.out.println(allCombinations);
-            for (ArrayList<String> combination : allCombinations) {
-                int price = 0;
-                for (String s : combination) {
-                    for (String id : hash.keySet()) {
-                        if (id.equals(s)) {
-                            price += hash.get(id);
-                        }
-                    }
-                }
-                finalPrice.add(price);
-            }
-            cost += Collections.min(finalPrice);
-            index = 0;
-            for (Integer price : finalPrice) {
-                if (price.equals(Collections.min(finalPrice))) {
-                    break;
-                }
-                index++;
-            }
-            idCombination.addAll(allCombinations.get(index));
-            // System.out.println(idCombination);
-            for (String combinations : idCombination) {
-                oneD.add(combinations);
-            }
             break;
 
         default:
             break;
         }
 
+        ArrayList<Integer> finalPrice = new ArrayList<>();
+        // System.out.println("All Combinations: " + allCombinations);
+        for (ArrayList<String> combination : allCombinations) {
+            int price = 0;
+            for (String s : combination) {
+                for (String id : hash.keySet()) {
+                    if (id.equals(s)) {
+                        price += hash.get(id);
+                    }
+                }
+            }
+            finalPrice.add(price);
+        }
+        cost += Collections.min(finalPrice);
+        int index = 0;
+        for (Integer price : finalPrice) {
+            if (price.equals(Collections.min(finalPrice))) {
+                break;
+            }
+            index++;
+        }
+        idCombination.addAll(allCombinations.get(index));
+        // System.out.println("ID Combinations" + idCombination);
+        for (String combinations : idCombination) {
+            oneD.add(combinations);
+        }
     }
 
     public void setItems() {

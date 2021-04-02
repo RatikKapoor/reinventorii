@@ -24,20 +24,23 @@ public class App {
         // b.getItems().forEach(item -> {
         // System.out.println(item.toString());
         // });
-        ;
-        b.BuildMultipleItems(2);
+        // ;
+        b.BuildMultipleItems(3);
+        System.out.println("Id Combinations : " + b.getidCombination());
+        System.out.println("Total Cost : " + b.getCost());
         // b.BuildItem();
-        ArrayList<Lamp> temp = new ArrayList<>();
-        for (String id : b.getidCombination()) {
-            for (Lamp la : allLamps) {
-                if (la.getId().equals(id)) {
-                    temp.add(la);
-                }
-            }
-        }
-        FileOutput fo = new FileOutput("Lamp", "Desk", "2", b.getidCombination(), b.getCost());
-        System.out.println(fo.createReceipt());
-        fo.createFile();
+        // ArrayList<Lamp> temp = new ArrayList<>();
+        // for (String id : b.getidCombination()) {
+        // for (Lamp la : allLamps) {
+        // if (la.getId().equals(id)) {
+        // temp.add(la);
+        // }
+        // }
+        // }
+        // FileOutput fo = new FileOutput("Lamp", "Desk", "2", b.getidCombination(),
+        // b.getCost());
+        // System.out.println(fo.createReceipt());
+        // fo.createFile();
         // System.out.println(b.getCost());
     }
 }
