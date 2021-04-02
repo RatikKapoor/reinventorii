@@ -18,6 +18,7 @@ import ChairComponent from "../components/ChairComponent";
 import DeskComponent from "../components/DeskComponent";
 import FilingComponent from "../components/FilingComponent";
 import LampComponent from "../components/LampComponent";
+import PDFOrderForm from "../components/PDFOrderForm";
 import {
   Chair,
   Desk,
@@ -169,6 +170,7 @@ const OrderItem: React.FC = () => {
                 </IonLabel>
               </>
             )}
+            <PDFOrderForm />
           </>
         )}
       </IonContent>
