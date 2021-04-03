@@ -18,7 +18,7 @@ public class Chair extends FurniturePart {
      * 
      * @param type string type of chair
      */
-    public Chair(String type) {
+    public Chair(String type) throws IllegalFurnitureTypeException {
         // TODO add type checking against enums in constructor
         super(type);
     }
@@ -34,11 +34,15 @@ public class Chair extends FurniturePart {
      * @param seat    string seat of chair (will be converted to boolean)
      * @param price   int price of chair
      * @param manuid  string manufacturer id of chair
+     * @throws IllegalFurnitureTypeException
      */
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
-            String manuid) {
+            String manuid) throws IllegalFurnitureTypeException {
+        super(id, null, price, manuid);
 
-        super(id, type, price, manuid);
+        if (!checkChairType(type)) {
+            throw new IllegalFurnitureTypeException();
+        }
         this.legs = stringToBoolean(legs);
         this.cushion = stringToBoolean(cushion);
         this.arms = stringToBoolean(arms);
@@ -133,6 +137,17 @@ public class Chair extends FurniturePart {
      */
     public void setSeat(Boolean seat) {
         this.seat = seat;
+    }
+
+    private boolean checkChairType(String myType) {
+
+        ChairType types[] = ChairType.values();
+        for (ChairType type : types) {
+            if (type.toString().equals(myType)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
