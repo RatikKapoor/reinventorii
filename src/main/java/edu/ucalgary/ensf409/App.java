@@ -17,20 +17,21 @@ public class App {
         // System.out.println(item.getId());
         // });
         // ;
-        Desk l = new Desk("Traditional");
-        ArrayList<Desk> allLamps = test.getListByType(Types.Desk, "Traditional");
-        Builder<Desk> b = new Builder<Desk>(l);
+        Filing l = new Filing("Medium");
+        ArrayList<Filing> allLamps = test.getListByType(Types.Filing, "Medium");
+        Builder<Filing> b = new Builder<Filing>(l);
         b.setParts(allLamps);
-        b.getParts().forEach(item -> {
-            System.out.println(Desk.class.cast(item).getId());
-        });
-        ;
+        // b.getParts().forEach(item -> {
+        // System.out.println(Lamp.class.cast(item).getId());
+        // });
+        // ;
         b.setItems();
         // b.getItems().forEach(item -> {
         // System.out.println(item.toString());
         // });
         // ;
-        b.BuildMultipleItems(4);
+        b.BuildMultipleItems(1);
+
         System.out.println("Id Combinations : " + b.getidCombination());
         System.out.println("Total Cost : " + b.getCost());
         // b.BuildItem();
