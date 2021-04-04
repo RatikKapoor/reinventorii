@@ -493,52 +493,6 @@ public class Builder<T extends FurniturePart> {
         return this.idCombination;
     }
 
-    public ArrayList<String> basearrayID(int count, String id) {
-        ArrayList<String> basearray = new ArrayList<>();
-        if (count == 0) {
-            basearray.add(id);
-        } else {
-            ArrayList<Integer> prices = new ArrayList<>();
-            ArrayList<Integer> finalPrices = new ArrayList<>();
-            HashMap<String, Integer> priceAndIds = new HashMap<String, Integer>();
-            getParts().forEach(item -> {
-                if (Lamp.class.cast(item).getBase()) {
-                    // add prices of ids that have a bulb
-                    if (!Lamp.class.cast(item).getId().equals(id)) {
-                        prices.add(Lamp.class.cast(item).getPrice());
-                        priceAndIds.put(Lamp.class.cast(item).getId(), Lamp.class.cast(item).getPrice());
-                    }
-                }
-            });
-            ;
-
-            if (prices.size() < count) {
-                return null;
-            }
-            // find cheapest prices
-            for (int i = 0; i < count; i++) {
-                Integer price = Collections.min(prices);
-                prices.remove(price);
-                finalPrices.add(price);
-            }
-            int counter = 0;
-            for (String i : priceAndIds.keySet()) {
-                for (Integer value : finalPrices) {
-                    if (priceAndIds.get(i) == value) {
-                        basearray.add(i);
-                        counter++;
-                        break;
-                    }
-                }
-                if (counter == count) {
-                    break;
-                }
-            }
-            basearray.add(id);
-        }
-        return basearray;
-    }
-
     public ArrayList<String> getarrayID(int count, String id, String componentType) {
         ArrayList<String> basearray = new ArrayList<>();
         if (count == 0) {
