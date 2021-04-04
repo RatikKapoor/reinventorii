@@ -62,8 +62,8 @@ public class BuilderTest {
 
         ArrayList<String> actual = b.getidCombination();
         ArrayList<String> expect = new ArrayList<>();
-        expect.add("L208");
         expect.add("L013");
+        expect.add("L342");
         test.disconnect();
         assertEquals("Lamp id combinations is wrong", expect, actual);
     }
@@ -180,8 +180,8 @@ public class BuilderTest {
 
         ArrayList<String> actual = b.getidCombination();
         ArrayList<String> expect = new ArrayList<>();
-        expect.add("D0890");
         expect.add("D8675");
+        expect.add("D0890");
         test.disconnect();
         assertEquals("Desk id combination is wrong", expect, actual);
     }
@@ -297,8 +297,8 @@ public class BuilderTest {
 
         ArrayList<String> actual = b.getidCombination();
         ArrayList<String> expect = new ArrayList<>();
-        expect.add("C9890");
         expect.add("C0942");
+        expect.add("C9890");
         test.disconnect();
         assertEquals("Chair id combination is wrong", expect, actual);
     }
