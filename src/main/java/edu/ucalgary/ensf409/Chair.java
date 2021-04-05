@@ -146,30 +146,30 @@ public class Chair extends FurniturePart {
 
 }
 
-// /**
-// * an enumeration for the types of chairs
-// *
-// * @author Robert Brown
-// */
-// enum ChairType {
-// Kneeling, Task, Mesh, Ergonomic, Executive;
+/**
+ * an enumeration for the types of chairs
+ *
+ * @author Robert Brown
+ */
+enum ChairType {
+    Kneeling, Task, Mesh, Ergonomic, Executive;
 
-// @Override
-// public String toString() {
-// return this.name().replace("_", " ");
-// }
-// }
+    @Override
+    public String toString() {
+        return this.name().replace("_", " ");
+    }
+}
 
-// /**
-// * an enumeration for the parts of the chair
-// *
-// * @author Robert Brown
-// */
-// enum ChairParts {
-// Legs, Cushion, Arms, Seat;
+/**
+ * an enumeration for the parts of the chair
+ *
+ * @author Robert Brown
+ */
+enum ChairParts {
+    Legs, Cushion, Arms, Seat;
 
-// @Override
-// public String toString() {
-// return this.name().toString();
-// }
-// }
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}
