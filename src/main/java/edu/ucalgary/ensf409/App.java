@@ -12,12 +12,12 @@ public class App {
         // System.out.println(item.getId());
         // });
         // ;
-        Lamp l = new Lamp("Desk");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Desk");
-        Builder<Lamp> b = new Builder<Lamp>(l);
+        Desk l = new Desk("Traditional");
+        ArrayList<Desk> allLamps = test.getListByType(Types.Desk, "Traditional");
+        Builder<Desk> b = new Builder<Desk>(l);
         b.setParts(allLamps);
         b.getParts().forEach(item -> {
-            System.out.println(Lamp.class.cast(item).getId());
+            System.out.println(Desk.class.cast(item).getId());
         });
         ;
         b.setItems();
@@ -25,7 +25,7 @@ public class App {
         // System.out.println(item.toString());
         // });
         // ;
-        b.BuildMultipleItems(3);
+        b.BuildMultipleItems(4);
         System.out.println("Id Combinations : " + b.getidCombination());
         System.out.println("Total Cost : " + b.getCost());
         // b.BuildItem();
