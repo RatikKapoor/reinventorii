@@ -109,30 +109,30 @@ public class Lamp extends FurniturePart {
     }
 }
 
-// /**
-// * an enumeration for lamp types
-// *
-// * @author Robert Brown, Ratik Kapoor
-// */
-// enum LampType {
-// Desk, Study, Swing_Arm;
+/**
+ * an enumeration for lamp types
+ *
+ * @author Robert Brown, Ratik Kapoor
+ */
+enum LampType {
+    Desk, Study, Swing_Arm;
 
-// @Override
-// public String toString() {
-// return this.name().replace("_", " ");
-// }
-// }
+    @Override
+    public String toString() {
+        return this.name().replace("_", " ");
+    }
+}
 
-// /**
-// * an enumeration for the parts of the lamp
-// *
-// * @author Robert Brown
-// */
-// enum LampParts {
-// Base, Bulb;
+/**
+ * an enumeration for the parts of the lamp
+ *
+ * @author Robert Brown
+ */
+enum LampParts {
+    Base, Bulb;
 
-// @Override
-// public String toString() {
-// return this.name().toString();
-// }
-// }
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}

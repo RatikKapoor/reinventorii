@@ -122,30 +122,30 @@ public class Desk extends FurniturePart {
 
 }
 
-// /**
-// * an enumeration for desk types
-// *
-// * @author Robert Brown
-// */
-// enum DeskType {
-// Standing, Adjustable, Traditional;
+/**
+ * an enumeration for desk types
+ *
+ * @author Robert Brown
+ */
+enum DeskType {
+    Standing, Adjustable, Traditional;
 
-// @Override
-// public String toString() {
-// return this.name().replace("_", " ");
-// }
-// }
+    @Override
+    public String toString() {
+        return this.name().replace("_", " ");
+    }
+}
 
-// /**
-// * an enumeration for the parts of the desk
-// *
-// * @author Robert Brown
-// */
-// enum DeskParts {
-// Legs, Top, Drawer;
+/**
+ * an enumeration for the parts of the desk
+ *
+ * @author Robert Brown
+ */
+enum DeskParts {
+    Legs, Top, Drawer;
 
-// @Override
-// public String toString() {
-// return this.name().toString();
-// }
-// }
+    @Override
+    public String toString() {
+        return this.name().toString();
+    }
+}
