@@ -32,6 +32,10 @@ public abstract class FurniturePart {
             return this.types.contains(type);
         }
 
+        public List<String> getList() {
+            return this.types;
+        }
+
         @Override
         public String toString() {
             return this.name();
@@ -76,15 +80,32 @@ public abstract class FurniturePart {
     }
 
     public FurniturePart(String type) {
+        if (!checkType(type)) {
+            throw new IllegalFurnitureTypeException();
+        }
         this.type = type;
     }
 
     public FurniturePart(String id, String type, int price, String ManuID) {
+
+        if (!checkType(type)) {
+            throw new IllegalFurnitureTypeException();
+        }
+
         this.id = id;
         this.type = type;
         this.price = price;
         this.ManuID = ManuID;
     }
+
+    /**
+     * Abstract protected method to determine whether Furniture Type matches Types
+     * Enum. Only accessible by children, hence protected.
+     * 
+     * @param myType
+     * @return boolean. True if type is valid, False if type is invalid.
+     */
+    abstract protected boolean checkType(String myType);
 
     /**
      * stringToBoolean converts "Y" into true, everything else into false

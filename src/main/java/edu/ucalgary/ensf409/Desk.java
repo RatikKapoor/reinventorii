@@ -110,32 +110,42 @@ public class Desk extends FurniturePart {
         this.drawer = drawer;
     }
 
-}
-
-/**
- * an enumeration for desk types
- * 
- * @author Robert Brown
- */
-enum DeskType {
-    Standing, Adjustable, Traditional;
-
-    @Override
-    public String toString() {
-        return this.name().replace("_", " ");
+    protected boolean checkType(String myType) {
+        Types aType = Types.Desk;
+        for (String t : aType.getList()) {
+            if (t.toString().equals(myType)) {
+                return true;
+            }
+        }
+        return false;
     }
+
 }
 
-/**
- * an enumeration for the parts of the desk
- * 
- * @author Robert Brown
- */
-enum DeskParts {
-    Legs, Top, Drawer;
+// /**
+// * an enumeration for desk types
+// *
+// * @author Robert Brown
+// */
+// enum DeskType {
+// Standing, Adjustable, Traditional;
 
-    @Override
-    public String toString() {
-        return this.name().toString();
-    }
-}
+// @Override
+// public String toString() {
+// return this.name().replace("_", " ");
+// }
+// }
+
+// /**
+// * an enumeration for the parts of the desk
+// *
+// * @author Robert Brown
+// */
+// enum DeskParts {
+// Legs, Top, Drawer;
+
+// @Override
+// public String toString() {
+// return this.name().toString();
+// }
+// }
