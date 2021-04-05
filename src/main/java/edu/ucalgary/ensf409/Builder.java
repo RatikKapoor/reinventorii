@@ -50,7 +50,9 @@ public class Builder<T extends FurniturePart> {
     public void BuildMultipleItems(int count) {
         while (count != 0) { // Calls depending on amount of
                              // requested furniture
-            BuildItem();
+            if (getCost() != -1) {
+                BuildItem();
+            }
             count--;
         }
     }
@@ -108,7 +110,6 @@ public class Builder<T extends FurniturePart> {
             // if any of the arrays are empty,
             // the order cannot be completed
             if (bulb.isEmpty() || base.isEmpty()) {
-                System.out.println("Cannot be completed");
                 cost = -1;
                 break;
             }
@@ -152,11 +153,11 @@ public class Builder<T extends FurniturePart> {
             getParts().forEach(item -> {
 
                 // populate array legs, top, and drawer
-                if (Desk.class.cast(item).getTop()) {
+                if (Desk.class.cast(item).getLegs()) {
                     // adds ids that have legs to array legs
                     legs.add(Desk.class.cast(item).getId());
                 }
-                if (Desk.class.cast(item).getLegs()) {
+                if (Desk.class.cast(item).getTop()) {
                     // adds ids that have top to array tops
                     top.add(Desk.class.cast(item).getId());
                 }
@@ -177,7 +178,6 @@ public class Builder<T extends FurniturePart> {
             // if any of the arrays are empty,
             // the order cannot be completed
             if (top.isEmpty() || drawer.isEmpty() || legs.isEmpty()) {
-                System.out.println("Cannot be completed");
                 cost = -1;
                 break;
             }
@@ -268,7 +268,6 @@ public class Builder<T extends FurniturePart> {
             // if any of the arrays are empty,
             // the order cannot be completed
             if (chairLegs.isEmpty() || arms.isEmpty() || seat.isEmpty() || cushion.isEmpty()) {
-                System.out.println("Cannot be completed");
                 cost = -1;
                 break;
             }
@@ -369,7 +368,6 @@ public class Builder<T extends FurniturePart> {
             // if any of the arrays are empty,
             // the order cannot be completed
             if (rails.isEmpty() || drawers.isEmpty() || cabinet.isEmpty()) {
-                System.out.println("Cannot be completed");
                 cost = -1;
                 break;
             }
@@ -429,31 +427,35 @@ public class Builder<T extends FurniturePart> {
         default:
             break;
         }
-        // add all prices of the cheapest id combinations into a array
-        ArrayList<Integer> finalPrice = new ArrayList<>();
-        for (ArrayList<String> combination : allCombinations) {
-            int price = 0;
-            for (String s : combination) {
-                for (String id : hash.keySet()) {
-                    if (id.equals(s)) {
-                        price += hash.get(id);
+        if (getCost() != -1) {
+            // add all prices of the cheapest id combinations into a array
+            ArrayList<Integer> finalPrice = new ArrayList<>();
+            for (ArrayList<String> combination : allCombinations) {
+                int price = 0;
+                for (String s : combination) {
+                    for (String id : hash.keySet()) {
+                        if (id.equals(s)) {
+                            price += hash.get(id);
+                        }
                     }
                 }
+                finalPrice.add(price);
             }
-            finalPrice.add(price);
-        }
-        // cheapest cost out of the combinations
-        cost += Collections.min(finalPrice);
-        int index = 0;
-        // get index of the the combination that has cheapest price
-        for (Integer price : finalPrice) {
-            if (price.equals(Collections.min(finalPrice))) {
-                break;
+            // cheapest cost out of the combinations
+            cost += Collections.min(finalPrice);
+            int index = 0;
+            // get index of the the combination that has cheapest price
+            for (Integer price : finalPrice) {
+                if (price.equals(Collections.min(finalPrice))) {
+                    break;
+                }
+                index++;
             }
-            index++;
+            // add cheapest id combination
+            idCombination.addAll(allCombinations.get(index));
+        } else {
+            idCombination = null;
         }
-        // add cheapest id combination
-        idCombination.addAll(allCombinations.get(index));
     }
 
     /**
