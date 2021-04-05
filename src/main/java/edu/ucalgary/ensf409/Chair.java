@@ -18,8 +18,7 @@ public class Chair extends FurniturePart {
      * 
      * @param type string type of chair
      */
-    public Chair(String type) throws IllegalFurnitureTypeException {
-        // TODO add type checking against enums in constructor
+    public Chair(String type) {
         super(type);
     }
 
@@ -34,17 +33,11 @@ public class Chair extends FurniturePart {
      * @param seat    string seat of chair (will be converted to boolean)
      * @param price   int price of chair
      * @param manuid  string manufacturer id of chair
-     * @throws IllegalFurnitureTypeException
      */
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
-            String manuid) throws IllegalFurnitureTypeException {
-        super(id, null, price, manuid);
+            String manuid) {
+        super(id, type, price, manuid);
 
-        if (!checkChairType(type)) {
-            throw new IllegalFurnitureTypeException();
-        } else {
-            super.setType(type);
-        }
         this.legs = stringToBoolean(legs);
         this.cushion = stringToBoolean(cushion);
         this.arms = stringToBoolean(arms);
@@ -141,42 +134,42 @@ public class Chair extends FurniturePart {
         this.seat = seat;
     }
 
-    private boolean checkChairType(String myType) {
-
-        ChairType types[] = ChairType.values();
-        for (ChairType type : types) {
-            if (type.toString().equals(myType)) {
+    protected boolean checkType(String myType) {
+        Types aType = Types.Chair;
+        for (String t : aType.getList()) {
+            if (t.toString().equals(myType)) {
                 return true;
             }
         }
         return false;
     }
+
 }
 
-/**
- * an enumeration for the types of chairs
- * 
- * @author Robert Brown
- */
-enum ChairType {
-    Kneeling, Task, Mesh, Ergonomic, Executive;
+// /**
+// * an enumeration for the types of chairs
+// *
+// * @author Robert Brown
+// */
+// enum ChairType {
+// Kneeling, Task, Mesh, Ergonomic, Executive;
 
-    @Override
-    public String toString() {
-        return this.name().replace("_", " ");
-    }
-}
+// @Override
+// public String toString() {
+// return this.name().replace("_", " ");
+// }
+// }
 
-/**
- * an enumeration for the parts of the chair
- * 
- * @author Robert Brown
- */
-enum ChairParts {
-    Legs, Cushion, Arms, Seat;
+// /**
+// * an enumeration for the parts of the chair
+// *
+// * @author Robert Brown
+// */
+// enum ChairParts {
+// Legs, Cushion, Arms, Seat;
 
-    @Override
-    public String toString() {
-        return this.name().toString();
-    }
-}
+// @Override
+// public String toString() {
+// return this.name().toString();
+// }
+// }

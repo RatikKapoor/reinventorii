@@ -97,32 +97,42 @@ public class Lamp extends FurniturePart {
     public void printLamp() {
         System.out.println(this.getId() + " " + this.getType() + " " + this.bulb + " " + this.base);
     }
-}
 
-/**
- * an enumeration for lamp types
- * 
- * @author Robert Brown, Ratik Kapoor
- */
-enum LampType {
-    Desk, Study, Swing_Arm;
-
-    @Override
-    public String toString() {
-        return this.name().replace("_", " ");
+    protected boolean checkType(String myType) {
+        Types aType = Types.Lamp;
+        for (String t : aType.getList()) {
+            if (t.toString().equals(myType)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
-/**
- * an enumeration for the parts of the lamp
- * 
- * @author Robert Brown
- */
-enum LampParts {
-    Base, Bulb;
+// /**
+// * an enumeration for lamp types
+// *
+// * @author Robert Brown, Ratik Kapoor
+// */
+// enum LampType {
+// Desk, Study, Swing_Arm;
 
-    @Override
-    public String toString() {
-        return this.name().toString();
-    }
-}
+// @Override
+// public String toString() {
+// return this.name().replace("_", " ");
+// }
+// }
+
+// /**
+// * an enumeration for the parts of the lamp
+// *
+// * @author Robert Brown
+// */
+// enum LampParts {
+// Base, Bulb;
+
+// @Override
+// public String toString() {
+// return this.name().toString();
+// }
+// }
