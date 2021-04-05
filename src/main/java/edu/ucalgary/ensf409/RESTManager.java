@@ -1,5 +1,6 @@
 package edu.ucalgary.ensf409;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.http.MediaType;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import io.github.cdimascio.dotenv.Dotenv;
-
+import io.github.cdimascio.dotenv.DotenvException;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
 @RestController
@@ -17,13 +18,21 @@ public class RESTManager {
     Database database = null;
 
     public RESTManager() {
-        Dotenv enviroment = Dotenv.load();
-        database = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
-                enviroment.get("DB_PASS"));
         try {
+            Dotenv enviroment = Dotenv.load();
+            database = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                    enviroment.get("DB_PASS"));
             database.connect();
+        } catch (DotenvException e) {
+            System.err.println("Could not load .env file in root folder!");
+            System.err.println("Create or move .env file with DB_URL, DB_USER, DB_PASS");
+            System.exit(1);
+        } catch (SQLException e) {
+            System.err.println("Error connecting to database!");
+            System.exit(1);
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
+            // TODO more exception handeling
         }
     }
 
