@@ -18,6 +18,15 @@ This project creates a platform for employees at the University of Calgary to ma
 
 Ensure that you have Docker and `docker-compose` installed on your development computer: [Docker website](https://www.docker.com). Windows computers will need to use WSL2 (Windows Subsystem for Linux) as a backend following [this guide](https://docs.docker.com/docker-for-windows/wsl/).
 
+The platform requires a SQLServer with valid data to connect to. For temporary testing purposes we have the default server information set to our remote testing server. In order to connect the platform to your own server change the URL, Username, and Password in the `.env` file.
+
+**MySQL Default Paramaters**
+| .env paramater | default |
+|----------------|---------------------------------|
+| DB_URL | server.ratik.me:25565/INVENTORY |
+| DB_USER | root |
+| DB_PASS | eNsF409 |
+
 #### Installation
 
 ```bash
@@ -39,6 +48,15 @@ To quit the development environment, simply press Ctrl+C and the Docker containe
 ### Manual method (not recommended)
 
 #### Prerequisites
+
+The platform requires a SQLServer with valid data to connect to. For temporary testing purposes we have the default server information set to our remote testing server. In order to connect the platform to your own server change the URL, Username, and Password in the `.env` file.
+
+**MySQL Default Paramaters**
+| .env paramater | default |
+|----------------|---------------------------------|
+| DB_URL | server.ratik.me:25565/INVENTORY |
+| DB_USER | root |
+| DB_PASS | eNsF409 |
 
 Ensure that you have the standard Node.js development tools available to use and the Yarn Package Manager installed globally as well as Java JDK 11.
 
