@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
@@ -16,7 +17,9 @@ public class RESTManager {
     Database database = null;
 
     public RESTManager() {
-        database = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        Dotenv enviroment = Dotenv.load();
+        database = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
         try {
             database.connect();
         } catch (Exception e) {
