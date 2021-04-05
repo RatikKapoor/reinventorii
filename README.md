@@ -32,6 +32,8 @@ cd supply-chain-management-RatikKapoor
 docker-compose up --build
 ```
 
+_**NOTE:** Since this process is compiling **both** React and Java code in production mode, it may take 2-3 minutes to fully compile (depending on your computer specs). Once building is finished, browse to [http://localhost:5000](http://localhost:5000) to view the application._
+
 To quit the development environment, simply press Ctrl+C and the Docker containers will shut down.
 
 ### Manual method (not recommended)
@@ -84,6 +86,8 @@ cd supply-chain-management-RatikKapoor
 # *** Note: if `./dev` does not work you can start the development environment using the following command ***
 docker-compose -f docker-compose.dev.yml up --build
 ```
+
+_**NOTE:** Since this process is compiling **both** React and Java code in development mode, it may take 2-3 minutes to fully compile (depending on your computer specs). Once building is finished, browse to [http://localhost:3000](http://localhost:3000) to view the application._
 
 ### Manual method (not recommended)
 
