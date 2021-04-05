@@ -42,6 +42,8 @@ public class Chair extends FurniturePart {
 
         if (!checkChairType(type)) {
             throw new IllegalFurnitureTypeException();
+        } else {
+            super.setType(type);
         }
         this.legs = stringToBoolean(legs);
         this.cushion = stringToBoolean(cushion);
