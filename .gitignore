@@ -41,7 +41,8 @@ psd
 thumb
 sketch
 
-target/
+target/*
+!target/.docker-support
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
