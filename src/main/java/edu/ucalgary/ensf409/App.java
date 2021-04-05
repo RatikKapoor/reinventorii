@@ -17,22 +17,12 @@ public class App {
         // System.out.println(item.getId());
         // });
         // ;
-<<<<<<< HEAD
         Desk l = new Desk("Traditional");
         ArrayList<Desk> allLamps = test.getListByType(Types.Desk, "Traditional");
         Builder<Desk> b = new Builder<Desk>(l);
         b.setParts(allLamps);
         b.getParts().forEach(item -> {
             System.out.println(Desk.class.cast(item).getId());
-=======
-        // Lamp l = new Lamp("Desk");
-        Chair c = new Chair("Kneeling");
-        ArrayList<Chair> allCHairs = test.getListByType(Types.Chair, "Kneeling");
-        Builder<Chair> b = new Builder<Chair>(c);
-        b.setParts(allCHairs);
-        b.getParts().forEach(item -> {
-            System.out.println(Chair.class.cast(item).getId());
->>>>>>> 1c15f93... feat: Added a .env file for database connection info
         });
         ;
         b.setItems();
@@ -40,11 +30,7 @@ public class App {
         // System.out.println(item.toString());
         // });
         // ;
-<<<<<<< HEAD
         b.BuildMultipleItems(4);
-=======
-        b.BuildMultipleItems(1);
->>>>>>> 1c15f93... feat: Added a .env file for database connection info
         System.out.println("Id Combinations : " + b.getidCombination());
         System.out.println("Total Cost : " + b.getCost());
         // b.BuildItem();
