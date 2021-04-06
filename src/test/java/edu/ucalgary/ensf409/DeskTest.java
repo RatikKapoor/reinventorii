@@ -11,6 +11,14 @@ import java.util.ArrayList;
 @SpringBootTest
 public class DeskTest {
 
+    /**
+     * Test: Desk_getManuID_SetWithConstructor
+     * 
+     * Description: Checks whether ManuId set through constructor can be accessed
+     * through the getManuID method. Desk inherits the getManuID method from
+     * abstract class FurniturePart. This test validates the inheritance property
+     * for ManuID.
+     */
     @Test
     public void Desk_getManuID_SetWithConstructor() {
 
@@ -21,6 +29,13 @@ public class DeskTest {
         assertEquals("Cannot retrieve ManuID from Desk Parent", expect, actual);
     }
 
+    /**
+     * Test: Desk_getId_SetWithConstructor
+     * 
+     * Description: Checks whether id set through constructor can be accessed
+     * through the getId method. Desk inherits the getId method from abstract class
+     * FurniturePart. This test validates the inheritance property for id.
+     */
     @Test
     public void Desk_getId_SetWithConstructor() {
 
@@ -31,6 +46,13 @@ public class DeskTest {
         assertEquals("Cannot retrieve id from Desk Parent", expect, actual);
     }
 
+    /**
+     * Test: Desk_getPrice_SetWithConstructor
+     * 
+     * Description: Checks whether price set through constructor can be accessed
+     * through the getPrice method. Desk inherits the getPrice method from abstract
+     * class FurniturePart. This test validates the inheritance property for price.
+     */
     @Test
     public void Desk_getPrice_SetWithConstructor() {
 
@@ -129,12 +151,10 @@ public class DeskTest {
     }
 
     /**
-     * Test: Desk_StringToBoolean_Cushion_False
+     * Test: Desk_StringToBoolean_Legs_False
      * 
      * Description: Checks whether the String to Boolean conversion is accurate.
-     * This test utilizes the getCushion method to test Cushion boolean statement.
-     * All variables of similar nature include the same stringToBoolean method.
-     * Tests a False Statement
+     * Tests a False Statement, "N".
      */
     @Test
     public void Desk_StringToBoolean_Legs_False() {
@@ -147,12 +167,10 @@ public class DeskTest {
     }
 
     /**
-     * Test: Desk_StringToBoolean_Legs_True
+     * Test: Desk_StringToBoolean_Cushion_True
      * 
      * Description: Checks whether the String to Boolean conversion is accurate.
-     * This test utilizes the getCushion method to test Cushion boolean statement.
-     * All variables of similar nature include the same stringToBoolean method.
-     * Tests a True Statement
+     * Tests a True Statement, "Y".
      */
     @Test
     public void DeskIllegal_StringToBoolean_Cushion_True() {
@@ -180,10 +198,10 @@ public class DeskTest {
     }
 
     /**
-     * Test: Desk_getCushion_SetWithConstructor
+     * Test: Desk_getTop_SetWithConstructor
      * 
      * Description: Checks whether cushion set through constructor can be accessed
-     * through the getCushion method.
+     * through the getTop method.
      */
     @Test
     public void Desk_getTop_SetWithConstructor() {
@@ -291,8 +309,8 @@ public class DeskTest {
      * 
      * Description: Checks whether the CheckType abstract method returns a False
      * when an incorrect type is tested (that does not match the Types Enum in the
-     * FurniturePart class). The tested paramater is "ergonomic" This checks that
-     * the tests are in fact case SENSITIVE
+     * FurniturePart class). The tested paramater is "standing" This checks that the
+     * tests are in fact case SENSITIVE
      */
     @Test
     public void DeskIllegalType_CheckType_False2() {
@@ -309,7 +327,7 @@ public class DeskTest {
      * 
      * Description: Checks whether the CheckType abstract method returns a False
      * when an incorrect type is tested (that does not match the Types Enum in the
-     * FurniturePart class). The tested paramater is "Traditional" This type is
+     * FurniturePart class). The tested paramater is "Ergonomic" This type is
      * accepted for Chair not Desk. Ergonomic is put into the constructor since this
      * test is specifically for the checkType method and not the constructor
      */
