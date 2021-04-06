@@ -60,6 +60,10 @@ public class Chair extends FurniturePart {
         this.arms = stringToBoolean(data.get(4));
         this.seat = stringToBoolean(data.get(5));
         this.cushion = stringToBoolean(data.get(6));
+
+        if (data.size() > 7) {
+            throw new IllegalArgumentException("ArrayList is too large");
+        }
     }
 
     /**

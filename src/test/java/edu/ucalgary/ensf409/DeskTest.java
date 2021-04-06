@@ -101,6 +101,34 @@ public class DeskTest {
     }
 
     /**
+     * Test: DeskIllegal_DatabaseConstructor
+     * 
+     * Description: Checks whether database constructor with paramater data as an
+     * ArrayList<String> and price is accepted. This test checks only if manuID is
+     * correct. In this case, ArrayList is too large.
+     */
+    @Test
+    public void DeskIllegal_DatabaseConstructor() {
+        ArrayList<String> aTestList = new ArrayList<>();
+        aTestList.add("D3820");
+        aTestList.add("Standing");
+        aTestList.add("005");
+        aTestList.add("Y");
+        aTestList.add("Y");
+        aTestList.add("N");
+        aTestList.add("N"); // Incorrect here
+
+        Boolean err = false;
+
+        try {
+            Desk aTestDesk = new Desk(aTestList, 50); // Fails here
+        } catch (IllegalArgumentException e) {
+            err = true;
+        }
+        assertTrue("Too many furniture types are passed into constructor using ArrayList", err);
+    }
+
+    /**
      * Test: Desk_StringToBoolean_Cushion_False
      * 
      * Description: Checks whether the String to Boolean conversion is accurate.
@@ -112,7 +140,7 @@ public class DeskTest {
     public void Desk_StringToBoolean_Legs_False() {
 
         Desk aTestDesk = new Desk("D2311", "Standing", "N", "N", "N", 150, "001");
-        boolean actual = aTestDesk.getLegs();
+        boolean actual = aTestDesk.stringToBoolean("N");
         boolean expect = false;
 
         assertEquals("Desk String to Boolean Conversion Failed for Legs", expect, actual);
@@ -129,7 +157,7 @@ public class DeskTest {
     @Test
     public void DeskIllegal_StringToBoolean_Cushion_True() {
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
-        boolean actual = aTestDesk.getLegs();
+        boolean actual = aTestDesk.stringToBoolean("Y");
         boolean expect = true;
         assertEquals("Desk String to Boolean Conversion Failed for Legs", expect, actual);
 
