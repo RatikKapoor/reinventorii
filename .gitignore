@@ -42,7 +42,7 @@ thumb
 sketch
 
 target/*
-!target/.docker-support
+!target/docker-support
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
