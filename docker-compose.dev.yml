@@ -20,7 +20,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.react
-      target: dev
     volumes:
       - "./frontend/:/app"
       - "/app/node_modules"
