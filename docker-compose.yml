@@ -19,8 +19,7 @@ services:
     container_name: ensf409-finalProject-react-container
     build:
       context: .
-      dockerfile: Dockerfile.react
-      target: prod
+      dockerfile: Dockerfile.react.prod
     # volumes:
     #   - "./frontend/:/app"
     #   - "/app/node_modules"

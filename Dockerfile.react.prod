@@ -17,4 +17,5 @@ RUN yarn global add serve
 # add app
 COPY ./frontend/ ./
 
-CMD yarn && yarn start
+# start app
+CMD yarn && yarn build && serve -s build
