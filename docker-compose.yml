@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.2"
 
 services:
   maven:
@@ -7,15 +7,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.maven
-    volumes:
-      - ".:/app"
-      - "/app/target"
+    # volumes:
+    #   - ".:/app"
+    #   - "/app/target"
     ports:
       - 36295:36295
-    networks:
-      ensf409-net:
-        aliases:
-          - maven
 
   react:
     # stdin_open: true # docker run -i
@@ -25,18 +21,8 @@ services:
       context: .
       dockerfile: Dockerfile.react
       target: prod
-    volumes:
-      - "./frontend/:/app"
-      - "/app/node_modules"
+    # volumes:
+    #   - "./frontend/:/app"
+    #   - "/app/node_modules"
     ports:
       - 5000:5000
-    networks:
-      ensf409-net:
-        aliases:
-          - react
-    depends_on:
-      - "maven"
-
-networks:
-  ensf409-net:
-    name: ensf409-network

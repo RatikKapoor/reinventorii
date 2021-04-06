@@ -12,10 +12,6 @@ services:
       - "/app/target"
     ports:
       - 36295:36295
-    networks:
-      ensf409-net:
-        aliases:
-          - maven
 
   react:
     stdin_open: true # docker run -i
@@ -30,15 +26,5 @@ services:
       - "/app/node_modules"
     ports:
       - 3000:3000
-    networks:
-      ensf409-net:
-        aliases:
-          - react
-    depends_on:
-      - maven
     environment:
       - CHOKIDAR_USEPOLLING=true
-
-networks:
-  ensf409-net:
-    name: ensf409-network
