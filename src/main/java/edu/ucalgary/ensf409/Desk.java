@@ -54,6 +54,10 @@ public class Desk extends FurniturePart {
         this.legs = stringToBoolean(data.get(3));
         this.top = stringToBoolean(data.get(4));
         this.drawer = stringToBoolean(data.get(5));
+
+        if (data.size() > 6) {
+            throw new IllegalArgumentException("ArrayList is too large");
+        }
     }
 
     /**

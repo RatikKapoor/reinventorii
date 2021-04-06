@@ -126,6 +126,35 @@ public class ChairTest {
     }
 
     /**
+     * Test: ChairIllegal_DatabaseConstructor
+     * 
+     * Description: Checks whether database constructor with paramater data as an
+     * ArrayList<String> and price is accepted. This test checks only if manuID is
+     * correct. In this case, the ArrayList is too large.
+     */
+    @Test
+    public void ChairIllegal_DatabaseConstructor() {
+        ArrayList<String> aTestList = new ArrayList<>();
+        aTestList.add("C1320");
+        aTestList.add("Executive");
+        aTestList.add("001");
+        aTestList.add("Y");
+        aTestList.add("N");
+        aTestList.add("N");
+        aTestList.add("Y");
+        aTestList.add("N"); // Incorrect here
+
+        Boolean err = false;
+
+        try {
+            Chair aTestChair = new Chair(aTestList, 50); // Fails here
+        } catch (IllegalArgumentException e) {
+            err = true;
+        }
+        assertTrue("Too many furniture types are passed into constructor using ArrayList", err);
+    }
+
+    /**
      * Test: Chair_StringToBoolean_Cushion_False
      * 
      * Description: Checks whether the String to Boolean conversion is accurate.
@@ -137,7 +166,7 @@ public class ChairTest {
     public void Chair_StringToBoolean_Cushion_False() {
 
         Chair aTestChair = new Chair("C1320", "Kneeling", "Y", "N", "N", "N", 50, "002");
-        boolean actual = aTestChair.getCushion();
+        boolean actual = aTestChair.stringToBoolean("N");
         boolean expect = false;
 
         assertEquals("Chair String to Boolean Conversion Failed for Cushion", expect, actual);
@@ -154,7 +183,7 @@ public class ChairTest {
     @Test
     public void ChairIllegal_StringToBoolean_Cushion_True() {
         Chair aTestChair = new Chair("C2322", "Kneeling", "N", "Y", "N", "N", 50, "152");
-        boolean actual = aTestChair.getCushion();
+        boolean actual = aTestChair.stringToBoolean("Y");
         boolean expect = true;
         assertEquals("Chair String to Boolean Conversion Failed for Cushion", expect, actual);
 

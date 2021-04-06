@@ -39,6 +39,10 @@ public class Filing extends FurniturePart {
         this.rails = stringToBoolean(data.get(3));
         this.drawers = stringToBoolean(data.get(4));
         this.cabinet = stringToBoolean(data.get(5));
+
+        if (data.size() > 6) {
+            throw new IllegalArgumentException("ArrayList is too Large");
+        }
     }
 
     public boolean getRails() {
