@@ -90,7 +90,7 @@ public class Builder<T extends FurniturePart> {
                 ids.add(id);
 
                 // used to count how many components we need
-                int featureCount1 = 0; // base
+                int featureCount1 = 0; // bulb
                 if (bulb.contains(id)) {
                     featureCount1++;
                 }
