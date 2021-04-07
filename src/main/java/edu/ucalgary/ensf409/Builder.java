@@ -76,47 +76,49 @@ public class Builder<T extends FurniturePart> {
                 hash.put(Lamp.class.cast(item).getId(), Lamp.class.cast(item).getPrice());
             });
             ;
+            // check if any of the components are empty
             if (bulb.isEmpty() || base.isEmpty()) {
                 cost = -1;
                 break;
             }
-            // number of components in lamp
-            // features[0] corresponds to Base
-            // features[1] corresponds to Bulb
-            boolean[] features = new boolean[items.size()];
-            for (int i = 0; i < base.size(); i++) {
-                String id = base.get(i);
-                ArrayList<String> allIDs = new ArrayList<>();
 
-                features[0] = true;
+            for (String id : base) {
+                // all ids in one combination
+                ArrayList<String> allIds = new ArrayList<>();
+                // all ids that have already been picked
+                ArrayList<String> ids = new ArrayList<>();
+                ids.add(id);
 
-                int featureCount1 = 0;
-                for (String val : bulb) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with a bulb
-                        features[1] = true;
-                        featureCount1++;
-                        break;
-                    }
+                // used to count how many components we need
+                int featureCount1 = 0; // base
+                if (bulb.contains(id)) {
+                    featureCount1++;
                 }
-
-                ArrayList<String> baseID = getarrayID(count - 1, id, "base");
-                ArrayList<String> bulbID = getarrayID(count - featureCount1, id, "bulb");
-
-                if (baseID == null || bulbID == null) {
+                // adds the cheapest components to construct the Lamp
+                // if needed
+                ArrayList<String> baseId = getarrayID(count - 1, ids, "base");
+                if (baseId == null) {
                     cost = -1;
                     break;
                 }
-                allIDs.addAll(baseID);
-                allIDs.addAll(bulbID);
-                allIDs.add(id);
-
-                for (int k = 0; k < items.size(); k++) {
-                    features[k] = false;
+                for (String val : baseId) {
+                    if (bulb.contains(val) && !val.equals(id)) {
+                        featureCount1++;
+                        ids.add(val);
+                    }
+                }
+                ArrayList<String> bulbId = getarrayID(count - featureCount1, ids, "bulb");
+                if (bulbId == null) {
+                    cost = -1;
+                    break;
                 }
 
-                allIDs = (ArrayList<String>) allIDs.stream().distinct().collect(Collectors.toList());
-                allCombinations.add(allIDs);
+                allIds.addAll(baseId);
+                allIds.addAll(bulbId);
+                allIds.add(id);
+                // remove duplicate ids
+                allIds = (ArrayList<String>) allIds.stream().distinct().collect(Collectors.toList());
+                allCombinations.add(allIds);
             }
             break;
 
@@ -147,55 +149,64 @@ public class Builder<T extends FurniturePart> {
                 cost = -1;
                 break;
             }
-            // number of components in lamp
-            // features[0] corresponds to Legs
-            // features[1] corresponds to Top
-            // features[2] corresponds to Drawer
-            features = new boolean[items.size()];
 
-            for (int i = 0; i < legs.size(); i++) {
-                String id = legs.get(i);
-                ArrayList<String> allIDs = new ArrayList<>();
+            for (String id : legs) {
+                // all ids in one combination
+                ArrayList<String> allIds = new ArrayList<>();
+                // all ids that have already been picked
+                ArrayList<String> ids = new ArrayList<>();
+                ids.add(id);
 
-                features[0] = true;
-
-                int featureCount1 = 0;
-                int featureCount2 = 0;
-                for (String val : top) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with a top
-                        features[1] = true;
-                        featureCount1++;
-                        break;
-                    }
+                // used to count how many components we need
+                int featureCount1 = 0; // top
+                int featureCount2 = 0; // drawer
+                if (top.contains(id)) {
+                    featureCount1++;
                 }
-                for (String val : drawer) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with a drawer
-                        features[2] = true;
-                        featureCount2++;
-                        break;
-                    }
+                if (drawer.contains(id)) {
+                    featureCount2++;
                 }
-                // adds the cheapest components to construct the desk
+                // adds the cheapest components to construct the Desk
                 // if needed
-                ArrayList<String> legsID = getarrayID(count - 1, id, "legs");
-                ArrayList<String> topID = getarrayID(count - featureCount1, id, "top");
-                ArrayList<String> drawerID = getarrayID(count - featureCount2, id, "drawer");
-                if (legsID == null || topID == null || drawerID == null) {
+                ArrayList<String> legsId = getarrayID(count - 1, ids, "legs");
+                if (legsId == null) {
                     cost = -1;
                     break;
                 }
-                allIDs.addAll(legsID);
-                allIDs.addAll(topID);
-                allIDs.addAll(drawerID);
-                allIDs.add(id);
-                for (int k = 0; k < items.size(); k++) {
-                    features[k] = false;
+                for (String val : legsId) {
+                    if (top.contains(val) && !val.equals(id)) {
+                        featureCount1++;
+                        ids.add(val);
+                    }
+                    if (drawer.contains(val) && !val.equals(id)) {
+                        featureCount2++;
+                        ids.add(val);
+                    }
+                }
+                ArrayList<String> topId = getarrayID(count - featureCount1, ids, "top");
+                if (topId == null) {
+                    cost = -1;
+                    break;
+                }
+                for (String val : topId) {
+                    if (drawer.contains(val) && !val.equals(id)) {
+                        featureCount2++;
+                        ids.add(val);
+                    }
+                }
+                ArrayList<String> drawerId = getarrayID(count - featureCount2, ids, "drawer");
+                if (drawerId == null) {
+                    cost = -1;
+                    break;
                 }
 
-                allIDs = (ArrayList<String>) allIDs.stream().distinct().collect(Collectors.toList());
-                allCombinations.add(allIDs);
+                allIds.addAll(legsId);
+                allIds.addAll(topId);
+                allIds.addAll(drawerId);
+                allIds.add(id);
+                // remove duplicates
+                allIds = (ArrayList<String>) allIds.stream().distinct().collect(Collectors.toList());
+                allCombinations.add(allIds);
 
             }
 
@@ -231,66 +242,86 @@ public class Builder<T extends FurniturePart> {
                 cost = -1;
                 break;
             }
-            // number of components in chair
-            // features[0] corresponds to Legs
-            // features[1] corresponds to Arms
-            // features[2] corresponds to Seat
-            // features[3] corresponds to Cushion
-            features = new boolean[items.size()];
 
-            for (int i = 0; i < chairLegs.size(); i++) {
-                String id = chairLegs.get(i);
-                ArrayList<String> allIDs = new ArrayList<>();
-                features[0] = true;
-
-                int featureCount1 = 0;
-                int featureCount2 = 0;
-                int featureCount3 = 0;
-                for (String val : arms) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with arms
-                        features[1] = true;
-                        featureCount1++;
-                        break;
-                    }
+            for (String id : chairLegs) {
+                // all ids in one combination
+                ArrayList<String> allIds = new ArrayList<>();
+                // all ids that have already been picked
+                ArrayList<String> ids = new ArrayList<>();
+                ids.add(id);
+                // used to count how many components we need
+                int featureCount1 = 0; // arms
+                int featureCount2 = 0; // seat
+                int featureCount3 = 0; // cushion
+                if (arms.contains(id)) {
+                    featureCount1++;
                 }
-                for (String val : seat) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with seat
-                        features[2] = true;
-                        featureCount2++;
-                        break;
-                    }
+                if (seat.contains(id)) {
+                    featureCount2++;
                 }
-                for (String val : cushion) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with cushion
-                        features[3] = true;
-                        featureCount3++;
-                        break;
-                    }
+                if (cushion.contains(id)) {
+                    featureCount3++;
                 }
-
-                // adds the cheapest components to construct the chair
+                // adds the cheapest components to construct the Chair
                 // if needed
-                ArrayList<String> legsID = getarrayID(count - 1, id, "chairLegs");
-                ArrayList<String> armsID = getarrayID(count - featureCount1, id, "arms");
-                ArrayList<String> seatID = getarrayID(count - featureCount2, id, "seat");
-                ArrayList<String> cushionID = getarrayID(count - featureCount3, id, "cushion");
-                if (legsID == null || armsID == null || seatID == null || cushionID == null) {
+                ArrayList<String> legsId = getarrayID(count - 1, ids, "chairLegs");
+                if (legsId == null) {
                     cost = -1;
                     break;
                 }
-                allIDs.addAll(legsID);
-                allIDs.addAll(armsID);
-                allIDs.addAll(seatID);
-                allIDs.addAll(cushionID);
-                allIDs.add(id);
-                for (int k = 0; k < items.size(); k++) {
-                    features[k] = false;
+                for (String val : legsId) {
+                    if (arms.contains(val) && !val.equals(id)) {
+                        featureCount1++;
+                        ids.add(val);
+                    }
+                    if (seat.contains(val) && !val.equals(id)) {
+                        featureCount2++;
+                        ids.add(val);
+                    }
+                    if (cushion.contains(val) && !val.equals(id)) {
+                        featureCount3++;
+                        ids.add(val);
+                    }
                 }
-                allIDs = (ArrayList<String>) allIDs.stream().distinct().collect(Collectors.toList());
-                allCombinations.add(allIDs);
+                ArrayList<String> armsId = getarrayID(count - featureCount1, ids, "arms");
+                if (armsId == null) {
+                    cost = -1;
+                    break;
+                }
+                for (String val : armsId) {
+                    if (seat.contains(val) && !val.equals(id)) {
+                        featureCount2++;
+                        ids.add(val);
+                    }
+                    if (cushion.contains(val) && !val.equals(id)) {
+                        featureCount3++;
+                        ids.add(val);
+                    }
+                }
+                ArrayList<String> seatId = getarrayID(count - featureCount2, ids, "seat");
+                if (seatId == null) {
+                    cost = -1;
+                    break;
+                }
+                for (String val : seatId) {
+                    if (cushion.contains(val) && !val.equals(id)) {
+                        featureCount3++;
+                        ids.add(val);
+                    }
+                }
+                ArrayList<String> cushionId = getarrayID(count - featureCount3, ids, "cushion");
+                if (cushionId == null) {
+                    cost = -1;
+                    break;
+                }
+                allIds.addAll(legsId);
+                allIds.addAll(armsId);
+                allIds.addAll(seatId);
+                allIds.addAll(cushionId);
+                allIds.add(id);
+                // remove duplicates
+                allIds = (ArrayList<String>) allIds.stream().distinct().collect(Collectors.toList());
+                allCombinations.add(allIds);
 
             }
 
@@ -314,62 +345,69 @@ public class Builder<T extends FurniturePart> {
                 }
                 // hashmap of ids and their corresponding prices
                 hash.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
+
             });
             ;
-            // if any of the arrays are empty,
-            // the order cannot be completed
             if (rails.isEmpty() || drawers.isEmpty() || cabinet.isEmpty()) {
                 cost = -1;
                 break;
             }
-            // number of components in filing
-            // features[0] corresponds to Rails
-            // features[1] corresponds to Drawers
-            // features[2] corresponds to Cabinet
-            features = new boolean[items.size()];
-
-            for (int i = 0; i < rails.size(); i++) {
-                String id = rails.get(i);
-                ArrayList<String> allIDs = new ArrayList<>();
-                features[0] = true;
-
-                int featureCount1 = 0;
-                int featureCount2 = 0;
-                for (String val : drawers) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with drawers
-                        features[1] = true;
-                        featureCount1++;
-                        break;
-                    }
+            for (String id : rails) {
+                // all ids in one combination
+                ArrayList<String> allIds = new ArrayList<>();
+                // all ids that have already been picked
+                ArrayList<String> ids = new ArrayList<>();
+                ids.add(id);
+                // used to count how many components we need
+                int featureCount1 = 0; // drawers
+                int featureCount2 = 0; // cabinet
+                if (drawers.contains(id)) {
+                    featureCount1++;
                 }
-                for (String val : cabinet) {
-                    if (val.equals(id)) {
-                        // checks if this id comes with a cabinet
-                        features[2] = true;
-                        featureCount2++;
-                        break;
-                    }
+                if (cabinet.contains(id)) {
+                    featureCount2++;
                 }
-                // adds the cheapest components to construct the filing
+                // adds the cheapest components to construct the Filing
                 // if needed
-                ArrayList<String> railsID = getarrayID(count - 1, id, "rails");
-                ArrayList<String> drawersID = getarrayID(count - featureCount1, id, "drawers");
-                ArrayList<String> cabinetID = getarrayID(count - featureCount2, id, "cabinet");
-                if (railsID == null || drawersID == null || cabinetID == null) {
+                ArrayList<String> railsId = getarrayID(count - 1, ids, "rails");
+                if (railsId == null) {
                     cost = -1;
                     break;
                 }
-                allIDs.addAll(railsID);
-                allIDs.addAll(drawersID);
-                allIDs.addAll(cabinetID);
-                allIDs.add(id);
-
-                for (int k = 0; k < items.size(); k++) {
-                    features[k] = false;
+                for (String val : railsId) {
+                    if (drawers.contains(val) && !val.equals(id)) {
+                        featureCount1++;
+                        ids.add(val);
+                    }
+                    if (cabinet.contains(val) && !val.equals(id)) {
+                        featureCount2++;
+                        ids.add(val);
+                    }
                 }
-                allIDs = (ArrayList<String>) allIDs.stream().distinct().collect(Collectors.toList());
-                allCombinations.add(allIDs);
+                ArrayList<String> drawersId = getarrayID(count - featureCount1, ids, "drawers");
+                if (drawersId == null) {
+                    cost = -1;
+                    break;
+                }
+                for (String val : drawersId) {
+                    if (cabinet.contains(val) && !val.equals(id)) {
+                        featureCount2++;
+                        ids.add(val);
+                    }
+                }
+                ArrayList<String> cabinetId = getarrayID(count - featureCount2, ids, "cabinet");
+                if (cabinetId == null) {
+                    cost = -1;
+                    break;
+                }
+
+                allIds.addAll(railsId);
+                allIds.addAll(drawersId);
+                allIds.addAll(cabinetId);
+                allIds.add(id);
+                // remove duplicates
+                allIds = (ArrayList<String>) allIds.stream().distinct().collect(Collectors.toList());
+                allCombinations.add(allIds);
 
             }
             break;
@@ -493,19 +531,34 @@ public class Builder<T extends FurniturePart> {
         return this.idCombination;
     }
 
-    public ArrayList<String> getarrayID(int count, String id, String componentType) {
+    /**
+     * Method that returns an arraylist of the cheapest ids. PROMISES: Cheapest ids
+     * for requested amount of components
+     * 
+     * @param count         how many components we need
+     * @param ids           ids that have already been picked
+     * @param componentType what component we need
+     * @return a arraylist of cheapest ids
+     */
+    public ArrayList<String> getarrayID(int count, ArrayList<String> ids, String componentType) {
         ArrayList<String> basearray = new ArrayList<>();
         if (count == 0) {
-            basearray.add(id);
+            // if no components are needed return
+            // the original id
+            basearray.add(ids.get(0));
         } else {
+            // used to get all eligible prices
             ArrayList<Integer> prices = new ArrayList<>();
+            // used to get cheapest prices depending on the count
             ArrayList<Integer> finalPrices = new ArrayList<>();
+            // used to keep track of ids and corresponding prices
             HashMap<String, Integer> priceAndIds = new HashMap<String, Integer>();
+            // populate arrays
             getParts().forEach(item -> {
                 if (componentType.equals("bulb")) {
                     if (Lamp.class.cast(item).getBulb()) {
                         // add prices of ids that have a bulb
-                        if (!Lamp.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Lamp.class.cast(item).getId())) {
                             prices.add(Lamp.class.cast(item).getPrice());
                             priceAndIds.put(Lamp.class.cast(item).getId(), Lamp.class.cast(item).getPrice());
                         }
@@ -514,7 +567,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("base")) {
                     if (Lamp.class.cast(item).getBase()) {
                         // add prices of ids that have a bulb
-                        if (!Lamp.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Lamp.class.cast(item).getId())) {
                             prices.add(Lamp.class.cast(item).getPrice());
                             priceAndIds.put(Lamp.class.cast(item).getId(), Lamp.class.cast(item).getPrice());
                         }
@@ -523,7 +576,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("legs")) {
                     if (Desk.class.cast(item).getLegs()) {
                         // add prices of ids that have a bulb
-                        if (!Desk.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Desk.class.cast(item).getId())) {
                             prices.add(Desk.class.cast(item).getPrice());
                             priceAndIds.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
                         }
@@ -532,7 +585,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("top")) {
                     if (Desk.class.cast(item).getTop()) {
                         // add prices of ids that have a bulb
-                        if (!Desk.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Desk.class.cast(item).getId())) {
                             prices.add(Desk.class.cast(item).getPrice());
                             priceAndIds.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
                         }
@@ -541,7 +594,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("drawer")) {
                     if (Desk.class.cast(item).getDrawer()) {
                         // add prices of ids that have a bulb
-                        if (!Desk.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Desk.class.cast(item).getId())) {
                             prices.add(Desk.class.cast(item).getPrice());
                             priceAndIds.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
                         }
@@ -550,7 +603,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("chairLegs")) {
                     if (Chair.class.cast(item).getLegs()) {
                         // add prices of ids that have a bulb
-                        if (!Chair.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
                         }
@@ -559,7 +612,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("arms")) {
                     if (Chair.class.cast(item).getArms()) {
                         // add prices of ids that have a bulb
-                        if (!Chair.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
                         }
@@ -568,7 +621,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("seat")) {
                     if (Chair.class.cast(item).getSeat()) {
                         // add prices of ids that have a bulb
-                        if (!Chair.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
                         }
@@ -577,7 +630,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("cushion")) {
                     if (Chair.class.cast(item).getCushion()) {
                         // add prices of ids that have a bulb
-                        if (!Chair.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
                         }
@@ -586,7 +639,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("rails")) {
                     if (Filing.class.cast(item).getRails()) {
                         // add prices of ids that have a bulb
-                        if (!Filing.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Filing.class.cast(item).getId())) {
                             prices.add(Filing.class.cast(item).getPrice());
                             priceAndIds.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
                         }
@@ -595,7 +648,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("drawers")) {
                     if (Filing.class.cast(item).getDrawers()) {
                         // add prices of ids that have a bulb
-                        if (!Filing.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Filing.class.cast(item).getId())) {
                             prices.add(Filing.class.cast(item).getPrice());
                             priceAndIds.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
                         }
@@ -604,7 +657,7 @@ public class Builder<T extends FurniturePart> {
                 if (componentType.equals("cabinet")) {
                     if (Filing.class.cast(item).getCabinet()) {
                         // add prices of ids that have a bulb
-                        if (!Filing.class.cast(item).getId().equals(id)) {
+                        if (!ids.contains(Filing.class.cast(item).getId())) {
                             prices.add(Filing.class.cast(item).getPrice());
                             priceAndIds.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
                         }
@@ -613,7 +666,8 @@ public class Builder<T extends FurniturePart> {
 
             });
             ;
-
+            // return null if requested more ids
+            // than available
             if (prices.size() < count) {
                 return null;
             }
@@ -623,7 +677,7 @@ public class Builder<T extends FurniturePart> {
                 prices.remove(price);
                 finalPrices.add(price);
             }
-            // find the ids that correspond to cheapest prices
+            // find the ids that correspond to the cheapest prices
             int counter = 0;
             for (String i : priceAndIds.keySet()) {
                 for (Integer value : finalPrices) {

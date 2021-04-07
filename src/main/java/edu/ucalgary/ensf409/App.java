@@ -30,7 +30,7 @@ public class App {
         // System.out.println(item.toString());
         // });
         // ;
-        b.BuildMultipleItems(1);
+        b.BuildMultipleItems(6);
 
         System.out.println("Id Combinations : " + b.getidCombination());
         System.out.println("Total Cost : " + b.getCost());
