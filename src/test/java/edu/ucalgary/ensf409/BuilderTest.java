@@ -11,7 +11,7 @@ import edu.ucalgary.ensf409.FurniturePart.Types;
 @SpringBootTest
 public class BuilderTest {
     /**
-     * Requests one lamp of type desk to be built. Tests if the cheapest cost is
+     * Requests one Lamp of type Desk to be built. Tests if the cheapest cost is
      * correct.
      */
     @Test
@@ -39,7 +39,7 @@ public class BuilderTest {
     }
 
     /**
-     * Requests one lamp of type desk to be built. Tests if the cheapest id
+     * Requests one Lamp of type Desk to be built. Tests if the cheapest id
      * combination is correct.
      */
     @Test
@@ -69,9 +69,68 @@ public class BuilderTest {
     }
 
     /**
-     * Requests six lamp of type desk to be built; should not be able to build six
-     * lamps of type desk. Tests if the correct cost is returned. Should be -1
-     * indicating that the lamps cannot be built.
+     * Requests two Lamp of type Study to be built. Tests if the cheapest cost is
+     * correct.
+     */
+    @Test
+    public void LampBuildMultipleCostTest() {
+        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        try {
+            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+            test.connect();
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception");
+        }
+
+        Lamp l = new Lamp("Study");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Study");
+        Builder<Lamp> b = new Builder<Lamp>(l);
+        b.setParts(allLamps);
+        b.setItems();
+        b.BuildMultipleItems(2);
+
+        int actual = b.getCost();
+        int expect = 20;
+        test.disconnect();
+        assertEquals("Lamp cost is wrong", expect, actual);
+    }
+
+    /**
+     * Requests two Lamp of type Study to be built. Tests if the cheapest id
+     * combination is correct.
+     */
+    @Test
+    public void LampBuildMultipleIdTest() {
+        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        try {
+            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+            test.connect();
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception");
+        }
+
+        Lamp l = new Lamp("Study");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Study");
+        Builder<Lamp> b = new Builder<Lamp>(l);
+        b.setParts(allLamps);
+        b.setItems();
+        b.BuildMultipleItems(2);
+
+        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> expect = new ArrayList<>();
+        expect.add("L982");
+        expect.add("L223");
+        expect.add("L928");
+        test.disconnect();
+        assertEquals("Lamp id combinations is wrong", expect, actual);
+    }
+
+    /**
+     * Requests six Lamp of type Desk to be built; should not be able to build six
+     * Lamps of type Desk. Tests if the correct cost is returned. Should be -1
+     * indicating that the Lamps cannot be built.
      */
     @Test
     public void LampBuildCostTestFail() {
@@ -98,9 +157,9 @@ public class BuilderTest {
     }
 
     /**
-     * Requests six lamp of type of desk to be built; should not be able to build
-     * six lamps of type desk. Tests if the correct combination of ids is returned.
-     * Should be null, indicating that the lamps cannot be built.
+     * Requests six Lamps of type of Desk to be built; should not be able to build
+     * six Lamps of type Desk. Tests if the correct combination of ids is returned.
+     * Should be null, indicating that the Lamps cannot be built.
      */
     @Test
     public void LampBuildIdTestFail() {
@@ -153,7 +212,7 @@ public class BuilderTest {
         int actual = b.getCost();
         int expect = 100;
         test.disconnect();
-        assertEquals("Lamp cost is wrong", expect, actual);
+        assertEquals("Desk cost is wrong", expect, actual);
     }
 
     /**
@@ -187,9 +246,68 @@ public class BuilderTest {
     }
 
     /**
+     * Requests two Desk of type Traditional to be built. Tests if the cheapest cost
+     * is correct.
+     */
+    @Test
+    public void DeskBuildMultipleCostTest() {
+        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        try {
+            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+            test.connect();
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception");
+        }
+
+        Desk d = new Desk("Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        Builder<Desk> b = new Builder<Desk>(d);
+        b.setParts(allDesks);
+        b.setItems();
+        b.BuildMultipleItems(2);
+
+        int actual = b.getCost();
+        int expect = 200;
+        test.disconnect();
+        assertEquals("Desk cost is wrong", expect, actual);
+    }
+
+    /**
+     * Requests two Desk of type Traditional to be built. Tests if the cheapest id
+     * combination is correct.
+     */
+    @Test
+    public void DeskBuildMultipleIdTest() {
+        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        try {
+            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+            test.connect();
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception");
+        }
+
+        Desk d = new Desk("Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        Builder<Desk> b = new Builder<Desk>(d);
+        b.setParts(allDesks);
+        b.setItems();
+        b.BuildMultipleItems(2);
+
+        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> expect = new ArrayList<>();
+        expect.add("D9352");
+        expect.add("D4231");
+        expect.add("D8675");
+        test.disconnect();
+        assertEquals("Desk id combination is wrong", expect, actual);
+    }
+
+    /**
      * Requests six Desks of type Traditional to be built; should not be able to
      * build six Desks of type Traditional. Should be null, indicating that the
-     * lamps cannot be built.
+     * Desks cannot be built.
      */
     @Test
     public void DeskBuildIdTestFail() {
@@ -219,7 +337,7 @@ public class BuilderTest {
     /**
      * Requests six Desks of type Traditional to be built; should not be able to
      * build six Desks of type Traditional. Tests if the correct cost is returned.
-     * Should be -1 indicating that the lamps cannot be built.
+     * Should be -1 indicating that the Desks cannot be built.
      */
     @Test
     public void DeskBuildCostTestFail() {
@@ -414,7 +532,68 @@ public class BuilderTest {
 
         ArrayList<String> actual = b.getidCombination();
         ArrayList<String> expect = new ArrayList<>();
-        expect.add("F014");
+        expect.add("F008");
+        expect.add("F007");
+        test.disconnect();
+        assertEquals("Filing id combination is wrong", expect, actual);
+    }
+
+    /**
+     * Requests two Filing of type Large to be built. Tests if the cheapest cost is
+     * correct.
+     */
+    @Test
+    public void FilingBuildMultipleCostTest() {
+        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        try {
+            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+            test.connect();
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception");
+        }
+
+        Filing f = new Filing("Large");
+        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Large");
+        Builder<Filing> b = new Builder<Filing>(f);
+        b.setParts(allFilings);
+        b.setItems();
+        b.BuildMultipleItems(2);
+
+        int actual = b.getCost();
+        int expect = 600;
+        test.disconnect();
+        assertEquals("Filing cost is wrong", expect, actual);
+    }
+
+    /**
+     * Requests two Filing of type Large to be built. Tests if the cheapest id
+     * combination is correct.
+     */
+    @Test
+    public void FilingBuildMultipleIdTest() {
+        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+        try {
+            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+            test.connect();
+
+        } catch (SQLException e) {
+            System.out.println("SQL Exception");
+        }
+
+        Filing f = new Filing("Large");
+        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Large");
+        Builder<Filing> b = new Builder<Filing>(f);
+        b.setParts(allFilings);
+        b.setItems();
+        b.BuildMultipleItems(2);
+
+        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> expect = new ArrayList<>();
+        expect.add("F015");
+        expect.add("F011");
+        expect.add("F012");
+        expect.add("F010");
         test.disconnect();
         assertEquals("Filing id combination is wrong", expect, actual);
     }
@@ -422,7 +601,7 @@ public class BuilderTest {
     /**
      * Requests six Filings of type Medium to be built; should not be able to build
      * six Filings of type Medium. Tests if the correct cost is returned. Should be
-     * -1 indicating that the lamps cannot be built.
+     * -1 indicating that the Filings cannot be built.
      */
     @Test
     public void FilingBuildCostTestFail() {
@@ -451,7 +630,7 @@ public class BuilderTest {
     /**
      * Requests six Filings of type Medium; should not be able to build six Filing
      * of type Medium. Tests if the correct combination of ids is returned. Should
-     * be null, indicating that the lamps cannot be built.
+     * be null, indicating that the Filings cannot be built.
      */
     @Test
     public void FilingBuildIdTestFail() {
