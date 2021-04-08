@@ -1,5 +1,7 @@
 package edu.ucalgary.ensf409;
 
+import java.util.ArrayList;
+
 /**
  * a class for a manufacturer
  * 
@@ -10,6 +12,15 @@ public class Manufacturer {
     private String name;
     private String phone;
     private String province;
+    private ArrayList<FurniturePart.Types> types;
+
+    public ArrayList<FurniturePart.Types> getTypes() {
+        return this.types;
+    }
+
+    public void setTypes(ArrayList<FurniturePart.Types> types) {
+        this.types = types;
+    }
 
     public String getManuid() {
         return this.manuid;
@@ -51,11 +62,13 @@ public class Manufacturer {
      * @param phone
      * @param province
      */
-    public Manufacturer(String manuid, String name, String phone, String province) {
+    public Manufacturer(String manuid, String name, String phone, String province,
+            ArrayList<FurniturePart.Types> types) {
         this.manuid = manuid;
         this.name = name;
         this.phone = phone;
         this.province = province;
+        this.types = types;
     }
 
     /**

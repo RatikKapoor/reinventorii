@@ -83,20 +83,19 @@ const OrderItem: React.FC = () => {
         setRequestedItem(selectedItem);
         setRequestedType(selectedType);
         console.log(data);
+        getManufacturers();
       });
   };
 
   const getManufacturers = () => {
-    fetch(`http://localhost:36295/manufacturers`)
+    fetch(
+      `http://localhost:36295/manufacturers?type=${selectedItem.toLowerCase()}`
+    )
       .then((d) => d.json())
       .then((data) => {
         setManus(data);
       });
   };
-
-  useEffect(() => {
-    getManufacturers();
-  }, []);
 
   useEffect(() => {
     calculateTotalPrice();

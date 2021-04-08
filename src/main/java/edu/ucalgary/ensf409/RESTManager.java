@@ -23,6 +23,7 @@ public class RESTManager {
             database = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
                     enviroment.get("DB_PASS"));
             database.connect();
+            database.storeManufacturers();
         } catch (DotenvException e) {
             System.err.println("Could not load .env file in root folder!");
             System.err.println("Create or move .env file with DB_URL, DB_USER, DB_PASS");
@@ -68,8 +69,17 @@ public class RESTManager {
     @CrossOrigin
     @GetMapping("/manufacturers")
     @RequestMapping(value = "/manufacturers", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<Manufacturer> manufacturers() {
-        return database.getManufacturers();
+    public ArrayList<Manufacturer> manufacturers(@RequestParam(value = "type", defaultValue = "") String type) {
+        if (type == "") {
+            return database.getManufacturers();
+        } else {
+            try {
+                return database.getManufacturersByType(FurniturePart.Types.fromString(type));
+            } catch (Exception e) {
+                return null;
+            }
+        }
+
     }
 
     // Builders
