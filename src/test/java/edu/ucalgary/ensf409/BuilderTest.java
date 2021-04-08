@@ -386,7 +386,7 @@ public class BuilderTest {
         b.BuildMultipleItems(1);
 
         int actual = b.getCost();
-        int expect = 150;
+        int expect = 200;
         test.disconnect();
         assertEquals("Chair cost is wrong", expect, actual);
     }
@@ -415,8 +415,9 @@ public class BuilderTest {
 
         ArrayList<String> actual = b.getidCombination();
         ArrayList<String> expect = new ArrayList<>();
-        expect.add("C0942");
+        expect.add("C6748");
         expect.add("C9890");
+        expect.add("C8138");
         test.disconnect();
         assertEquals("Chair id combination is wrong", expect, actual);
     }
@@ -532,9 +533,10 @@ public class BuilderTest {
 
         ArrayList<String> actual = b.getidCombination();
         ArrayList<String> expect = new ArrayList<>();
-        expect.add("F008");
-        expect.add("F007");
+        expect.add("F009");
+        expect.add("F002");
         test.disconnect();
+        // Multiple combinations possible
         assertEquals("Filing id combination is wrong", expect, actual);
     }
 
