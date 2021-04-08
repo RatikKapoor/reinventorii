@@ -1,3 +1,5 @@
+import { type } from "node:os";
+
 export interface FurniturePart {
   id: string;
   type: string;
@@ -28,6 +30,8 @@ export interface Filing extends FurniturePart {
   drawers: boolean;
   cabinet: boolean;
 }
+
+export type Furniture = Chair | Desk | Lamp | Filing;
 
 export interface Manufacturer {
   manuid: string;
