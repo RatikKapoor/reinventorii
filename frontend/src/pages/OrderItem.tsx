@@ -41,11 +41,28 @@ const OrderItem: React.FC = () => {
   const [faculty, setFaculty] = useState<string>("");
   const [contact, setContact] = useState<string>("");
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
+  const [orderPlaced, setOrderPlaced] = useState<boolean | undefined>(
+    undefined
+  );
 
   const placeOrder = () => {
     // TODO: Actually place order and remove from db
-    setOrderPlaced(true);
+    fetch(
+      `http://localhost:36295/remove?type=${selectedItem}&items=${output?.map(
+        (v, k) => {
+          return `${v.id}`;
+        }
+      )}`
+    )
+      .then((data) => data.text())
+      .then((data) => {
+        console.log("Got place order result:", data);
+        if (data === "true") {
+          setOrderPlaced(true);
+        } else {
+          setOrderPlaced(false);
+        }
+      });
   };
 
   const calculateTotalPrice = () => {
@@ -83,7 +100,7 @@ const OrderItem: React.FC = () => {
 
   useEffect(() => {
     calculateTotalPrice();
-  }, [output, calculateTotalPrice]);
+  }, [output]);
 
   return (
     <IonPage>
@@ -226,7 +243,7 @@ const OrderItem: React.FC = () => {
                 </IonItem>
                 <IonItemDivider />
 
-                {orderPlaced && (
+                {orderPlaced === true && (
                   <>
                     <IonItem>Order placed!</IonItem>
                     <PDFOrderForm
@@ -238,6 +255,13 @@ const OrderItem: React.FC = () => {
                       contact={contact}
                       price={totalPrice}
                     />
+                  </>
+                )}
+                {orderPlaced === false && (
+                  <>
+                    <IonItem>
+                      Could not order! Please try requesting again!
+                    </IonItem>
                   </>
                 )}
               </>
