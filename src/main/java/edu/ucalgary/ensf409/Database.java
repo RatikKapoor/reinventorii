@@ -17,6 +17,8 @@ public class Database {
     private Connection dbConnect;
     private ResultSet results;
 
+    private ArrayList<Manufacturer> manufacturers;
+
     /**
      * constructor fo the database class
      * 
@@ -49,24 +51,74 @@ public class Database {
         }
     }
 
-    /**
-     * a method to get the list of manufacturers from the database
-     * 
-     * @return
-     */
-    public ArrayList<Manufacturer> getManufacturers() {
+    public void storeManufacturers() {
         ArrayList<Manufacturer> m = new ArrayList<Manufacturer>();
         try {
             Statement queryStatment = dbConnect.createStatement();
             results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
             while (results.next()) {
                 m.add(new Manufacturer(results.getString("ManuID"), results.getString("Name"),
-                        results.getString("Phone"), results.getString("Province")));
+                        results.getString("Phone"), results.getString("Province"),
+                        new ArrayList<FurniturePart.Types>()));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return m;
+        manufacturers = m;
+        for (FurniturePart.Types type : FurniturePart.Types.values()) {
+            try {
+                // String query = "SELECT DISTINCT ManuID FROM ?";
+                // PreparedStatement queryStatment = dbConnect.prepareStatement(query);
+                // queryStatment.setString(1, type.toString().toUpperCase().trim());
+                // results = queryStatment.executeQuery();
+                Statement queryStatment = dbConnect.createStatement();
+                results = queryStatment.executeQuery("SELECT ManuID FROM " + type.toString().toUpperCase());
+                while (results.next()) {
+                    addTypeToManufacturer(results.getString("ManuID"), type);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * a method to add a type to a specific manufacturer in the stored list
+     * 
+     * @param id   manufacturer id
+     * @param type type to be added
+     */
+    public void addTypeToManufacturer(String id, FurniturePart.Types type) {
+        for (Manufacturer manufacturer : manufacturers) {
+            if (manufacturer.getManuid().contains(id)) {
+                if (manufacturer.getTypes().isEmpty()) {
+                    manufacturer.getTypes().add(type);
+                } else {
+                    if (!manufacturer.getTypes().contains(type)) {
+                        manufacturer.getTypes().add(type);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * a method to get the list of manufacturers from the database
+     * 
+     * @return
+     */
+    public ArrayList<Manufacturer> getManufacturers() {
+        return this.manufacturers;
+    }
+
+    public ArrayList<Manufacturer> getManufacturersByType(FurniturePart.Types type) {
+        ArrayList<Manufacturer> manByType = new ArrayList<Manufacturer>();
+        for (Manufacturer manufacturer : manufacturers) {
+            if (manufacturer.getTypes().contains(type)) {
+                manByType.add(manufacturer);
+            }
+        }
+        return manByType;
     }
 
     /**
