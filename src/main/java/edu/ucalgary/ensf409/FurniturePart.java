@@ -2,7 +2,6 @@ package edu.ucalgary.ensf409;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * @since 1.1
@@ -15,7 +14,7 @@ public abstract class FurniturePart {
 
         public static Types fromString(String input) {
             for (Types t : Types.values()) {
-                if (t.toString().equals(input)) {
+                if (t.toString().toLowerCase().contains(input.toLowerCase())) {
                     return t;
                 }
             }

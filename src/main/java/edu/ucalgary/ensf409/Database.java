@@ -182,16 +182,21 @@ public class Database {
      * @param item the name of the table the item is from
      * @param id   th id of the item
      */
-    public void removeItemByID(FurniturePart.Types item, String id) {
+    public boolean removeItemByID(FurniturePart.Types item, String id) {
+        boolean result = true;
         try {
             String query = "DELETE FROM " + item.toString().toUpperCase() + " WHERE ID = ?";
             PreparedStatement delete = dbConnect.prepareStatement(query);
             delete.setString(1, id);
 
-            delete.executeUpdate();
+            if (delete.executeUpdate() < 1) {
+                result = false;
+            }
             delete.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return result;
     }
 }

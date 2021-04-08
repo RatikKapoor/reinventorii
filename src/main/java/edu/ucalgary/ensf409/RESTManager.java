@@ -173,4 +173,20 @@ public class RESTManager {
         }
         return temp;
     }
+
+    @CrossOrigin
+    @GetMapping("/remove")
+    @RequestMapping(value = "/remove", produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean removeByID(@RequestParam(value = "type", defaultValue = "") String type,
+            @RequestParam(value = "items", defaultValue = "") String[] items) {
+        FurniturePart.Types partType = Types.fromString(type);
+
+        boolean result = true;
+        for (String item : items) {
+            if (!database.removeItemByID(partType, item)) {
+                result = false;
+            }
+        }
+        return result;
+    }
 }
