@@ -7,7 +7,7 @@ COPY lib /app/lib
 COPY .mvn /app/.mvn
 COPY mvnw /app/mvnw
 COPY pom.xml /app/pom.xml
-COPY target /app/target
+#COPY target /app/target
 COPY .env /app/.env
 
 CMD [ "mvn", "--no-transfer-progress", "spring-boot:run" ]
