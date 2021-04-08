@@ -12,6 +12,7 @@ import {
   IonSelectOption,
   IonSelect,
   IonButton,
+  IonItemDivider,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import ChairComponent from "../components/ChairComponent";
@@ -30,11 +31,30 @@ import {
 const OrderItem: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<string>("");
   const [selectedType, setSelectedType] = useState<string>("");
+  const [requestedItem, setRequestedItem] = useState<string>("");
+  const [requestedType, setRequestedType] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [output, setOutput] = useState<
     Array<Chair | Desk | Filing | Lamp> | undefined
   >(undefined);
   const [manus, setManus] = useState<Array<Manufacturer>>();
+  const [faculty, setFaculty] = useState<string>("");
+  const [contact, setContact] = useState<string>("");
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
+
+  const placeOrder = () => {
+    // TODO: Actually place order and remove from db
+    setOrderPlaced(true);
+  };
+
+  const calculateTotalPrice = () => {
+    let sum: number = 0;
+    output?.forEach((furniture) => {
+      sum = sum + furniture.price;
+    });
+    setTotalPrice(sum);
+  };
 
   const requestItem = () => {
     fetch(
@@ -43,12 +63,14 @@ const OrderItem: React.FC = () => {
       .then((res) => res.json())
       .then((data) => {
         setOutput(data);
+        setRequestedItem(selectedItem);
+        setRequestedType(selectedType);
         console.log(data);
       });
   };
 
   const getManufacturers = () => {
-    fetch(`http://localhost:8080/manufacturers`)
+    fetch(`http://localhost:36295/manufacturers`)
       .then((d) => d.json())
       .then((data) => {
         setManus(data);
@@ -58,6 +80,10 @@ const OrderItem: React.FC = () => {
   useEffect(() => {
     getManufacturers();
   }, []);
+
+  useEffect(() => {
+    calculateTotalPrice();
+  }, [output, calculateTotalPrice]);
 
   return (
     <IonPage>
@@ -87,6 +113,7 @@ const OrderItem: React.FC = () => {
           <IonSelect
             onIonChange={(e) => setSelectedType(e.detail.value)}
             value={selectedType}
+            disabled={!selectedItem}
           >
             {selectedItem === "Chair" && (
               <>
@@ -127,50 +154,107 @@ const OrderItem: React.FC = () => {
           <IonInput
             type="number"
             value={quantity}
+            min={"1"}
             onIonChange={(e) =>
               setQuantity(parseInt(e.detail.value ? e.detail.value : "1"))
             }
           />
         </IonItem>
         <IonItem>
-          <IonButton onClick={requestItem}>Request</IonButton>
+          <IonButton
+            onClick={requestItem}
+            disabled={!(selectedItem && selectedType)}
+          >
+            Request
+          </IonButton>
         </IonItem>
         {output && (
           <>
             {output && output.length > 0 ? (
               <>
-                <IonLabel>Success! </IonLabel>
-                <IonLabel>Components used:</IonLabel>
-                {selectedItem === "Chair" &&
+                <IonItemDivider />
+                <IonItem>
+                  <IonLabel>Success! Components Used:</IonLabel>
+                </IonItem>
+                {requestedItem === "Chair" &&
                   output.map((v, k) => {
                     return <ChairComponent chair={v as Chair} key={k} />;
                   })}
-                {selectedItem === "Desk" &&
+                {requestedItem === "Desk" &&
                   output.map((v, k) => {
                     return <DeskComponent desk={v as Desk} key={k} />;
                   })}
-                {selectedItem === "Filing" &&
+                {requestedItem === "Filing" &&
                   output.map((v, k) => {
                     return <FilingComponent filing={v as Filing} key={k} />;
                   })}
-                {selectedItem === "Lamp" &&
+                {requestedItem === "Lamp" &&
                   output.map((v, k) => {
                     return <LampComponent lamp={v as Lamp} key={k} />;
                   })}
+                <IonItem>
+                  <IonLabel style={{ textAlign: "right" }}>
+                    Total cost:{" "}
+                    <b style={{ color: "#3dc2ff" }}>${totalPrice}</b>
+                  </IonLabel>
+                </IonItem>
+                <IonItemDivider />
+                <IonItem>
+                  <IonLabel>Faculty Name:</IonLabel>
+                  <IonInput
+                    placeholder="Schulich School of Engineering"
+                    onIonChange={(e) => setFaculty(e.detail.value ?? "")}
+                    autocomplete="organization"
+                  />
+                </IonItem>
+                <IonItem>
+                  <IonLabel>Contact:</IonLabel>
+                  <IonInput
+                    placeholder="Your Name"
+                    onIonChange={(e) => setContact(e.detail.value ?? "")}
+                    autocomplete="name"
+                  />
+                </IonItem>
+                <IonItemDivider />
+                <IonItem>
+                  <IonButton
+                    onClick={placeOrder}
+                    disabled={!(faculty && contact)}
+                  >
+                    Place Order
+                  </IonButton>
+                </IonItem>
+                <IonItemDivider />
+
+                {orderPlaced && (
+                  <>
+                    <IonItem>Order placed!</IonItem>
+                    <PDFOrderForm
+                      items={output}
+                      orderedItem={requestedItem}
+                      orderedType={requestedType}
+                      orderedQuantity={quantity}
+                      faculty={faculty}
+                      contact={contact}
+                      price={totalPrice}
+                    />
+                  </>
+                )}
               </>
             ) : (
               <>
-                <IonLabel>Failed!</IonLabel>
-                <IonLabel>
-                  Order cannot be fulfilled based on current inventory.
-                  Suggested manufacturers are:{" "}
-                  {manus?.map((manu) => {
-                    return `${manu.name}, `;
-                  })}
-                </IonLabel>
+                <IonItemDivider />
+                <IonItem>
+                  <IonLabel>
+                    Order cannot be fulfilled based on current inventory.
+                    Suggested manufacturers are:
+                    {manus?.map((manu) => {
+                      return <IonItem>{manu.name}</IonItem>;
+                    })}
+                  </IonLabel>
+                </IonItem>
               </>
             )}
-            <PDFOrderForm />
           </>
         )}
       </IonContent>

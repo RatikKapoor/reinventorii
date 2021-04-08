@@ -1,34 +1,68 @@
-import React from 'react';
-import { Document, Page, Text, View, StyleSheet, PDFViewer } from '@react-pdf/renderer';
+import React from "react";
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  PDFViewer,
+  PDFDownloadLink,
+} from "@react-pdf/renderer";
 import { GiOfficeChair } from "react-icons/gi";
+import { IonButton } from "@ionic/react";
+import { Furniture } from "../interfaces/FurnitureTypes";
 
-const styles = StyleSheet.create({
-  });
+const styles = StyleSheet.create({});
 
-const MyDocument = () => (
-    <Document>
-      <Page size="Letter">
-        <View>
-            <Text>SCM Order</Text>
-        </View>
-        <View>
-            <Text>Customer: User</Text>
-            <Text>Order Number: 123</Text>
-        </View>
-        <View>
-            <Text>Item Ordered</Text>
-            <Text>Type</Text>
-            <Text>Quantity</Text>
-            <Text>Price</Text>
-        </View>
-      </Page>
-    </Document>
-  );
+const MyDocument = (props: OrderViewProps) => (
+  <Document>
+    <Page size="Letter">
+      <View>
+        <Text>Furniture Order Form</Text>
+      </View>
+      <View>
+        <Text>Faculty Name: {props.faculty}</Text>
+        <Text>Contact: {props.contact}</Text>
+        <Text>Date: {new Date().toDateString()}</Text>
+      </View>
+      <View>
+        <Text>
+          Original Request: {props.orderedType} {props.orderedItem},{" "}
+          {props.orderedQuantity}
+        </Text>
+      </View>
+      <View>
+        <Text>Items ordered:</Text>
+        {props.items.map((v, k) => {
+          return <Text>ID: {v.id}</Text>;
+        })}
+      </View>
+      <View>
+        <Text>Total Price: ${props.price}</Text>
+      </View>
+    </Page>
+  </Document>
+);
 
-  const OrderView: React.FC = () => (
-    <PDFViewer>
-        <MyDocument />
-    </PDFViewer>
-  );
+interface OrderViewProps {
+  items: Array<Furniture>;
+  orderedItem: string;
+  orderedType: string;
+  orderedQuantity: number;
+  faculty: string;
+  contact: string;
+  price: number;
+}
 
-  export default OrderView;
+const OrderView: React.FC<OrderViewProps> = (props: OrderViewProps) => (
+  <>
+    <PDFDownloadLink
+      document={<MyDocument {...props} />}
+      fileName="orderForm.pdf"
+    >
+      <IonButton>Download Order Form</IonButton>
+    </PDFDownloadLink>
+  </>
+);
+
+export default OrderView;
