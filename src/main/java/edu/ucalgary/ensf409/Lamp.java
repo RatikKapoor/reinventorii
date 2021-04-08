@@ -51,6 +51,10 @@ public class Lamp extends FurniturePart {
 
         this.base = stringToBoolean(data.get(3));
         this.bulb = stringToBoolean(data.get(4));
+
+        if (data.size() > 5) {
+            throw new IllegalArgumentException("ArrayList is too Large");
+        }
     }
 
     /**

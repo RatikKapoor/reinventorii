@@ -352,8 +352,10 @@ public class FilingTest {
     /**
      * Test: FilinglegalType_CheckType_Small
      * 
-     * Description: Same Test as above, however, it is now matched with "Small" as a
-     * type.
+     * Description: Checks whether the CheckType abstract method returns a True when
+     * a correct type is tested (that does not match the Types Enum in the
+     * FurniturePart class). The tested paramater is "Small" which is in fact a Type
+     * in Filing.
      */
     @Test
     public void FilinglegalType_CheckType_Small() {
