@@ -167,13 +167,13 @@ public class DeskTest {
     }
 
     /**
-     * Test: Desk_StringToBoolean_Cushion_True
+     * Test: Desk_StringToBoolean_Legs_True
      * 
      * Description: Checks whether the String to Boolean conversion is accurate.
      * Tests a True Statement, "Y".
      */
     @Test
-    public void DeskIllegal_StringToBoolean_Cushion_True() {
+    public void DeskIllegal_StringToBoolean_Legs_True() {
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         boolean actual = aTestDesk.stringToBoolean("Y");
         boolean expect = true;
