@@ -55,12 +55,13 @@ public class Manufacturer {
     }
 
     /**
-     * a constructor for manufacturer
+     * a constructor for manufacturer with ArrayList Types
      * 
      * @param manuid
      * @param name
      * @param phone
      * @param province
+     * @param types
      */
     public Manufacturer(String manuid, String name, String phone, String province,
             ArrayList<FurniturePart.Types> types) {
@@ -72,10 +73,24 @@ public class Manufacturer {
     }
 
     /**
-     * a method to print the data in a manufacturer object to console
+     * Constructor without ArrayList Types
+     * 
+     * @param manuid
+     * @param name
+     * @param phone
+     * @param province
      */
-    public void printManufacturer() {
-        System.out.println(this.manuid + " " + this.name + " " + this.phone + " " + this.province);
+    public Manufacturer(String manuid, String name, String phone, String province) {
+        this.manuid = manuid;
+        this.name = name;
+        this.phone = phone;
+        this.province = province;
     }
 
+    /**
+     * a method to print the data in a manufacturer object to console
+     */
+    public String printManufacturer() {
+        return this.manuid + " " + this.name + " " + this.phone + " " + this.province;
+    }
 }
