@@ -1,0 +1,14 @@
+version: "3.2"
+
+services:
+  maven:
+    tty: true
+    container_name: ensf409-finalProject-maven-test-container
+    build:
+      context: .
+      dockerfile: Dockerfile.maven-test
+    # volumes:
+    #   - ".:/app"
+    #   - "/app/target"
+    ports:
+      - 36295:36295
