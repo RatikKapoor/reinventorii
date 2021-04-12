@@ -15,9 +15,16 @@ import React, { useLayoutEffect, useState } from "react";
 import DeskComponent from "../components/DeskComponent";
 import { Desk } from "../interfaces/FurnitureTypes";
 
+/**
+ * Page for listing of all desks
+ * @returns page to be rendered
+ */
 const Desks: React.FC = () => {
   const [desks, setDesks] = useState<Array<Desk>>();
 
+  /**
+   * update desks from the database
+   */
   const updateDesks = () => {
     fetch(`http://localhost:36295/desks`)
       .then((data) => data.json())

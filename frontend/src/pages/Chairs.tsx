@@ -15,9 +15,16 @@ import { refreshOutline } from "ionicons/icons";
 import ChairComponent from "../components/ChairComponent";
 import { Chair } from "../interfaces/FurnitureTypes";
 
+/**
+ * Page for listing of all chairs
+ * @returns page to be rendered
+ */
 const Chairs: React.FC = () => {
   const [chairs, setChairs] = useState<Array<Chair>>();
 
+  /**
+   * update chairs from the database
+   */
   const updateChairs = () => {
     fetch(`http://localhost:36295/chairs`)
       .then((data) => data.json())
