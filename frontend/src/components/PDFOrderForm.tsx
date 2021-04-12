@@ -13,18 +13,32 @@ import { IonButton } from "@ionic/react";
 import { Furniture } from "../interfaces/FurnitureTypes";
 
 const styles = StyleSheet.create({
-  defaultMargin: {marginLeft: 50, marginRight: 50},
-  titleBar: {marginLeft: 50, marginRight: 50, marginTop: 75, marginBottom: 40},
-  text: {color: '#444444'},
-  title: {color: '#444444', fontSize: 50},
-  contactInfo: {backgroundColor: '#DEDEDE', paddingVertical: 20, paddingHorizontal: 20},
-  finalPrice: {fontSize: 25, fontWeight: 'bold'},
-  finalPriceContainer: {backgroundColor: '#DEDEDE', marginTop: 10, paddingVertical: 20, paddingHorizontal: 20}
+  defaultMargin: { marginLeft: 50, marginRight: 50 },
+  titleBar: {
+    marginLeft: 50,
+    marginRight: 50,
+    marginTop: 75,
+    marginBottom: 40,
+  },
+  text: { color: "#444444" },
+  title: { color: "#444444", fontSize: 50 },
+  contactInfo: {
+    backgroundColor: "#DEDEDE",
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+  },
+  finalPrice: { fontSize: 25, fontWeight: "bold" },
+  finalPriceContainer: {
+    backgroundColor: "#DEDEDE",
+    marginTop: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+  },
 });
 
 const MyDocument = (props: OrderViewProps) => (
   <Document>
-    <Page size="Letter">
+    <Page>
       <View style={styles.titleBar}>
         <Text style={styles.title}>Furniture Order Form</Text>
       </View>
@@ -46,7 +60,9 @@ const MyDocument = (props: OrderViewProps) => (
         })}
       </View>
       <View style={[styles.defaultMargin, styles.finalPriceContainer]}>
-        <Text style={[styles.text, styles.finalPrice]}>Total Price: ${props.price}</Text>
+        <Text style={[styles.text, styles.finalPrice]}>
+          Total Price: ${props.price}
+        </Text>
       </View>
     </Page>
   </Document>
