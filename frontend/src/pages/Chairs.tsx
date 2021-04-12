@@ -1,6 +1,5 @@
 import {
   IonButton,
-  IonCol,
   IonContent,
   IonGrid,
   IonHeader,
@@ -11,7 +10,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { refreshOutline } from "ionicons/icons";
 import ChairComponent from "../components/ChairComponent";
 import { Chair } from "../interfaces/FurnitureTypes";

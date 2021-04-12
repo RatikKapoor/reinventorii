@@ -11,7 +11,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { refreshOutline } from "ionicons/icons";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import DeskComponent from "../components/DeskComponent";
 import { Desk } from "../interfaces/FurnitureTypes";
 

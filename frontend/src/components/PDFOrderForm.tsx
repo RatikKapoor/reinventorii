@@ -5,10 +5,8 @@ import {
   Text,
   View,
   StyleSheet,
-  PDFViewer,
   PDFDownloadLink,
 } from "@react-pdf/renderer";
-import { GiOfficeChair } from "react-icons/gi";
 import { IonButton } from "@ionic/react";
 import { Furniture } from "../interfaces/FurnitureTypes";
 

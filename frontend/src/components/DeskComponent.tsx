@@ -6,9 +6,7 @@ import {
   IonLabel,
   IonNote,
 } from "@ionic/react";
-import { sunnyOutline } from "ionicons/icons";
-import { GiOfficeChair, GiDeskLamp, GiDesk } from "react-icons/gi";
-import { BsArchive } from "react-icons/bs";
+import { GiDesk } from "react-icons/gi";
 import "./ItemComponent.css";
 import { Desk } from "../interfaces/FurnitureTypes";
 
