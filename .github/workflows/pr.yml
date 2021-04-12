@@ -11,4 +11,4 @@ jobs:
           java-version: "11.0.9"
           architecture: x64
       - run: |
-          ./mvnw --no-transfer-progress clean test
+          ./test

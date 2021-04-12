@@ -12,3 +12,19 @@ services:
     #   - "/app/target"
     ports:
       - 36295:36295
+
+  mysql:
+    container_name: ensf409-finalProject-database-container
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: "db"
+      MYSQL_ROOT_PASSWORD: "eNsF409"
+      MYSQL_USER: ensf409
+      MYSQL_PASSWORD: thisIsACoolEnsf409Password
+    ports:
+      - "26289:3306"
+    expose:
+      - "3306"
