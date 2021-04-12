@@ -2,7 +2,7 @@ name: Run App.java on PR
 "on": pull_request
 
 jobs:
-  run-app:
+  test-app:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,4 +11,4 @@ jobs:
           java-version: "11.0.9"
           architecture: x64
       - run: |
-          ./mvnw clean test
+          ./mvnw --no-transfer-progress clean test
