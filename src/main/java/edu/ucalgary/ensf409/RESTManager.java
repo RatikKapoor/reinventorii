@@ -15,7 +15,7 @@ import edu.ucalgary.ensf409.FurniturePart.Types;
 
 @RestController
 public class RESTManager {
-    Database database = null;
+    public Database database = null;
 
     public RESTManager() {
         try {

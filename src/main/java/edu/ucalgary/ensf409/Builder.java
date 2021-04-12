@@ -16,7 +16,7 @@ public class Builder<T extends FurniturePart> {
     private int cost; // cheapest cost of the arrangements
     private String typeName;
 
-    ArrayList<ArrayList<String>> allCombinations = new ArrayList<>();
+    public ArrayList<ArrayList<String>> allCombinations = new ArrayList<>();
     // FOR BULB
     private ArrayList<String> bulb = new ArrayList<>();
     private ArrayList<String> base = new ArrayList<>();
