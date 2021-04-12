@@ -60,7 +60,7 @@ public class Builder<T extends FurniturePart> {
         HashMap<String, Integer> hash = new HashMap<String, Integer>();
 
         switch (FurniturePart.Types.fromString(this.typeName)) {
-        case Lamp:
+        case LAMP:
             getParts().forEach(item -> {
 
                 // populate array bulb and base
@@ -122,7 +122,7 @@ public class Builder<T extends FurniturePart> {
             }
             break;
 
-        case Desk:
+        case DESK:
 
             getParts().forEach(item -> {
 
@@ -212,7 +212,7 @@ public class Builder<T extends FurniturePart> {
 
             break;
 
-        case Chair:
+        case CHAIR:
             getParts().forEach(item -> {
 
                 // populate array chairLegs, arms, seat, and cushion
@@ -327,7 +327,7 @@ public class Builder<T extends FurniturePart> {
 
             break;
 
-        case Filing:
+        case FILING:
             getParts().forEach(item -> {
 
                 // populate array rails, drawers, and cabinet
@@ -453,25 +453,25 @@ public class Builder<T extends FurniturePart> {
     public void setItems() {
         items = new ArrayList<String>();
         switch (FurniturePart.Types.fromString(this.typeName)) {
-        case Lamp:
+        case LAMP:
             for (LampParts type : LampParts.values()) {
                 items.add(type.toString());
             }
             break;
 
-        case Chair:
+        case CHAIR:
             for (ChairParts type : ChairParts.values()) {
                 items.add(type.toString());
             }
             break;
 
-        case Filing:
+        case FILING:
             for (FilingParts type : FilingParts.values()) {
                 items.add(type.toString());
             }
             break;
 
-        case Desk:
+        case DESK:
             for (DeskParts type : DeskParts.values()) {
                 items.add(type.toString());
             }

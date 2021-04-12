@@ -18,7 +18,7 @@ public class App {
         // });
         // ;
         Filing l = new Filing("Medium");
-        ArrayList<Filing> allLamps = test.getListByType(Types.Filing, "Medium");
+        ArrayList<Filing> allLamps = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(l);
         b.setParts(allLamps);
         // b.getParts().forEach(item -> {

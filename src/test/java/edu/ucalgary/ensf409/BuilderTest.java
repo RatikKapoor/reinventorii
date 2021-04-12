@@ -26,7 +26,7 @@ public class BuilderTest {
         }
 
         Lamp l = new Lamp("Desk");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Desk");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Desk");
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -54,7 +54,7 @@ public class BuilderTest {
         }
 
         Lamp l = new Lamp("Desk");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Desk");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Desk");
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -84,7 +84,7 @@ public class BuilderTest {
         }
 
         Lamp l = new Lamp("Study");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Study");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Study");
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -112,7 +112,7 @@ public class BuilderTest {
         }
 
         Lamp l = new Lamp("Study");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Study");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Study");
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -144,7 +144,7 @@ public class BuilderTest {
         }
 
         Lamp l = new Lamp("Desk");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Desk");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Desk");
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -173,7 +173,7 @@ public class BuilderTest {
         }
 
         Lamp l = new Lamp("Desk");
-        ArrayList<Lamp> allLamps = test.getListByType(Types.Lamp, "Desk");
+        ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Desk");
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -203,7 +203,7 @@ public class BuilderTest {
         }
 
         Desk d = new Desk("Traditional");
-        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.DESK, "Traditional");
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
@@ -231,7 +231,7 @@ public class BuilderTest {
         }
 
         Desk d = new Desk("Traditional");
-        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.DESK, "Traditional");
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
@@ -261,7 +261,7 @@ public class BuilderTest {
         }
 
         Desk d = new Desk("Traditional");
-        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.DESK, "Traditional");
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
@@ -289,7 +289,7 @@ public class BuilderTest {
         }
 
         Desk d = new Desk("Traditional");
-        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.DESK, "Traditional");
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
@@ -321,7 +321,7 @@ public class BuilderTest {
         }
 
         Desk d = new Desk("Traditional");
-        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.DESK, "Traditional");
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
@@ -351,7 +351,7 @@ public class BuilderTest {
         }
 
         Desk d = new Desk("Traditional");
-        ArrayList<Desk> allDesks = test.getListByType(Types.Desk, "Traditional");
+        ArrayList<Desk> allDesks = test.getListByType(Types.DESK, "Traditional");
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
@@ -379,7 +379,7 @@ public class BuilderTest {
         }
 
         Chair c = new Chair("Mesh");
-        ArrayList<Chair> allChairs = test.getListByType(Types.Chair, "Mesh");
+        ArrayList<Chair> allChairs = test.getListByType(Types.CHAIR, "Mesh");
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
@@ -407,7 +407,7 @@ public class BuilderTest {
         }
 
         Chair c = new Chair("Mesh");
-        ArrayList<Chair> allChairs = test.getListByType(Types.Chair, "Mesh");
+        ArrayList<Chair> allChairs = test.getListByType(Types.CHAIR, "Mesh");
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
@@ -439,7 +439,7 @@ public class BuilderTest {
         }
 
         Chair c = new Chair("Mesh");
-        ArrayList<Chair> allChairs = test.getListByType(Types.Chair, "Mesh");
+        ArrayList<Chair> allChairs = test.getListByType(Types.CHAIR, "Mesh");
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
@@ -468,7 +468,7 @@ public class BuilderTest {
         }
 
         Chair c = new Chair("Mesh");
-        ArrayList<Chair> allChairs = test.getListByType(Types.Chair, "Mesh");
+        ArrayList<Chair> allChairs = test.getListByType(Types.CHAIR, "Mesh");
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
@@ -497,7 +497,7 @@ public class BuilderTest {
         }
 
         Filing f = new Filing("Medium");
-        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Medium");
+        ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
@@ -525,7 +525,7 @@ public class BuilderTest {
         }
 
         Filing f = new Filing("Medium");
-        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Medium");
+        ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
@@ -556,7 +556,7 @@ public class BuilderTest {
         }
 
         Filing f = new Filing("Large");
-        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Large");
+        ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Large");
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
@@ -584,7 +584,7 @@ public class BuilderTest {
         }
 
         Filing f = new Filing("Large");
-        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Large");
+        ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Large");
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
@@ -617,7 +617,7 @@ public class BuilderTest {
         }
 
         Filing f = new Filing("Medium");
-        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Medium");
+        ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
@@ -646,7 +646,7 @@ public class BuilderTest {
         }
 
         Filing f = new Filing("Medium");
-        ArrayList<Filing> allFilings = test.getListByType(Types.Filing, "Medium");
+        ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();

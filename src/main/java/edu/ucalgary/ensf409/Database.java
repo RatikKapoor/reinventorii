@@ -201,19 +201,19 @@ public class Database {
                 }
                 int price = results.getInt("Price");
                 switch (item) {
-                case Lamp:
+                case LAMP:
                     parts.add((T) new Lamp(params, price));
                     break;
 
-                case Chair:
+                case CHAIR:
                     parts.add((T) new Chair(params, price));
                     break;
 
-                case Filing:
+                case FILING:
                     parts.add((T) new Filing(params, price));
                     break;
 
-                case Desk:
+                case DESK:
                     parts.add((T) new Desk(params, price));
                     break;
 
@@ -249,7 +249,7 @@ public class Database {
             e.printStackTrace();
             return false;
         }
-        
+
         return result;
     }
 }

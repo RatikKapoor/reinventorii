@@ -103,7 +103,7 @@ public class Lamp extends FurniturePart {
     }
 
     protected boolean checkType(String myType) {
-        Types aType = Types.Lamp;
+        Types aType = Types.LAMP;
         for (String t : aType.getList()) {
             if (t.toString().equals(myType)) {
                 return true;

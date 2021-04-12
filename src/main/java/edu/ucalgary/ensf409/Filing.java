@@ -70,7 +70,7 @@ public class Filing extends FurniturePart {
     }
 
     protected boolean checkType(String myType) {
-        Types aType = Types.Filing;
+        Types aType = Types.FILING;
         for (String t : aType.getList()) {
             if (t.toString().equals(myType)) {
                 return true;

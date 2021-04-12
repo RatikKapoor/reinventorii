@@ -115,7 +115,7 @@ public class Desk extends FurniturePart {
     }
 
     protected boolean checkType(String myType) {
-        Types aType = Types.Desk;
+        Types aType = Types.DESK;
         for (String t : aType.getList()) {
             if (t.toString().equals(myType)) {
                 return true;
