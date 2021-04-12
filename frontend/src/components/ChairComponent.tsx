@@ -3,16 +3,19 @@ import { GiOfficeChair } from "react-icons/gi";
 import "./ItemComponent.css";
 import { Chair } from "../interfaces/FurnitureTypes";
 
+/**
+ * props to pass to the component
+ * @author Ratik Kapoor, Robert Brown
+ */
 interface ContainerProps {
   chair: Chair;
 }
 
 /**
- * icons:
- *  lamp - sunnyOutline
- *  chair: GiOfficeChair
+ * Chair List Item Component
+ * @param props chair information to be passed
+ * @returns Chair component to be rendered
  */
-
 const ChairComponent: React.FC<ContainerProps> = ({ chair }) => {
   return (
     <>
