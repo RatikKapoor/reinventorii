@@ -1,14 +1,5 @@
-import {
-  IonAvatar,
-  IonChip,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonNote,
-} from "@ionic/react";
-import { sunnyOutline } from "ionicons/icons";
+import { IonChip, IonItem, IonLabel, IonNote } from "@ionic/react";
 import { FcFilingCabinet } from "react-icons/fc";
-import { BsArchive } from "react-icons/bs";
 import "./ItemComponent.css";
 import { Filing } from "../interfaces/FurnitureTypes";
 

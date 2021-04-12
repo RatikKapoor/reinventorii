@@ -9,7 +9,7 @@ import {
   IonTabs,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
+import { square } from "ionicons/icons";
 import Chairs from "./pages/Chairs";
 import Desks from "./pages/Desks";
 import OrderItem from "./pages/OrderItem";

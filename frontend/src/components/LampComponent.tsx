@@ -1,14 +1,5 @@
-import {
-  IonAvatar,
-  IonChip,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonNote,
-} from "@ionic/react";
-import { sunnyOutline } from "ionicons/icons";
-import { GiOfficeChair, GiDeskLamp, GiDesk } from "react-icons/gi";
-import { BsArchive } from "react-icons/bs";
+import { IonChip, IonItem, IonLabel, IonNote } from "@ionic/react";
+import { GiDeskLamp } from "react-icons/gi";
 import "./ItemComponent.css";
 import { Lamp } from "../interfaces/FurnitureTypes";
 

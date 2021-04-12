@@ -11,7 +11,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { refreshOutline } from "ionicons/icons";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import FilingComponent from "../components/FilingComponent";
 import { Filing } from "../interfaces/FurnitureTypes";
 
