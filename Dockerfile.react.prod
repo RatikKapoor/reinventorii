@@ -9,13 +9,13 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY ./frontend/package.json ./
-COPY ./frontend/yarn.lock ./
-RUN yarn
+# COPY ./frontend/yarn.lock ./
+RUN npm install
 # RUN yarn add react-scripts@3.4.1 -g --silent
-RUN yarn global add serve
+RUN npm install -g serve
 
 # add app
 COPY ./frontend/ ./
 
 # start app
-CMD yarn && yarn build && serve -s build
+CMD npm install && npm run build && serve -s build
