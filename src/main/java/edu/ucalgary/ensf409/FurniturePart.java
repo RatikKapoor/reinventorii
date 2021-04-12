@@ -8,9 +8,9 @@ import java.util.List;
  */
 public abstract class FurniturePart {
     public enum Types {
-        Chair(new String[] { "Task", "Mesh", "Kneeling", "Executive", "Ergonomic" }),
-        Desk(new String[] { "Traditional", "Adjustable", "Standing" }),
-        Filing(new String[] { "Small", "Medium", "Large" }), Lamp(new String[] { "Desk", "Swing Arm", "Study" });
+        CHAIR(new String[] { "Task", "Mesh", "Kneeling", "Executive", "Ergonomic" }),
+        DESK(new String[] { "Traditional", "Adjustable", "Standing" }),
+        FILING(new String[] { "Small", "Medium", "Large" }), LAMP(new String[] { "Desk", "Swing Arm", "Study" });
 
         public static Types fromString(String input) {
             for (Types t : Types.values()) {

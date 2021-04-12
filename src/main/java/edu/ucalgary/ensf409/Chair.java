@@ -139,7 +139,7 @@ public class Chair extends FurniturePart {
     }
 
     protected boolean checkType(String myType) {
-        Types aType = Types.Chair;
+        Types aType = Types.CHAIR;
         for (String t : aType.getList()) {
             if (t.toString().equals(myType)) {
                 return true;

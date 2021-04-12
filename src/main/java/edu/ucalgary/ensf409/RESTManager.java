@@ -41,28 +41,28 @@ public class RESTManager {
     @GetMapping("/chairs")
     @RequestMapping(value = "/chairs", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Chair> chairs(@RequestParam(value = "type", defaultValue = "") String type) {
-        return type.length() == 0 ? database.getList(Types.Chair) : database.getListByType(Types.Chair, type);
+        return type.length() == 0 ? database.getList(Types.CHAIR) : database.getListByType(Types.CHAIR, type);
     }
 
     @CrossOrigin
     @GetMapping("/desks")
     @RequestMapping(value = "/desks", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Desk> desks(@RequestParam(value = "type", defaultValue = "") String type) {
-        return type.length() == 0 ? database.getList(Types.Desk) : database.getListByType(Types.Desk, type);
+        return type.length() == 0 ? database.getList(Types.DESK) : database.getListByType(Types.DESK, type);
     }
 
     @CrossOrigin
     @GetMapping("/filings")
     @RequestMapping(value = "/filings", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Filing> filings(@RequestParam(value = "type", defaultValue = "") String type) {
-        return type.length() == 0 ? database.getList(Types.Filing) : database.getListByType(Types.Filing, type);
+        return type.length() == 0 ? database.getList(Types.FILING) : database.getListByType(Types.FILING, type);
     }
 
     @CrossOrigin
     @GetMapping("/lamps")
     @RequestMapping(value = "/lamps", produces = MediaType.APPLICATION_JSON_VALUE)
     public ArrayList<Lamp> lamps(@RequestParam(value = "type", defaultValue = "") String type) {
-        return type.length() == 0 ? database.getList(Types.Lamp) : database.getListByType(Types.Lamp, type);
+        return type.length() == 0 ? database.getList(Types.LAMP) : database.getListByType(Types.LAMP, type);
     }
 
     // Manufacturers
@@ -90,7 +90,7 @@ public class RESTManager {
             @RequestParam(value = "number", defaultValue = "1") String number) {
 
         Chair l = new Chair(type);
-        ArrayList<Chair> allLamps = database.getListByType(Types.Chair, type);
+        ArrayList<Chair> allLamps = database.getListByType(Types.CHAIR, type);
         Builder<Chair> b = new Builder<Chair>(l);
         b.setParts(allLamps);
         b.setItems();
@@ -115,7 +115,7 @@ public class RESTManager {
     public ArrayList<Desk> deskBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
         Desk l = new Desk(type);
-        ArrayList<Desk> allDesks = database.getListByType(Types.Desk, type);
+        ArrayList<Desk> allDesks = database.getListByType(Types.DESK, type);
         Builder<Desk> b = new Builder<Desk>(l);
         b.setParts(allDesks);
         b.setItems();
@@ -140,7 +140,7 @@ public class RESTManager {
     public ArrayList<Filing> filingBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
         Filing f = new Filing(type);
-        ArrayList<Filing> allFiling = database.getListByType(Types.Filing, type);
+        ArrayList<Filing> allFiling = database.getListByType(Types.FILING, type);
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFiling);
         b.setItems();
@@ -165,7 +165,7 @@ public class RESTManager {
     public ArrayList<Lamp> lampBuilder(@RequestParam(value = "type", defaultValue = "") String type,
             @RequestParam(value = "number", defaultValue = "1") String number) {
         Lamp l = new Lamp(type);
-        ArrayList<Lamp> allLamps = database.getListByType(Types.Lamp, type);
+        ArrayList<Lamp> allLamps = database.getListByType(Types.LAMP, type);
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
