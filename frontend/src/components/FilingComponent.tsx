@@ -12,16 +12,20 @@ import { BsArchive } from "react-icons/bs";
 import "./ItemComponent.css";
 import { Filing } from "../interfaces/FurnitureTypes";
 
+/**
+ * props to pass to the component
+ * @author Ratik Kapoor, Robert Brown
+ */
 interface ContainerProps {
   filing: Filing;
 }
 
 /**
- * icons:
- *  lamp - sunnyOutline
- *  chair: GiOfficeChair
+ * Filing Item Component
+ * @param params filing information to be passed
+ * @returns Filing componenet to be rendered
+ * @author Ratik Kapoor, Robert Brown
  */
-
 const FilingComponent: React.FC<ContainerProps> = ({ filing }) => {
   return (
     <>

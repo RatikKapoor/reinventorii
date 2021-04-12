@@ -12,6 +12,11 @@ import { GiOfficeChair } from "react-icons/gi";
 import { IonButton } from "@ionic/react";
 import { Furniture } from "../interfaces/FurnitureTypes";
 
+/**
+ * Stylesheet for the PDF
+ * @author Robert Brown
+ * @since 2.1
+ */
 const styles = StyleSheet.create({
   defaultMargin: { marginLeft: 50, marginRight: 50 },
   titleBar: {
@@ -36,6 +41,13 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * Template component for the pdf
+ * @param props information to be displayed on the order form
+ * @returns MyDocument component to be rendered as a PDF
+ * @author Ratik Kapoor, Robert Brown
+ * @since 2.0
+ */
 const MyDocument = (props: OrderViewProps) => (
   <Document>
     <Page>
@@ -68,6 +80,10 @@ const MyDocument = (props: OrderViewProps) => (
   </Document>
 );
 
+/**
+ * data to pass to the pdf view
+ * @author Ratik Kapoor
+ */
 interface OrderViewProps {
   items: Array<Furniture>;
   orderedItem: string;
@@ -78,6 +94,12 @@ interface OrderViewProps {
   price: number;
 }
 
+/**
+ * a react component do display the pdf download
+ * @param props information to be displayed on the order form
+ * @returns a download order form button to be renderd
+ * @author Ratik Kapoor, Robert Brown
+ */
 const OrderView: React.FC<OrderViewProps> = (props: OrderViewProps) => (
   <>
     <PDFDownloadLink

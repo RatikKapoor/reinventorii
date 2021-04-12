@@ -12,16 +12,18 @@ import { BsArchive } from "react-icons/bs";
 import "./ItemComponent.css";
 import { Lamp } from "../interfaces/FurnitureTypes";
 
+/**
+ * props to pass to the component
+ */
 interface ContainerProps {
   lamp: Lamp;
 }
 
 /**
- * icons:
- *  lamp - sunnyOutline
- *  chair: GiOfficeChair
+ * Lamp List Item Component
+ * @param params lamp information to be passed
+ * @returns Lamp componenet to be rendered
  */
-
 const LampComponent: React.FC<ContainerProps> = ({ lamp }) => {
   return (
     <>

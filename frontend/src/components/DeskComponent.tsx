@@ -12,16 +12,19 @@ import { BsArchive } from "react-icons/bs";
 import "./ItemComponent.css";
 import { Desk } from "../interfaces/FurnitureTypes";
 
+/**
+ * props to pass to the component
+ * @author Ratik Kapoor, Robert Brown
+ */
 interface ContainerProps {
   desk: Desk;
 }
 
 /**
- * icons:
- *  lamp - sunnyOutline
- *  chair: GiOfficeChair
+ * Desk List Item Componenet
+ * @param props desk information to be passed
+ * @returns Desk component to be rendered
  */
-
 const DeskComponent: React.FC<ContainerProps> = ({ desk }) => {
   return (
     <>
