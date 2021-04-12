@@ -147,21 +147,21 @@ public class Database {
      * @param table string table to count columns (corresponds to furniture item)
      * @return number of columns (params) in the table
      */
-    public int countCols(String table) {
-        int i = 0;
-        try {
-            String query = "DESCRIBE ?";
-            PreparedStatement queryStatment = dbConnect.prepareStatement(query);
-            queryStatment.setString(1, table.toUpperCase());
-            results = queryStatment.executeQuery();
-            while (results.next()) {
-                i++;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return i;
-    }
+    // public int countCols(String table) {
+    // int i = 0;
+    // try {
+    // String query = "DESCRIBE ?";
+    // PreparedStatement queryStatment = dbConnect.prepareStatement(query);
+    // queryStatment.setString(1, table.toUpperCase());
+    // results = queryStatment.executeQuery();
+    // while (results.next()) {
+    // i++;
+    // }
+    // } catch (SQLException e) {
+    // e.printStackTrace();
+    // }
+    // return i;
+    // }
 
     /**
      * a generic function for
@@ -249,6 +249,7 @@ public class Database {
             e.printStackTrace();
             return false;
         }
+        
         return result;
     }
 }
