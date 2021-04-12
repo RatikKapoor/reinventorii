@@ -44,7 +44,7 @@ public abstract class FurniturePart {
     private String id;
     private String type;
     private int price;
-    private String ManuID;
+    private String manuID;
 
     public String getId() {
         return this.id;
@@ -71,11 +71,11 @@ public abstract class FurniturePart {
     }
 
     public String getManuID() {
-        return this.ManuID;
+        return this.manuID;
     }
 
-    public void setManuID(String ManuID) {
-        this.ManuID = ManuID;
+    public void setManuID(String manuID) {
+        this.manuID = manuID;
     }
 
     public FurniturePart(String type) {
@@ -85,7 +85,7 @@ public abstract class FurniturePart {
         this.type = type;
     }
 
-    public FurniturePart(String id, String type, int price, String ManuID) {
+    public FurniturePart(String id, String type, int price, String manuID) {
 
         if (!checkType(type)) {
             throw new IllegalFurnitureTypeException();
@@ -94,7 +94,7 @@ public abstract class FurniturePart {
         this.id = id;
         this.type = type;
         this.price = price;
-        this.ManuID = ManuID;
+        this.manuID = manuID;
     }
 
     /**
