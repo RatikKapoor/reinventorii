@@ -15,10 +15,18 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import LampComponent from "../components/LampComponent";
 import { Lamp } from "../interfaces/FurnitureTypes";
 
+/**
+ * Page for listing of all lamps
+ * @returns page to be rendered
+ */
 const Lamps: React.FC = () => {
   const [lamps, setLamps] = useState<Array<Lamp>>();
 
+  /**
+   * update lamps from the database
+   */
   const updateLamps = () => {
+    // REST API Call
     fetch(`http://localhost:36295/lamps`)
       .then((data) => data.json())
       .then((data) => {

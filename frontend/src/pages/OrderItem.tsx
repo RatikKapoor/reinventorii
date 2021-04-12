@@ -45,8 +45,11 @@ const OrderItem: React.FC = () => {
     undefined
   );
 
+  /**
+   * to place order
+   */
   const placeOrder = () => {
-    // TODO: Actually place order and remove from db
+    // REST API request to remove from DB
     fetch(
       `http://localhost:36295/remove?type=${selectedItem}&items=${output?.map(
         (v, k) => {
@@ -65,6 +68,9 @@ const OrderItem: React.FC = () => {
       });
   };
 
+  /**
+   * to calculate total price of order
+   */
   const calculateTotalPrice = () => {
     let sum: number = 0;
     output?.forEach((furniture) => {
@@ -73,7 +79,12 @@ const OrderItem: React.FC = () => {
     setTotalPrice(sum);
   };
 
+  /**
+   * to request an order
+   *  gets possible combination and passes to components
+   */
   const requestItem = () => {
+    // REST API request
     fetch(
       `http://localhost:36295/builder/${selectedItem.toLowerCase()}?type=${selectedType}&number=${quantity.toString()}`
     )
@@ -87,7 +98,11 @@ const OrderItem: React.FC = () => {
       });
   };
 
+  /**
+   * to get a list of manufacturers based on item type
+   */
   const getManufacturers = () => {
+    // REST API request
     fetch(
       `http://localhost:36295/manufacturers?type=${selectedItem.toLowerCase()}`
     )
@@ -101,6 +116,10 @@ const OrderItem: React.FC = () => {
     calculateTotalPrice();
   }, [output]);
 
+  /**
+   * User interface top be rendered
+   * @author Ratik Kapoor, Robert Brown
+   */
   return (
     <IonPage>
       <IonHeader>

@@ -15,9 +15,16 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import FilingComponent from "../components/FilingComponent";
 import { Filing } from "../interfaces/FurnitureTypes";
 
+/**
+ * Page for listing of all filings
+ * @returns page to be rendered
+ */
 const Filings: React.FC = () => {
   const [filings, setFilings] = useState<Array<Filing>>();
 
+  /**
+   * update filings from the database
+   */
   const updateFilings = () => {
     fetch(`http://localhost:36295/filings`)
       .then((data) => data.json())

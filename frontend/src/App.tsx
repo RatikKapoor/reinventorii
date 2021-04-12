@@ -37,6 +37,10 @@ import "./theme/variables.css";
 import Lamps from "./pages/Lamps";
 import Filings from "./pages/Filing";
 
+/**
+ * main react application container
+ * @returns main react app to be rendered
+ */
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
