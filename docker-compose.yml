@@ -10,7 +10,6 @@ services:
     ports:
       - 36295:36295
     environment:
-      # MYSQL_ROOT_PASSWORD: "eNsF409"
       WAIT_HOSTS: mysql:3306
       WAIT_HOSTS_TIMEOUT: 300
       WAIT_SLEEP_INTERVAL: 30
@@ -25,14 +24,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.react.prod
-    deploy:
-      resources:
-        reservations:
-          memory: 1024M
-        limits:
-          memory: 1536M
     ports:
       - 5000:5000
+    depends_on:
+      - maven
 
   mysql:
     container_name: ensf409-finalProject-database-container

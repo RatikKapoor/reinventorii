@@ -8,9 +8,10 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
-COPY ./frontend/package.json ./
+# COPY ./frontend/package.json ./
 # COPY ./frontend/yarn.lock ./
-RUN npm install
+COPY ./frontend/build ./
+# RUN npm install
 # RUN yarn add react-scripts@3.4.1 -g --silent
 RUN npm install -g serve
 
@@ -18,4 +19,4 @@ RUN npm install -g serve
 COPY ./frontend/ ./
 
 # start app
-CMD npm install && npm run build && serve -s build
+CMD serve -s build
