@@ -407,4 +407,26 @@ public class DatabaseTest {
 
         assertEquals("C1320 (Chair) cannot be removed. It may already be missing from database.", expect, actual);
     }
+
+    @Test
+    public void testDatabase_removeItemByID_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database testDb = testDb = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
+        boolean expect = false;
+        boolean actual = true;
+
+        FurniturePart.Types partType = Types.fromString("Chair"); // Checks for Chair Parts
+
+        try {
+            testDb.connect();
+            actual = testDb.removeItemByID(partType, "Cxxxx");
+            testDb.disconnect();
+        } catch (SQLException e) {
+            fail("Err");
+        }
+
+        assertEquals("C1320 (Chair) cannot be removed. It may already be missing from database.", expect, actual);
+    }
 }
