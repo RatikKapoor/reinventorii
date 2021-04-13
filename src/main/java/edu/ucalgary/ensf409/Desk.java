@@ -19,7 +19,6 @@ public class Desk extends FurniturePart {
      * @param type string type of desk
      */
     public Desk(String type) {
-        // TODO add type checking against enums in constructor
         super(type);
     }
 
@@ -124,20 +123,6 @@ public class Desk extends FurniturePart {
         return false;
     }
 
-}
-
-/**
- * an enumeration for desk types
- *
- * @author Robert Brown
- */
-enum DeskType {
-    Standing, Adjustable, Traditional;
-
-    @Override
-    public String toString() {
-        return this.name().replace("_", " ");
-    }
 }
 
 /**

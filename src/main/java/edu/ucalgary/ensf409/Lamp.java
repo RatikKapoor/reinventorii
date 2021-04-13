@@ -17,7 +17,6 @@ public class Lamp extends FurniturePart {
      * @param type string type of lamp
      */
     public Lamp(String type) {
-        // TODO add type checking agains enums in constructor
         super(type);
     }
 
@@ -110,20 +109,6 @@ public class Lamp extends FurniturePart {
             }
         }
         return false;
-    }
-}
-
-/**
- * an enumeration for lamp types
- *
- * @author Robert Brown, Ratik Kapoor
- */
-enum LampType {
-    Desk, Study, Swing_Arm;
-
-    @Override
-    public String toString() {
-        return this.name().replace("_", " ");
     }
 }
 
