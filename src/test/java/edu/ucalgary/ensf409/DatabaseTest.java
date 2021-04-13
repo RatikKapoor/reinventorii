@@ -21,6 +21,12 @@ import java.util.ArrayList;
 
 @SpringBootTest
 public class DatabaseTest {
+
+    /**
+     * Test: Database_DBConnect
+     * 
+     * Description: Tests connection with database from env file. Default is set.
+     */
     @Test
     public void testDatabase_DBConnect() {
         Dotenv enviroment = Dotenv.load();
@@ -35,6 +41,11 @@ public class DatabaseTest {
         }
     }
 
+    /**
+     * Test: Database_DBConnect_Fail
+     * 
+     * Description: Tests checks fail condition with SQL Exception catch.
+     */
     @Test
     public void testDatabase_DBConnect_Fail() {
         Database testDb = new Database("jdbc:mysql://server.ratik.me:12345/db", "ensf409", "java123");
