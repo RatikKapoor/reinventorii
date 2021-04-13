@@ -38,8 +38,9 @@ services:
     environment:
       MYSQL_DATABASE: "db"
       MYSQL_ROOT_PASSWORD: "eNsF409"
-      MYSQL_USER: ensf409
-      MYSQL_PASSWORD: thisIsACoolEnsf409Password
+      MYSQL_USER: scm
+      MYSQL_PASSWORD: ensf409
+      MYSQL_ROOT_HOST: "%"
     ports:
       - "26289:3306"
     expose:
