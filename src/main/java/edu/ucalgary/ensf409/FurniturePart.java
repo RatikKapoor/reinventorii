@@ -12,13 +12,13 @@ public abstract class FurniturePart {
         DESK(new String[] { "Traditional", "Adjustable", "Standing" }),
         FILING(new String[] { "Small", "Medium", "Large" }), LAMP(new String[] { "Desk", "Swing Arm", "Study" });
 
-        public static Types fromString(String input) {
+        public static Types fromString(String input) throws IllegalFurnitureTypeException {
             for (Types t : Types.values()) {
                 if (t.toString().toLowerCase().contains(input.toLowerCase())) {
                     return t;
                 }
             }
-            return null;
+            throw new IllegalFurnitureTypeException();
         }
 
         private final List<String> types;

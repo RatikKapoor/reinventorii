@@ -372,25 +372,28 @@ public class DatabaseTest {
         Database testDb = testDb = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
                 enviroment.get("DB_PASS"));
 
-        ArrayList<String> expect = new ArrayList();
-        expect.add("C3405");
-        expect.add("C0914");
-        expect.add("C1441");
-
         boolean err = false;
 
-        FurniturePart.Types partType = Types.fromString("Random"); // Incorrect
+        ArrayList<String> expect = new ArrayList();
+        ArrayList<String> actual = new ArrayList();
+
+        expect.add("C0914");
+        expect.add("C1148");
+        expect.add("Random");
+        FurniturePart.Types partType = Types.fromString("CHAIR"); // Incorrect
 
         try {
             testDb.connect();
-            try {
-                ArrayList<Chair> temp = testDb.getListByType(partType, ""); // Checking This Method. Fails here
-                err = true;
-            } catch (IllegalArgumentException e) {
-                testDb.disconnect();
+            ArrayList<Chair> temp = testDb.getListByType(partType, ""); // Checking This Method. Fails here
+            for (int i = 0; i < temp.size(); i++) {
+                actual.add(temp.get(i).getId());
             }
-        } catch (SQLException e) {
-            fail("Err");
+            if (actual != expect) {
+                err = true;
+            }
+        } catch (Exception e) {
+            err = true;
+            testDb.disconnect();
         }
         assertTrue("Expected a failed test, test passed.", err);
     }

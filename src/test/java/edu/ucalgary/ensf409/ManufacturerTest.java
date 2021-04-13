@@ -2,11 +2,16 @@ package edu.ucalgary.ensf409;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
+/**
+ * Tests for Manufacture Class.
+ * 
+ * @version 1.1
+ * @author Risat Haque
+ */
 @SpringBootTest
 public class ManufacturerTest {
 

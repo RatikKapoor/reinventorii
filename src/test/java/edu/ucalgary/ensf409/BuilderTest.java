@@ -2,12 +2,19 @@ package edu.ucalgary.ensf409;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.sql.SQLException;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
+/**
+ * Tests for Builder Class.
+ * 
+ * @version 1.1
+ * @author Anand Patel
+ */
 @SpringBootTest
 public class BuilderTest {
     /**
@@ -15,14 +22,15 @@ public class BuilderTest {
      * correct.
      */
     @Test
-    public void LampBuildCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Lamp_BuildCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Lamp l = new Lamp("Desk");
@@ -43,16 +51,16 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void LampBuildIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+    public void testBuilder_Lamp_BuildID() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
         try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
             test.connect();
-
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
-
         Lamp l = new Lamp("Desk");
         ArrayList<Lamp> allLamps = test.getListByType(Types.LAMP, "Desk");
         Builder<Lamp> b = new Builder<Lamp>(l);
@@ -73,14 +81,15 @@ public class BuilderTest {
      * correct.
      */
     @Test
-    public void LampBuildMultipleCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Lamp_BuildMultipleCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Lamp l = new Lamp("Study");
@@ -101,14 +110,15 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void LampBuildMultipleIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Lamp_BuildMultipleIdTest() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Lamp l = new Lamp("Study");
@@ -133,14 +143,15 @@ public class BuilderTest {
      * indicating that the Lamps cannot be built.
      */
     @Test
-    public void LampBuildCostTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Lamp_BuildCostTestFail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Lamp l = new Lamp("Desk");
@@ -162,14 +173,15 @@ public class BuilderTest {
      * Should be null, indicating that the Lamps cannot be built.
      */
     @Test
-    public void LampBuildIdTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Lamp_BuildIdTest_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Lamp l = new Lamp("Desk");
@@ -192,14 +204,15 @@ public class BuilderTest {
      * is correct.
      */
     @Test
-    public void DeskBuildCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Desk_BuildCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Desk d = new Desk("Traditional");
@@ -220,14 +233,15 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void DeskBuildIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Desk_BuildId() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Desk d = new Desk("Traditional");
@@ -250,14 +264,15 @@ public class BuilderTest {
      * is correct.
      */
     @Test
-    public void DeskBuildMultipleCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Desk_BuildMultipleCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Desk d = new Desk("Traditional");
@@ -278,14 +293,15 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void DeskBuildMultipleIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Desk_BuildMultipleId() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Desk d = new Desk("Traditional");
@@ -310,14 +326,15 @@ public class BuilderTest {
      * Desks cannot be built.
      */
     @Test
-    public void DeskBuildIdTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Desk_BuildId_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Desk d = new Desk("Traditional");
@@ -340,14 +357,15 @@ public class BuilderTest {
      * Should be -1 indicating that the Desks cannot be built.
      */
     @Test
-    public void DeskBuildCostTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Desk_BuildCost_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Desk d = new Desk("Traditional");
@@ -368,14 +386,15 @@ public class BuilderTest {
      * correct.
      */
     @Test
-    public void ChairBuildCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Chair_BuildCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Chair c = new Chair("Mesh");
@@ -396,14 +415,15 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void ChairBuildIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Chair_BuildId() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Chair c = new Chair("Mesh");
@@ -428,14 +448,15 @@ public class BuilderTest {
      * indicating that the Chairs cannot be built.
      */
     @Test
-    public void ChairBuildCostTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_ChairBuildCost_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Chair c = new Chair("Mesh");
@@ -457,14 +478,15 @@ public class BuilderTest {
      * indicating that the Chairs cannot be built.
      */
     @Test
-    public void ChairBuildIdTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Chair_BuildId_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Chair c = new Chair("Mesh");
@@ -486,16 +508,16 @@ public class BuilderTest {
      * correct.
      */
     @Test
-    public void FilingBuildCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+    public void testBuilder_FilingBuildCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
         try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
             test.connect();
-
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
-
         Filing f = new Filing("Medium");
         ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(f);
@@ -514,16 +536,16 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void FilingBuildIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
+    public void testBuilder_Filing_BuildId() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
         try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
             test.connect();
-
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
-
         Filing f = new Filing("Medium");
         ArrayList<Filing> allFilings = test.getListByType(Types.FILING, "Medium");
         Builder<Filing> b = new Builder<Filing>(f);
@@ -545,14 +567,15 @@ public class BuilderTest {
      * correct.
      */
     @Test
-    public void FilingBuildMultipleCostTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuillder_Filing_BuildMultipleCost() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Filing f = new Filing("Large");
@@ -573,14 +596,15 @@ public class BuilderTest {
      * combination is correct.
      */
     @Test
-    public void FilingBuildMultipleIdTest() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Filing_BuildMultipleId() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Filing f = new Filing("Large");
@@ -606,14 +630,15 @@ public class BuilderTest {
      * -1 indicating that the Filings cannot be built.
      */
     @Test
-    public void FilingBuildCostTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Filing_BuildCost_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Filing f = new Filing("Medium");
@@ -635,14 +660,15 @@ public class BuilderTest {
      * be null, indicating that the Filings cannot be built.
      */
     @Test
-    public void FilingBuildIdTestFail() {
-        Database test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-        try {
-            test = new Database("jdbc:mysql://server.ratik.me:25565/INVENTORY", "root", "eNsF409");
-            test.connect();
+    public void testBuilder_Filing_BuildId_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
 
+        try {
+            test.connect();
         } catch (SQLException e) {
-            System.out.println("SQL Exception");
+            fail("Err");
         }
 
         Filing f = new Filing("Medium");
@@ -663,7 +689,7 @@ public class BuilderTest {
      * Checks correct components in Desk are received.
      */
     @Test
-    public void getItemsDesk() {
+    public void testBuilder_getItemsDesk() {
         Desk d = new Desk("Adjustable");
         Builder<Desk> b = new Builder<Desk>(d);
 
@@ -681,7 +707,7 @@ public class BuilderTest {
      * Checks correct components in Chair are received.
      */
     @Test
-    public void getItemsChair() {
+    public void testBuilder_getItemsChair() {
         Chair c = new Chair("Mesh");
         Builder<Chair> b = new Builder<Chair>(c);
 
@@ -700,7 +726,7 @@ public class BuilderTest {
      * Checks correct components in Lamp are received.
      */
     @Test
-    public void getItemsLamp() {
+    public void testBuilder_getItemsLamp() {
         Lamp l = new Lamp("Study");
         Builder<Lamp> b = new Builder<Lamp>(l);
 
@@ -717,7 +743,7 @@ public class BuilderTest {
      * Checks correct components in Filing are received.
      */
     @Test
-    public void getItemsFiling() {
+    public void testBuilder_getItemsFiling() {
         Filing f = new Filing("Small");
         Builder<Filing> b = new Builder<Filing>(f);
 
