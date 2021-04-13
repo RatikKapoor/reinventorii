@@ -5,9 +5,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Tests for Filing Class and FurnitureType Methods used by Filing
+ * 
+ * @version 1.1
+ * @author Risat Haque
+ */
 @SpringBootTest
 public class FilingTest {
 
@@ -20,7 +25,7 @@ public class FilingTest {
      * for ManuID.
      */
     @Test
-    public void Filing_getManuID_SetWithConstructor() {
+    public void testFiling_getManuID_SetWithConstructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         String actual = aTestFiling.getManuID();
@@ -37,7 +42,7 @@ public class FilingTest {
      * class FurniturePart. This test validates the inheritance property for id.
      */
     @Test
-    public void Filing_getId_SetWithConstructor() {
+    public void testFiling_getId_SetWithConstructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         String actual = aTestFiling.getId();
@@ -55,7 +60,7 @@ public class FilingTest {
      * for price.
      */
     @Test
-    public void Filing_getPrice_SetWithConstructor() {
+    public void testFiling_getPrice_SetWithConstructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         int actual = aTestFiling.getPrice();
@@ -73,7 +78,7 @@ public class FilingTest {
      */
 
     @Test
-    public void Filing_getType_SetWithConstructor() {
+    public void testFiling_getType_SetWithConstructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         String actual = aTestFiling.getType();
@@ -90,7 +95,7 @@ public class FilingTest {
      */
 
     @Test
-    public void Filing_QueryConstructor() {
+    public void testFiling_QueryConstructor() {
 
         Filing aTestFiling = new Filing("Small");
         String actual = aTestFiling.getType();
@@ -107,7 +112,7 @@ public class FilingTest {
      */
 
     @Test
-    public void FilingIllegal_QueryConstructor() {
+    public void testFilingIllegal_QueryConstructor() {
 
         boolean err = false;
         try {
@@ -126,7 +131,7 @@ public class FilingTest {
      * correct.
      */
     @Test
-    public void Filing_DatabaseConstructor() {
+    public void testFiling_DatabaseConstructor() {
         ArrayList<String> aTestList = new ArrayList<>();
         aTestList.add("F001");
         aTestList.add("Small");
@@ -150,7 +155,7 @@ public class FilingTest {
      * correct. In this case, ArrayList is too large.
      */
     @Test
-    public void FilingIllegal_DatabaseConstructor() {
+    public void testFilingIllegal_DatabaseConstructor() {
         ArrayList<String> aTestList = new ArrayList<>();
         aTestList.add("F001");
         aTestList.add("Small");
@@ -179,7 +184,7 @@ public class FilingTest {
      * Tests a False Statement
      */
     @Test
-    public void Filing_StringToBoolean_Cabinet_False() {
+    public void testFiling_StringToBoolean_Cabinet_False() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         boolean actual = aTestFiling.stringToBoolean("N");
@@ -197,7 +202,7 @@ public class FilingTest {
      * Tests a True Statement
      */
     @Test
-    public void FilingIllegal_StringToBoolean_Cushion_True() {
+    public void testFilingIllegal_StringToBoolean_Cushion_True() {
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "Y", 50, "005");
         boolean actual = aTestFiling.stringToBoolean("Y");
         boolean expect = true;
@@ -212,7 +217,7 @@ public class FilingTest {
      * through the getLegs method.
      */
     @Test
-    public void Filing_getCabinet_SetWithConstructor() {
+    public void testFiling_getCabinet_SetWithConstructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         boolean actual = aTestFiling.getCabinet();
@@ -228,7 +233,7 @@ public class FilingTest {
      * through the getCushion method.
      */
     @Test
-    public void Filing_getRails_SetWithConstructor() {
+    public void testFiling_getRails_SetWithConstructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         boolean actual = aTestFiling.getRails();
@@ -245,7 +250,7 @@ public class FilingTest {
      * type: "Small" for for furniture Filing.
      */
     @Test
-    public void FilingLegalType_Constructor() {
+    public void testFilingLegalType_Constructor() {
 
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
         String actual = aTestFiling.getType();
@@ -263,7 +268,7 @@ public class FilingTest {
      * thrown.
      */
     @Test
-    public void FilingIllegalType_Constructor() {
+    public void testFilingIllegalType_Constructor() {
         String type = "aFakeType";
         Boolean err = false;
         try {
@@ -284,7 +289,7 @@ public class FilingTest {
      * furniture type (String) is required as a paramater.
      */
     @Test
-    public void FilingIllegalType_DefaultConstructor() {
+    public void testFilingIllegalType_DefaultConstructor() {
         String type = "aFakeType";
         Boolean err = false;
         try {
@@ -303,7 +308,7 @@ public class FilingTest {
      * FurniturePart class). The tested paramater is "aFakeType"
      */
     @Test
-    public void FilingIllegalType_CheckType_False1() {
+    public void testFilingIllegalType_CheckType_False1() {
         String type = "aFakeType";
         Boolean expect = false;
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
@@ -321,7 +326,7 @@ public class FilingTest {
      * tests are in fact case SENSITIVE
      */
     @Test
-    public void FilingIllegalType_CheckType_False2() {
+    public void testFilingIllegalType_CheckType_False2() {
         String type = "small";
         Boolean expect = false;
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
@@ -340,7 +345,7 @@ public class FilingTest {
      * this test is specifically for the checkType method and not the constructor
      */
     @Test
-    public void FilingIllegalType_CheckType_False3() {
+    public void testFilingIllegalType_CheckType_False3() {
         String type = "Ergonomic";
         Boolean expect = false;
         Filing aTestFiling = new Filing("F001", "Small", "Y", "Y", "N", 50, "005");
@@ -358,7 +363,7 @@ public class FilingTest {
      * in Filing.
      */
     @Test
-    public void FilinglegalType_CheckType_Small() {
+    public void testFilinglegalType_CheckType_Small() {
         String type = "Small";
         Filing aTestFiling = new Filing("F001", type, "Y", "Y", "N", 50, "005");
 
@@ -374,7 +379,7 @@ public class FilingTest {
      * a type.
      */
     @Test
-    public void FilinglegalType_CheckType_Medium() {
+    public void testFilinglegalType_CheckType_Medium() {
         String type = "Medium";
         Filing aTestFiling = new Filing("F001", type, "Y", "Y", "N", 50, "005");
 
@@ -390,7 +395,7 @@ public class FilingTest {
      * type.
      */
     @Test
-    public void FilinglegalType_CheckType_Large() {
+    public void testFilinglegalType_CheckType_Large() {
         String type = "Large";
         Filing aTestFiling = new Filing("F001", type, "Y", "Y", "N", 50, "005");
 
