@@ -11,6 +11,9 @@ import java.util.ArrayList;
  * 
  * Implementation of FileOuput To Utilize class, send in relevent parts
  * information from input and output. Call createReceipt - returns a String
+ * 
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.0
  */
 public class FileOutput {
     private String inputFurniture;

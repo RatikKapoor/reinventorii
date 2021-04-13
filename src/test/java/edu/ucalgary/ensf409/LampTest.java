@@ -8,10 +8,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 /**
- * Tests for Lamp Class and FurnitureType Methods used by Lamp
+ * Class LampTest to test methods in class Lamp
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.0
  */
 @SpringBootTest
 public class LampTest {

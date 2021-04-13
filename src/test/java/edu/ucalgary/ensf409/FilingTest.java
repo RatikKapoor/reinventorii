@@ -8,10 +8,11 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 /**
- * Tests for Filing Class and FurnitureType Methods used by Filing
+ * Class Filing Test to test methods in class Filing
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.1
  */
 @SpringBootTest
 public class FilingTest {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * Implementation of class Lamp extending from Furniture Part
  * 
+ * @author Robert Brown, Ratik Kapoor, Risat Haque, Anand Patel
  * @since 1.2
  */
 public class Lamp extends FurniturePart {

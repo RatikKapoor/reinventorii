@@ -5,6 +5,7 @@ import java.util.ArrayList;
 /**
  * Implementation of class Chair extending from FurniturePart
  * 
+ * @author Robert Brown, Ratik Kapoor, Risat Haque
  * @since 1.3
  */
 public class Chair extends FurniturePart {

@@ -3,8 +3,9 @@ package edu.ucalgary.ensf409;
 import java.util.ArrayList;
 
 /**
- * a class for a manufacturer
+ * A class for a Manufacturer
  * 
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
  * @since 1.1
  */
 public class Manufacturer {

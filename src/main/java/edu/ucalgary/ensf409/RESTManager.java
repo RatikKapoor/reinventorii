@@ -13,6 +13,13 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvException;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
+/**
+ * Class RESTManager creates an API to allow data to be accessed by other
+ * applications
+ * 
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.2
+ */
 @RestController
 public class RESTManager {
     public Database database = null;

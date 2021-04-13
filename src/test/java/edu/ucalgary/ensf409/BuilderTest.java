@@ -10,10 +10,11 @@ import java.sql.SQLException;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
 /**
- * Tests for Builder Class.
+ * Class BuilderTest to test idCombinations and cheapest cost values for
+ * furniture
  * 
  * @version 1.1
- * @author Anand Patel
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
  */
 @SpringBootTest
 public class BuilderTest {

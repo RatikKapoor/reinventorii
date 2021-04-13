@@ -6,11 +6,14 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 /**
  * Tests for Manufacture Class.
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.1
  */
 @SpringBootTest
 public class ManufacturerTest {

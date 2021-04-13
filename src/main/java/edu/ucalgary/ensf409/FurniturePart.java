@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Implementation of class FurniturePart. Contains data for all different types
+ * of furnitures.
+ * 
+ * @author Robert Brown, Ratik Kapoor, Risat Haque, Anand Patel
  * @since 1.1
  */
 public abstract class FurniturePart {
