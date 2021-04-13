@@ -131,10 +131,12 @@ public class Desk extends FurniturePart {
  * @author Robert Brown
  */
 enum DeskParts {
-    Legs, Top, Drawer;
+    LEGS, TOP, DRAWER;
 
     @Override
     public String toString() {
-        return this.name().toString();
+        String first = this.name().substring(0, 1).toUpperCase();
+        String second = this.name().substring(1).toLowerCase();
+        return first + second;
     }
 }
