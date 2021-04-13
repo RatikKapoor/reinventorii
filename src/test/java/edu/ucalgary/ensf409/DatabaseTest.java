@@ -407,35 +407,4 @@ public class DatabaseTest {
 
         assertEquals("C1320 (Chair) cannot be removed. It may already be missing from database.", expect, actual);
     }
-
-    /**
-     * Test: Database_removeItemByID_Fail
-     * 
-     * Description: Trys to remove an item that does not exist in database. This
-     * will fail and the tests checks for the fail.
-     * 
-     * Assumption: Item does not exist in current database.
-     * 
-     */
-    @Test
-    public void testDatabase_removeItemByID_Fail() {
-        Dotenv enviroment = Dotenv.load();
-        Database testDb = testDb = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
-                enviroment.get("DB_PASS"));
-
-        boolean expect = false;
-        boolean actual = true;
-
-        FurniturePart.Types partType = Types.fromString("Chair"); // Checks for Chair Parts
-
-        try {
-            testDb.connect();
-            actual = testDb.removeItemByID(partType, "Cxxxx");
-            testDb.disconnect();
-        } catch (SQLException e) {
-            fail("Err");
-        }
-
-        assertEquals("C1320 (Chair) cannot be removed. It may already be missing from database.", expect, actual);
-    }
 }
