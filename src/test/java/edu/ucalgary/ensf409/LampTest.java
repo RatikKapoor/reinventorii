@@ -5,9 +5,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Tests for Lamp Class and FurnitureType Methods used by Lamp
+ * 
+ * @version 1.1
+ * @author Risat Haque
+ */
 @SpringBootTest
 public class LampTest {
 
@@ -20,7 +25,7 @@ public class LampTest {
      * for ManuID.
      */
     @Test
-    public void Lamp_getManuID_SetWithConstructor() {
+    public void testLamp_getManuID_SetWithConstructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         String actual = aTestLamp.getManuID();
@@ -37,7 +42,7 @@ public class LampTest {
      * FurniturePart. This test validates the inheritance property for id.
      */
     @Test
-    public void Lamp_getId_SetWithConstructor() {
+    public void testLamp_getId_SetWithConstructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         String actual = aTestLamp.getId();
@@ -54,7 +59,7 @@ public class LampTest {
      * class FurniturePart. This test validates the inheritance property for price.
      */
     @Test
-    public void Lamp_getPrice_SetWithConstructor() {
+    public void testLamp_getPrice_SetWithConstructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         int actual = aTestLamp.getPrice();
@@ -72,7 +77,7 @@ public class LampTest {
      */
 
     @Test
-    public void Lamp_getType_SetWithConstructor() {
+    public void testLamp_getType_SetWithConstructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         String actual = aTestLamp.getType();
@@ -89,7 +94,7 @@ public class LampTest {
      */
 
     @Test
-    public void Lamp_QueryConstructor() {
+    public void testLamp_QueryConstructor() {
 
         Lamp aTestLamp = new Lamp("Swing Arm");
         String actual = aTestLamp.getType();
@@ -106,7 +111,7 @@ public class LampTest {
      */
 
     @Test
-    public void LampIllegal_QueryConstructor() {
+    public void testLampIllegal_QueryConstructor() {
 
         boolean err = false;
         try {
@@ -125,7 +130,7 @@ public class LampTest {
      * correct.
      */
     @Test
-    public void Lamp_DatabaseConstructor() {
+    public void testLamp_DatabaseConstructor() {
         ArrayList<String> aTestList = new ArrayList<>();
         aTestList.add("L132");
         aTestList.add("Desk");
@@ -148,7 +153,7 @@ public class LampTest {
      * correct. In this case, ArrayList is too large.
      */
     @Test
-    public void LampIllegal_DatabaseConstructor() {
+    public void testLampIllegal_DatabaseConstructor() {
         ArrayList<String> aTestList = new ArrayList<>();
         aTestList.add("L132");
         aTestList.add("Desk");
@@ -175,7 +180,7 @@ public class LampTest {
      * False Statement
      */
     @Test
-    public void Lamp_StringToBoolean_Base_False() {
+    public void testLamp_StringToBoolean_Base_False() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "N", "N", 18, "005");
         boolean actual = aTestLamp.stringToBoolean("N");
@@ -192,7 +197,7 @@ public class LampTest {
      * True Statement
      */
     @Test
-    public void LampIllegal_StringToBoolean_Cushion_True() {
+    public void testLampIllegal_StringToBoolean_Cushion_True() {
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         boolean actual = aTestLamp.stringToBoolean("Y");
         boolean expect = true;
@@ -207,7 +212,7 @@ public class LampTest {
      * through the getBase method.
      */
     @Test
-    public void Lamp_getCabinet_SetWithConstructor() {
+    public void testLamp_getCabinet_SetWithConstructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         boolean actual = aTestLamp.getBase();
@@ -223,7 +228,7 @@ public class LampTest {
      * through the getBulb method.
      */
     @Test
-    public void Lamp_getRails_SetWithConstructor() {
+    public void testLamp_getRails_SetWithConstructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         boolean actual = aTestLamp.getBulb();
@@ -240,7 +245,7 @@ public class LampTest {
      * type: "Desk" for for furniture Lamp.
      */
     @Test
-    public void LampLegalType_Constructor() {
+    public void testLampLegalType_Constructor() {
 
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
         String actual = aTestLamp.getType();
@@ -258,7 +263,7 @@ public class LampTest {
      * thrown.
      */
     @Test
-    public void LampIllegalType_Constructor() {
+    public void testLampIllegalType_Constructor() {
         String type = "aFakeType";
         Boolean err = false;
         try {
@@ -279,7 +284,7 @@ public class LampTest {
      * furniture type (String) is required as a paramater.
      */
     @Test
-    public void LampIllegalType_DefaultConstructor() {
+    public void testLampIllegalType_DefaultConstructor() {
         String type = "aFakeType";
         Boolean err = false;
         try {
@@ -298,7 +303,7 @@ public class LampTest {
      * FurniturePart class). The tested paramater is "aFakeType"
      */
     @Test
-    public void LampIllegalType_CheckType_False1() {
+    public void testLampIllegalType_CheckType_False1() {
         String type = "aFakeType";
         Boolean expect = false;
 
@@ -319,7 +324,7 @@ public class LampTest {
      * tests are in fact case SENSITIVE
      */
     @Test
-    public void LampIllegalType_CheckType_False2() {
+    public void testLampIllegalType_CheckType_False2() {
         String type = "desk";
         Boolean expect = false;
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
@@ -338,7 +343,7 @@ public class LampTest {
      * test is specifically for the checkType method and not the constructor
      */
     @Test
-    public void LampIllegalType_CheckType_False3() {
+    public void testLampIllegalType_CheckType_False3() {
         String type = "Ergonomic";
         Boolean expect = false;
         Lamp aTestLamp = new Lamp("L132", "Desk", "Y", "N", 18, "005");
@@ -356,7 +361,7 @@ public class LampTest {
      * in Desk.
      */
     @Test
-    public void LamplegalType_CheckType_Desk() {
+    public void testLamplegalType_CheckType_Desk() {
         String type = "Desk";
         Lamp aTestLamp = new Lamp("L132", type, "Y", "N", 18, "005");
 
@@ -372,7 +377,7 @@ public class LampTest {
      * as a type.
      */
     @Test
-    public void LamplegalType_CheckType_SwingArm() {
+    public void testLamplegalType_CheckType_SwingArm() {
         String type = "Swing Arm";
         Lamp aTestLamp = new Lamp("L132", type, "Y", "N", 18, "005");
 
@@ -388,7 +393,7 @@ public class LampTest {
      * type.
      */
     @Test
-    public void LamplegalType_CheckType_Study() {
+    public void testLamplegalType_CheckType_Study() {
         String type = "Study";
         Lamp aTestLamp = new Lamp("L132", type, "Y", "N", 18, "005");
 
