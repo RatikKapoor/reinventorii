@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SpringBootTest
 public class DatabaseTest {
@@ -298,4 +299,112 @@ public class DatabaseTest {
         assertTrue("Correct Manufacturers were added. Expecting a fail", err);
     }
 
+    /**
+     * Test: Database_getListByType
+     * 
+     * Description: Checks whether correct chairs are in inventory database using
+     * the getListByTypeMethod. Checks furniture part ID to verify.
+     * 
+     * Assumption: Original SQL database is used for testing. Exactly 3 Task Chair
+     * id's stored.
+     * 
+     */
+
+    @Test
+    public void testDatabase_getListByType() {
+        Dotenv enviroment = Dotenv.load();
+        Database testDb = testDb = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
+        ArrayList<String> expect = new ArrayList();
+        expect.add("C0914");
+        expect.add("C1148");
+        expect.add("C3405");
+
+        ArrayList<String> actual = new ArrayList();
+
+        FurniturePart.Types partType = Types.fromString("Chair"); // Checks for Chair Parts
+
+        try {
+            testDb.connect();
+            ArrayList<Chair> temp = testDb.getListByType(partType, "Task"); // Checking This Method
+            for (int i = 0; i < temp.size(); i++) {
+                actual.add(temp.get(i).getId());
+            }
+            testDb.disconnect();
+        } catch (SQLException e) {
+            fail("Err");
+        }
+
+        assertEquals("Chair ID Does not match in table", expect, actual);
+    }
+
+    /**
+     * Test: Database_getListByType_Fail
+     * 
+     * Description: Checks whether correct chairs are in inventory database using
+     * the getListByTypeMethod. Checks furniture part ID to verify. This case fails
+     * since we test a "Random" furniture type
+     * 
+     * Assumption: Original SQL database is used for testing.
+     * 
+     */
+    @Test
+    public void testDatabase_getListByType_Fail() {
+        Dotenv enviroment = Dotenv.load();
+        Database testDb = testDb = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
+        ArrayList<String> expect = new ArrayList();
+        expect.add("C3405");
+        expect.add("C0914");
+        expect.add("C1441");
+
+        boolean err = false;
+
+        FurniturePart.Types partType = Types.fromString("Random"); // Incorrect
+
+        try {
+            testDb.connect();
+            try {
+                ArrayList<Chair> temp = testDb.getListByType(partType, ""); // Checking This Method. Fails here
+                err = true;
+            } catch (IllegalArgumentException e) {
+                testDb.disconnect();
+            }
+        } catch (SQLException e) {
+            fail("Err");
+        }
+        assertTrue("Expected a failed test, test passed.", err);
+    }
+
+    /**
+     * Test: Database_removeItemByID
+     * 
+     * Description: Removes item C1320 from the database. Assumes the data
+     * 
+     * Assumption: Original SQL database is used for testing.
+     * 
+     */
+    @Test
+    public void testDatabase_removeItemByID() {
+        Dotenv enviroment = Dotenv.load();
+        Database testDb = testDb = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
+                enviroment.get("DB_PASS"));
+
+        boolean expect = true;
+        boolean actual = false;
+
+        FurniturePart.Types partType = Types.fromString("Chair"); // Checks for Chair Parts
+
+        try {
+            testDb.connect();
+            actual = testDb.removeItemByID(partType, "C1320");
+            testDb.disconnect();
+        } catch (SQLException e) {
+            fail("Err");
+        }
+
+        assertEquals("C1320 (Chair) cannot be removed. It may already be missing from database.", expect, actual);
+    }
 }
