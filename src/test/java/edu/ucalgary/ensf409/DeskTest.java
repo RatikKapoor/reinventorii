@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Tests for Desk Class and FurnitureType Methods used by Desk
+ * Class DeskTest to test methods in class DeskTest
  * 
  * @version 1.1
- * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
  */
 @SpringBootTest
 public class DeskTest {

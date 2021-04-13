@@ -5,8 +5,8 @@ import java.util.ArrayList;
 /**
  * Implementation of class Filing extending from FurniturePart
  * 
- * @author Robert Brown, Anand Patel, Ratik Kapoor, Risat Haque
- * @since 1.1
+ * @author Robert Brown, Ratik Kapoor, Risat Haque, Anand Patel
+ * @since 1.3
  */
 public class Filing extends FurniturePart {
     private boolean rails;

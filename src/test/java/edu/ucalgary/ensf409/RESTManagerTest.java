@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
  * backend.
  * 
  * @version 1.1
- * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.0
  */
 @SpringBootTest
 public class RESTManagerTest {

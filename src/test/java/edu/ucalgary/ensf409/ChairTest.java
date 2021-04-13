@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Tests for Chair Class and FurnitureType Methods used by Chair
  * 
  * @version 1.2
- * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
  */
 @SpringBootTest
 public class ChairTest {

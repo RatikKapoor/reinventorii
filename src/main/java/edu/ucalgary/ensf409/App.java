@@ -5,8 +5,11 @@ import edu.ucalgary.ensf409.FurniturePart.Types;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * a class used for local testing and debugging of the code Note: this class is
- * not used in the implementation
+ * Class App used to test the program from main Note: this class is not used in
+ * the implementation
+ * 
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
+ * @since 1.3
  */
 public class App {
     public static void main(String[] args) throws Exception {

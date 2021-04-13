@@ -10,10 +10,10 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
 
 /**
- * Builder: Cheapest Algorithm calculator.
+ * Class Builder for constructing requested item
  * 
- * @author Anand Patel, Robert Brown, Ratik Kapoor, Risat Haque
- * @since 1.1
+ * @author Anand Patel
+ * @since 1.3
  */
 public class Builder<T extends FurniturePart> {
     private T object;

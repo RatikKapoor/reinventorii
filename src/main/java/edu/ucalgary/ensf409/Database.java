@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- * a class for connecting to the Database
+ * A class for connecting to the Database
  * 
- * @author Robert Brown
+ * @author Robert Brown, Ratik Kapoor, Risat Haque
  * @since 1.0
  */
 public class Database {

@@ -13,11 +13,11 @@ import io.github.cdimascio.dotenv.DotenvException;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
 /**
- * IllegalFurnitureTypeException: Custom Exception for better testing and future
- * implementation.
+ * Class RESTManager creates an API to allow data to be accessed by other
+ * applications
  * 
- * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
- * @since 1.1
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.2
  */
 @RestController
 public class RESTManager {

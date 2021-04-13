@@ -4,8 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * a class to run the SpringBoot Application
+ * Class Application used for SpringBoot
  * 
+ * @author Robert Brown
  * @since 1.0
  */
 @SpringBootApplication

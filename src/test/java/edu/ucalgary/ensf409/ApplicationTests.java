@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * a class to run the Spring Boot tests
+ * Class ApplicationTests a class to run the Spring Boot tests
+ * 
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
  */
 @SpringBootTest
 class ApplicationTests {
