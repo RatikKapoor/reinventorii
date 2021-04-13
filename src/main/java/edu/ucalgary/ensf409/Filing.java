@@ -87,10 +87,12 @@ public class Filing extends FurniturePart {
  * @author Robert Brown
  */
 enum FilingParts {
-    Rails, Drawers, Cabinet;
+    RAILS, DRAWERS, CABINET;
 
     @Override
     public String toString() {
-        return this.name().toString();
+        String first = this.name().substring(0, 1).toUpperCase();
+        String second = this.name().substring(1).toLowerCase();
+        return first + second;
     }
 }
