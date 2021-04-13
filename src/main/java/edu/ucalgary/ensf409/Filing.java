@@ -82,20 +82,6 @@ public class Filing extends FurniturePart {
 }
 
 /**
- * an enumeration for filing types
- *
- * @author Robert Brown
- */
-enum FilingType {
-    Small, Medium, Large;
-
-    @Override
-    public String toString() {
-        return this.name().replace("_", " ");
-    }
-}
-
-/**
  * an enumeration for the parts of the Filing
  *
  * @author Robert Brown
