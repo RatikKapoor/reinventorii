@@ -11,7 +11,13 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
+
+/**
+ * Tests for inventory.sql database
+ * 
+ * @version 1.1
+ * @author Risat Haque
+ */
 
 @SpringBootTest
 public class DatabaseTest {
@@ -408,6 +414,15 @@ public class DatabaseTest {
         assertEquals("C1320 (Chair) cannot be removed. It may already be missing from database.", expect, actual);
     }
 
+    /**
+     * Test: Database_removeItemByID_Fail
+     * 
+     * Description: Try's to remove an item that does not exist in the database.
+     * Expects Fail.
+     * 
+     * Assumption: Original SQL database is used for testing and id does not exist.
+     * 
+     */
     @Test
     public void testDatabase_removeItemByID_Fail() {
         Dotenv enviroment = Dotenv.load();
