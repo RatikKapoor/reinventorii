@@ -8,6 +8,12 @@ import static org.junit.Assert.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Tests for Desk Class and FurnitureType Methods used by Desk
+ * 
+ * @version 1.1
+ * @author Risat Haque
+ */
 @SpringBootTest
 public class DeskTest {
 
@@ -20,7 +26,7 @@ public class DeskTest {
      * for ManuID.
      */
     @Test
-    public void Desk_getManuID_SetWithConstructor() {
+    public void testDesk_getManuID_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         String actual = aTestDesk.getManuID();
@@ -37,7 +43,7 @@ public class DeskTest {
      * FurniturePart. This test validates the inheritance property for id.
      */
     @Test
-    public void Desk_getId_SetWithConstructor() {
+    public void testDesk_getId_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         String actual = aTestDesk.getId();
@@ -54,7 +60,7 @@ public class DeskTest {
      * class FurniturePart. This test validates the inheritance property for price.
      */
     @Test
-    public void Desk_getPrice_SetWithConstructor() {
+    public void testDesk_getPrice_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         int actual = aTestDesk.getPrice();
@@ -72,7 +78,7 @@ public class DeskTest {
      */
 
     @Test
-    public void Desk_getType_SetWithConstructor() {
+    public void testDesk_getType_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         String actual = aTestDesk.getType();
@@ -89,7 +95,7 @@ public class DeskTest {
      */
 
     @Test
-    public void Desk_QueryConstructor() {
+    public void testDesk_QueryConstructor() {
 
         Desk aTestDesk = new Desk("Standing");
         String actual = aTestDesk.getType();
@@ -106,7 +112,7 @@ public class DeskTest {
      * correct.
      */
     @Test
-    public void Desk_DatabaseConstructor() {
+    public void testDesk_DatabaseConstructor() {
         ArrayList<String> aTestList = new ArrayList<>();
         aTestList.add("D3820");
         aTestList.add("Standing");
@@ -130,7 +136,7 @@ public class DeskTest {
      * correct. In this case, ArrayList is too large.
      */
     @Test
-    public void DeskIllegal_DatabaseConstructor() {
+    public void testDeskIllegal_DatabaseConstructor() {
         ArrayList<String> aTestList = new ArrayList<>();
         aTestList.add("D3820");
         aTestList.add("Standing");
@@ -157,7 +163,7 @@ public class DeskTest {
      * Tests a False Statement, "N".
      */
     @Test
-    public void Desk_StringToBoolean_Legs_False() {
+    public void testDesk_StringToBoolean_Legs_False() {
 
         Desk aTestDesk = new Desk("D2311", "Standing", "N", "N", "N", 150, "001");
         boolean actual = aTestDesk.stringToBoolean("N");
@@ -173,7 +179,7 @@ public class DeskTest {
      * Tests a True Statement, "Y".
      */
     @Test
-    public void DeskIllegal_StringToBoolean_Legs_True() {
+    public void testDeskIllegal_StringToBoolean_Legs_True() {
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         boolean actual = aTestDesk.stringToBoolean("Y");
         boolean expect = true;
@@ -188,7 +194,7 @@ public class DeskTest {
      * through the getLegs method.
      */
     @Test
-    public void Desk_getLegs_SetWithConstructor() {
+    public void testDesk_getLegs_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         boolean actual = aTestDesk.getLegs();
@@ -204,7 +210,7 @@ public class DeskTest {
      * through the getTop method.
      */
     @Test
-    public void Desk_getTop_SetWithConstructor() {
+    public void testDesk_getTop_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         boolean actual = aTestDesk.getTop();
@@ -220,7 +226,7 @@ public class DeskTest {
      * through the getDrawer method.
      */
     @Test
-    public void Desk_getDrawer_SetWithConstructor() {
+    public void testDesk_getDrawer_SetWithConstructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         boolean actual = aTestDesk.getDrawer();
@@ -237,7 +243,7 @@ public class DeskTest {
      * type: "Standing" for for furniture Desk.
      */
     @Test
-    public void DeskLegalType_Constructor() {
+    public void testDeskLegalType_Constructor() {
 
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
         String actual = aTestDesk.getType();
@@ -255,7 +261,7 @@ public class DeskTest {
      * thrown.
      */
     @Test
-    public void DeskIllegalType_Constructor() {
+    public void testDeskIllegalType_Constructor() {
         String type = "aFakeType";
         Boolean err = false;
         try {
@@ -276,7 +282,7 @@ public class DeskTest {
      * furniture type (String) is required as a paramater.
      */
     @Test
-    public void DeskIllegalType_DefaultConstructor() {
+    public void testDeskIllegalType_DefaultConstructor() {
         String type = "aFakeType";
         Boolean err = false;
         try {
@@ -295,7 +301,7 @@ public class DeskTest {
      * FurniturePart class). The tested paramater is "aFakeType"
      */
     @Test
-    public void DeskIllegalType_CheckType_False1() {
+    public void testDeskIllegalType_CheckType_False1() {
         String type = "aFakeType";
         Boolean expect = false;
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
@@ -313,7 +319,7 @@ public class DeskTest {
      * tests are in fact case SENSITIVE
      */
     @Test
-    public void DeskIllegalType_CheckType_False2() {
+    public void testDeskIllegalType_CheckType_False2() {
         String type = "standing";
         Boolean expect = false;
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
@@ -332,7 +338,7 @@ public class DeskTest {
      * test is specifically for the checkType method and not the constructor
      */
     @Test
-    public void DeskIllegalType_CheckType_False3() {
+    public void testDeskIllegalType_CheckType_False3() {
         String type = "Ergonomic";
         Boolean expect = false;
         Desk aTestDesk = new Desk("D3820", "Standing", "Y", "N", "N", 150, "001");
@@ -350,7 +356,7 @@ public class DeskTest {
      * a Type in Desk.
      */
     @Test
-    public void DesklegalType_CheckType_Traditional() {
+    public void testDesklegalType_CheckType_Traditional() {
         String type = "Traditional";
         Desk aTestDesk = new Desk("D1111", type, "N", "N", "Y", 2, "101");
 
@@ -366,7 +372,7 @@ public class DeskTest {
      * as a type.
      */
     @Test
-    public void DesklegalType_CheckType_Adjustable() {
+    public void testDesklegalType_CheckType_Adjustable() {
         String type = "Adjustable";
         Desk aTestDesk = new Desk("D3820", type, "Y", "N", "N", 150, "001");
 
@@ -382,7 +388,7 @@ public class DeskTest {
      * as a type.
      */
     @Test
-    public void DesklegalType_CheckType_Standing() {
+    public void testDesklegalType_CheckType_Standing() {
         String type = "Standing";
         Desk aTestDesk = new Desk("D3820", type, "Y", "N", "N", 150, "001");
 
