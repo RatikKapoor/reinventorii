@@ -381,9 +381,9 @@ public class DatabaseTest {
     /**
      * Test: Database_removeItemByID
      * 
-     * Description: Removes item C1320 from the database. Assumes the data
+     * Description: Removes item C1320 from the database.
      * 
-     * Assumption: Original SQL database is used for testing.
+     * Assumption: Original SQL database is used for testing and C1320 exists.
      * 
      */
     @Test
