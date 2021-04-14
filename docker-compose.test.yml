@@ -7,9 +7,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.maven-test
-    # volumes:
-    #   - ".:/app"
-    #   - "/app/target"
     ports:
       - 36295:36295
 
