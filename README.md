@@ -4,6 +4,8 @@
 
 This project creates a platform for employees at the University of Calgary to manage their furniture. By using this advanced Supply Chain Management software, the university will be able to prevent reusable materials from entering the landfill and thus preventing waste.
 
+Check out our demonstration video on [YouTube](https://youtu.be/KbdvFVaVgr0)
+
 ### Built With
 
 - [Spring Boot](https://spring.io/projects/spring-boot)
@@ -18,7 +20,7 @@ This project creates a platform for employees at the University of Calgary to ma
 
 Ensure that you have Docker and `docker-compose` installed on your development computer: [Docker website](https://www.docker.com). Windows computers will need to use WSL2 (Windows Subsystem for Linux) as a backend following [this guide](https://docs.docker.com/docker-for-windows/wsl/).
 
-The MySQL server is hosted within the container. When running the container the server will automaticaally create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your maching using the port `26289`. The default username is `scm` and password is `ensf409`.
+The MySQL server is hosted within the container. When running the container the server will automaticaally create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your machine using the port `26289`. The default username is `scm` and password is `ensf409`.
 
 **MySQL Database Login Information**
 | paramater | value |
@@ -49,7 +51,7 @@ To quit the development environment, simply press Ctrl+C and the Docker containe
 
 #### Prerequisites
 
-The MySQL server is hosted within the container. When running the container the server will automaticaally create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your maching using the port `26289`. The default username is `scm` and password is `ensf409`.
+The MySQL server is hosted within the container. When running the container the server will automaticaally create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your machine using the port `26289`. The default username is `scm` and password is `ensf409`.
 
 **MySQL Database Login Information**
 | paramater | value |
