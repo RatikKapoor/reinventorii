@@ -2,11 +2,7 @@ package edu.ucalgary.ensf409;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import org.junit.*;
 import static org.junit.Assert.*;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**

@@ -1,17 +1,18 @@
 package edu.ucalgary.ensf409;
 
 import java.util.ArrayList;
-
 import edu.ucalgary.ensf409.FurniturePart.Types;
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * a class used for local testing and debugging of the code Note: this class is
+ * not used in the implementation
+ */
 public class App {
     public static void main(String[] args) throws Exception {
         Dotenv enviroment = Dotenv.load();
         Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
                 enviroment.get("DB_PASS"));
-        // Database test = new Database("jdbc:mysql://server.ratik.me:25565", "root",
-        // "eNsF409");
         test.connect();
         // test.getListByType(Types.Lamp, "Study").forEach(item -> {
         // System.out.println(item.getId());
