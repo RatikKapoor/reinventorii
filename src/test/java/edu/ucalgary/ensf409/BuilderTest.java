@@ -14,7 +14,8 @@ import edu.ucalgary.ensf409.FurniturePart.Types;
  * furniture
  * 
  * @version 1.1
- * @author Robert Brown, Risat Haque, Anand Patel, Ratik Kapoor
+ * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.1
  */
 @SpringBootTest
 public class BuilderTest {

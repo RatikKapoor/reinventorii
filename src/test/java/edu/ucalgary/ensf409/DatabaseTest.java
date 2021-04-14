@@ -23,6 +23,7 @@ import java.util.ArrayList;
  * Class DatabaseTest for testing methods in Database class
  * 
  * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.1
  */
 @SpringBootTest
 public class DatabaseTest {
