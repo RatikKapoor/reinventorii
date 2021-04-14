@@ -54,6 +54,10 @@ docker-compose up --build --force-recreate
 
 _**NOTE:** Since this process is creating **all** React, Java, and MySQL containers, it may take 2-3 minutes to fully build (depending on your computer specs, Windows machines will be slower). Once building is finished, browse to [http://localhost:5000](http://localhost:5000) to view the application._
 
+When the production environment is ready, your terminal will look similar to the following image:
+
+![Startup](docs/startup.png)
+
 To quit the production environment, simply press Ctrl+C and the Docker containers will shut down.
 
 #### Connecting with MySQL workbench
