@@ -38,7 +38,11 @@ public class Builder<T extends FurniturePart> {
     // FOR CHEAPEST ID COMBINATIONS
     private ArrayList<String> idCombination = new ArrayList<>();
 
-    // TODO: Documentation for the constructor
+    /**
+     * Constructor for Builder class
+     * 
+     * @param toBuild - Item to be built
+     */
     public Builder(T toBuild) {
         this.object = toBuild;
         this.typeName = object.getClass().getSimpleName();
@@ -49,8 +53,8 @@ public class Builder<T extends FurniturePart> {
      * 
      * @param count number of furniture requested
      */
-    public void BuildMultipleItems(int count) {
-        BuildItem(count);
+    public void buildMultipleItems(int count) {
+        buildItem(count);
     }
 
     /**
@@ -58,7 +62,7 @@ public class Builder<T extends FurniturePart> {
      * Cheapest id combination that is required to make the furniture. PROMISES:
      * Cheapest cost that is required to make the furniture.
      */
-    public void BuildItem(int count) {
+    public void buildItem(int count) {
         HashMap<String, Integer> hash = new HashMap<String, Integer>();
 
         switch (FurniturePart.Types.fromString(this.typeName)) {
@@ -98,7 +102,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 // adds the cheapest components to construct the Lamp
                 // if needed
-                ArrayList<String> baseId = getarrayID(count - 1, ids, "base");
+                ArrayList<String> baseId = getArrayID(count - 1, ids, "base");
                 if (baseId == null) {
                     cost = -1;
                     break;
@@ -109,7 +113,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> bulbId = getarrayID(count - featureCount1, ids, "bulb");
+                ArrayList<String> bulbId = getArrayID(count - featureCount1, ids, "bulb");
                 if (bulbId == null) {
                     cost = -1;
                     break;
@@ -170,7 +174,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 // adds the cheapest components to construct the Desk
                 // if needed
-                ArrayList<String> legsId = getarrayID(count - 1, ids, "legs");
+                ArrayList<String> legsId = getArrayID(count - 1, ids, "legs");
                 if (legsId == null) {
                     cost = -1;
                     break;
@@ -185,7 +189,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> topId = getarrayID(count - featureCount1, ids, "top");
+                ArrayList<String> topId = getArrayID(count - featureCount1, ids, "top");
                 if (topId == null) {
                     cost = -1;
                     break;
@@ -196,7 +200,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> drawerId = getarrayID(count - featureCount2, ids, "drawer");
+                ArrayList<String> drawerId = getArrayID(count - featureCount2, ids, "drawer");
                 if (drawerId == null) {
                     cost = -1;
                     break;
@@ -266,7 +270,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 // adds the cheapest components to construct the Chair
                 // if needed
-                ArrayList<String> legsId = getarrayID(count - 1, ids, "chairLegs");
+                ArrayList<String> legsId = getArrayID(count - 1, ids, "chairLegs");
                 if (legsId == null) {
                     cost = -1;
                     break;
@@ -285,7 +289,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> armsId = getarrayID(count - featureCount1, ids, "arms");
+                ArrayList<String> armsId = getArrayID(count - featureCount1, ids, "arms");
                 if (armsId == null) {
                     cost = -1;
                     break;
@@ -300,7 +304,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> seatId = getarrayID(count - featureCount2, ids, "seat");
+                ArrayList<String> seatId = getArrayID(count - featureCount2, ids, "seat");
                 if (seatId == null) {
                     cost = -1;
                     break;
@@ -311,7 +315,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> cushionId = getarrayID(count - featureCount3, ids, "cushion");
+                ArrayList<String> cushionId = getArrayID(count - featureCount3, ids, "cushion");
                 if (cushionId == null) {
                     cost = -1;
                     break;
@@ -371,7 +375,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 // adds the cheapest components to construct the Filing
                 // if needed
-                ArrayList<String> railsId = getarrayID(count - 1, ids, "rails");
+                ArrayList<String> railsId = getArrayID(count - 1, ids, "rails");
                 if (railsId == null) {
                     cost = -1;
                     break;
@@ -386,7 +390,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> drawersId = getarrayID(count - featureCount1, ids, "drawers");
+                ArrayList<String> drawersId = getArrayID(count - featureCount1, ids, "drawers");
                 if (drawersId == null) {
                     cost = -1;
                     break;
@@ -397,7 +401,7 @@ public class Builder<T extends FurniturePart> {
                         ids.add(val);
                     }
                 }
-                ArrayList<String> cabinetId = getarrayID(count - featureCount2, ids, "cabinet");
+                ArrayList<String> cabinetId = getArrayID(count - featureCount2, ids, "cabinet");
                 if (cabinetId == null) {
                     cost = -1;
                     break;
@@ -485,7 +489,7 @@ public class Builder<T extends FurniturePart> {
     }
 
     /**
-     * @return final cost of requested furnitures
+     * @return final cost of requested furniture
      */
     public int getCost() {
         return this.cost;
@@ -529,25 +533,25 @@ public class Builder<T extends FurniturePart> {
     /**
      * @return cheapest ids that make the furniture(s)
      */
-    public ArrayList<String> getidCombination() {
+    public ArrayList<String> getIdCombination() {
         return this.idCombination;
     }
 
     /**
-     * Method that returns an arraylist of the cheapest ids. PROMISES: Cheapest ids
+     * Method that returns an ArrayList of the cheapest ids. PROMISES: Cheapest ids
      * for requested amount of components
      * 
      * @param count         how many components we need
      * @param ids           ids that have already been picked
      * @param componentType what component we need
-     * @return a arraylist of cheapest ids
+     * @return a ArrayList of cheapest ids
      */
-    public ArrayList<String> getarrayID(int count, ArrayList<String> ids, String componentType) {
-        ArrayList<String> basearray = new ArrayList<>();
+    public ArrayList<String> getArrayID(int count, ArrayList<String> ids, String componentType) {
+        ArrayList<String> baseArray = new ArrayList<>();
         if (count == 0) {
             // if no components are needed return
             // the original id
-            basearray.add(ids.get(0));
+            baseArray.add(ids.get(0));
         } else {
             // used to get all eligible prices
             ArrayList<Integer> prices = new ArrayList<>();
@@ -684,7 +688,7 @@ public class Builder<T extends FurniturePart> {
             for (String i : priceAndIds.keySet()) {
                 for (Integer value : finalPrices) {
                     if (priceAndIds.get(i).equals(value)) {
-                        basearray.add(i);
+                        baseArray.add(i);
                         counter++;
                         break;
                     }
@@ -695,7 +699,7 @@ public class Builder<T extends FurniturePart> {
             }
 
         }
-        return basearray;
+        return baseArray;
     }
 
 }

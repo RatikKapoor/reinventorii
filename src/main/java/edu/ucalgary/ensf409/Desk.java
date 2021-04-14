@@ -33,10 +33,10 @@ public class Desk extends FurniturePart {
      * @param top    string top of desk (will be converted to boolean)
      * @param drawer string drawer of desk (will be converted to boolean)
      * @param price  int pice of desk
-     * @param manuID string manufacturer id of desk
+     * @param manuId string manufacturer id of desk
      */
-    public Desk(String id, String type, String legs, String top, String drawer, int price, String manuID) {
-        super(id, type, price, manuID);
+    public Desk(String id, String type, String legs, String top, String drawer, int price, String manuId) {
+        super(id, type, price, manuId);
         this.legs = stringToBoolean(legs);
         this.top = stringToBoolean(top);
         this.drawer = stringToBoolean(drawer);

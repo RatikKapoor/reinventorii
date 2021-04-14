@@ -38,7 +38,7 @@ public class BuilderTest {
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
         int actual = b.getCost();
         int expect = 20;
@@ -66,9 +66,9 @@ public class BuilderTest {
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("L013");
         expect.add("L342");
@@ -97,7 +97,7 @@ public class BuilderTest {
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
-        b.BuildMultipleItems(2);
+        b.buildMultipleItems(2);
 
         int actual = b.getCost();
         int expect = 20;
@@ -126,9 +126,9 @@ public class BuilderTest {
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
-        b.BuildMultipleItems(2);
+        b.buildMultipleItems(2);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("L982");
         expect.add("L223");
@@ -159,7 +159,7 @@ public class BuilderTest {
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
         int expect = b.getCost();
         int actual = -1;
@@ -189,9 +189,9 @@ public class BuilderTest {
         Builder<Lamp> b = new Builder<Lamp>(l);
         b.setParts(allLamps);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
 
         ArrayList<String> expect = new ArrayList<>();
         expect = null;
@@ -220,7 +220,7 @@ public class BuilderTest {
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
         int actual = b.getCost();
         int expect = 100;
@@ -249,9 +249,9 @@ public class BuilderTest {
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("D8675");
         expect.add("D0890");
@@ -280,7 +280,7 @@ public class BuilderTest {
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
-        b.BuildMultipleItems(2);
+        b.buildMultipleItems(2);
 
         int actual = b.getCost();
         int expect = 200;
@@ -309,9 +309,9 @@ public class BuilderTest {
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
-        b.BuildMultipleItems(2);
+        b.buildMultipleItems(2);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("D9352");
         expect.add("D4231");
@@ -342,9 +342,9 @@ public class BuilderTest {
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect = null;
         test.disconnect();
@@ -373,7 +373,7 @@ public class BuilderTest {
         Builder<Desk> b = new Builder<Desk>(d);
         b.setParts(allDesks);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
         int actual = b.getCost();
         int expect = -1;
@@ -402,7 +402,7 @@ public class BuilderTest {
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
         int actual = b.getCost();
         int expect = 200;
@@ -431,9 +431,9 @@ public class BuilderTest {
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("C6748");
         expect.add("C9890");
@@ -464,7 +464,7 @@ public class BuilderTest {
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
         int actual = b.getCost();
         int expect = -1;
@@ -494,9 +494,9 @@ public class BuilderTest {
         Builder<Chair> b = new Builder<Chair>(c);
         b.setParts(allChairs);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect = null;
         test.disconnect();
@@ -523,7 +523,7 @@ public class BuilderTest {
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
         int actual = b.getCost();
         int expect = 200;
@@ -551,9 +551,9 @@ public class BuilderTest {
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
-        b.BuildMultipleItems(1);
+        b.buildMultipleItems(1);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("F009");
         expect.add("F002");
@@ -583,7 +583,7 @@ public class BuilderTest {
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
-        b.BuildMultipleItems(2);
+        b.buildMultipleItems(2);
 
         int actual = b.getCost();
         int expect = 600;
@@ -612,9 +612,9 @@ public class BuilderTest {
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
-        b.BuildMultipleItems(2);
+        b.buildMultipleItems(2);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect.add("F015");
         expect.add("F011");
@@ -646,7 +646,7 @@ public class BuilderTest {
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
         int actual = b.getCost();
         int expect = -1;
@@ -676,9 +676,9 @@ public class BuilderTest {
         Builder<Filing> b = new Builder<Filing>(f);
         b.setParts(allFilings);
         b.setItems();
-        b.BuildMultipleItems(6);
+        b.buildMultipleItems(6);
 
-        ArrayList<String> actual = b.getidCombination();
+        ArrayList<String> actual = b.getIdCombination();
         ArrayList<String> expect = new ArrayList<>();
         expect = null;
         test.disconnect();

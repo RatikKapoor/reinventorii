@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * A class for connecting to the Database
  * 
- * @author Robert Brown
+ * @author Robert Brown, Ratik Kapoor, Risat Haque, Anand Patel
  * @since 1.0
  */
 public class Database {
@@ -47,15 +47,16 @@ public class Database {
         try {
             dbConnect.close();
         } catch (Exception e) {
-            // TODO: handle exception
+            System.err.println("Could not disconnect from database!!");
+            e.printStackTrace();
         }
     }
 
     public void storeManufacturers() {
         ArrayList<Manufacturer> m = new ArrayList<Manufacturer>();
         try {
-            Statement queryStatment = dbConnect.createStatement();
-            results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
+            Statement queryStatement = dbConnect.createStatement();
+            results = queryStatement.executeQuery("SELECT * FROM MANUFACTURER");
             while (results.next()) {
                 m.add(new Manufacturer(results.getString("ManuID"), results.getString("Name"),
                         results.getString("Phone"), results.getString("Province"),
@@ -67,8 +68,8 @@ public class Database {
         manufacturers = m;
         for (FurniturePart.Types type : FurniturePart.Types.values()) {
             try {
-                Statement queryStatment = dbConnect.createStatement();
-                results = queryStatment.executeQuery("SELECT ManuID FROM " + type.toString().toUpperCase());
+                Statement queryStatement = dbConnect.createStatement();
+                results = queryStatement.executeQuery("SELECT ManuID FROM " + type.toString().toUpperCase());
                 while (results.next()) {
                     addTypeToManufacturer(results.getString("ManuID"), type);
                 }
@@ -86,7 +87,7 @@ public class Database {
      */
     public void addTypeToManufacturer(String id, FurniturePart.Types type) {
         for (Manufacturer manufacturer : manufacturers) {
-            if (manufacturer.getManuid().contains(id)) {
+            if (manufacturer.getManuId().contains(id)) {
                 if (manufacturer.getTypes().isEmpty()) {
                     manufacturer.getTypes().add(type);
                 } else {
@@ -126,8 +127,8 @@ public class Database {
     public ArrayList<String> getManufacturerNames() {
         ArrayList<String> m = new ArrayList<>();
         try {
-            Statement queryStatment = dbConnect.createStatement();
-            results = queryStatment.executeQuery("SELECT * FROM MANUFACTURER");
+            Statement queryStatement = dbConnect.createStatement();
+            results = queryStatement.executeQuery("SELECT * FROM MANUFACTURER");
             while (results.next()) {
                 m.add(results.getString("name"));
             }
@@ -158,8 +159,8 @@ public class Database {
 
         ArrayList<T> parts = new ArrayList<T>();
         try {
-            Statement queryStatment = dbConnect.createStatement();
-            results = queryStatment.executeQuery("SELECT * FROM " + item.toString().toUpperCase()
+            Statement queryStatement = dbConnect.createStatement();
+            results = queryStatement.executeQuery("SELECT * FROM " + item.toString().toUpperCase()
                     + (type.equals("") ? "" : (" WHERE Type=\"" + type + "\"")));
             int j = 0;
             for (int i = 3; i < results.findColumn("Price"); i++) {

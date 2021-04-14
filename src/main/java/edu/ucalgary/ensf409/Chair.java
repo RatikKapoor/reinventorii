@@ -33,11 +33,11 @@ public class Chair extends FurniturePart {
      * @param arms    string arms of chair (will be converted to boolean)
      * @param seat    string seat of chair (will be converted to boolean)
      * @param price   int price of chair
-     * @param manuid  string manufacturer id of chair
+     * @param manuId  string manufacturer id of chair
      */
     public Chair(String id, String type, String legs, String cushion, String arms, String seat, int price,
-            String manuid) {
-        super(id, type, price, manuid);
+            String manuId) {
+        super(id, type, price, manuId);
 
         this.legs = stringToBoolean(legs);
         this.cushion = stringToBoolean(cushion);
@@ -139,6 +139,11 @@ public class Chair extends FurniturePart {
         this.seat = seat;
     }
 
+    /**
+     * Checks type of input using enum
+     * 
+     * @param myType - String to compare with enum
+     */
     protected boolean checkType(String myType) {
         Types aType = Types.CHAIR;
         for (String t : aType.getList()) {

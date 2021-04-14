@@ -32,10 +32,10 @@ public class Filing extends FurniturePart {
      * @param drawers
      * @param cabinet
      * @param price
-     * @param manuID
+     * @param manuId
      */
-    public Filing(String id, String type, String rails, String drawers, String cabinet, int price, String manuID) {
-        super(id, type, price, manuID);
+    public Filing(String id, String type, String rails, String drawers, String cabinet, int price, String manuId) {
+        super(id, type, price, manuId);
         this.rails = stringToBoolean(rails);
         this.drawers = stringToBoolean(drawers);
         this.cabinet = stringToBoolean(cabinet);

@@ -70,7 +70,7 @@ public abstract class FurniturePart {
     private String id;
     private String type;
     private int price;
-    private String manuID;
+    private String manuId;
 
     /**
      * @return id
@@ -118,14 +118,14 @@ public abstract class FurniturePart {
      * @return manuID as a string
      */
     public String getManuID() {
-        return this.manuID;
+        return this.manuId;
     }
 
     /**
      * @param manuID
      */
     public void setManuID(String manuID) {
-        this.manuID = manuID;
+        this.manuId = manuID;
     }
 
     /**
@@ -157,7 +157,7 @@ public abstract class FurniturePart {
         this.id = id;
         this.type = type;
         this.price = price;
-        this.manuID = manuID;
+        this.manuId = manuID;
     }
 
     /**
