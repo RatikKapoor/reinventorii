@@ -13,7 +13,7 @@ import edu.ucalgary.ensf409.FurniturePart.Types;
  * Tests for Builder Class.
  * 
  * @version 1.1
- * @author Anand Patel
+ * @author Robert Brown, Risat Haque, Anand Patel, Ratik Kapoor
  */
 @SpringBootTest
 public class BuilderTest {

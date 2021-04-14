@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Tests for Lamp Class and FurnitureType Methods used by Lamp
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 @SpringBootTest
 public class LampTest {

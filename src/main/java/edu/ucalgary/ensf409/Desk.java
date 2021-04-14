@@ -5,7 +5,9 @@ import java.util.ArrayList;
 /**
  * Implementation of class Desk extending from FurniturePart
  * 
- * @since 1.3
+ * @author Robert Brown, Anand Patel, Ratik Kapoor, Risat Haque
+ * @since 1.1
+ *
  */
 public class Desk extends FurniturePart {
     private boolean legs;
