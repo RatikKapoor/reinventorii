@@ -340,6 +340,7 @@ public class Builder<T extends FurniturePart> {
                     // remove duplicates
                     allIds = (ArrayList<String>) allIds.stream().distinct().collect(Collectors.toList());
                     allCombinations.add(allIds);
+                    change++;
                 }
             }
 
