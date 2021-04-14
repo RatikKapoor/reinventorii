@@ -66,21 +66,6 @@ The docker container that's hosting the MySQL server has it's port exposed on po
 
 To use a new database in the production app, simply replace the `db/inventory.sql` file. Please keep the original file for testing purposes as tests expect the `inventory.sql` that comes with this repo.
 
-#### Running tests
-
-The unit testing environment for this project has also been dockerized. Just like `./run`, testing will use the `db/inventory.sql` file and spawn a clean database. Please ensure you are using the correct `inventory.sql` file for testing, as tests have been coded to expect the file that comes with this repo.
-
-```bash
-# Run all tests contained in src/test/**
-./test
-
-# *** Note: Windows users using command prompt (as opposed to powershell or git bash) can simply use the `test`
-# command within the root directory
-
-# *** Note: if `./test` does not work you can start the production environment using the following command ***
-docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --force-recreate
-```
-
 ### Manual method (not recommended)
 
 #### Prerequisites
