@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  * Tests for Manufacture Class.
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 @SpringBootTest
 public class ManufacturerTest {

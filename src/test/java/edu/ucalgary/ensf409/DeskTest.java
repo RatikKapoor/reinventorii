@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Tests for Desk Class and FurnitureType Methods used by Desk
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 @SpringBootTest
 public class DeskTest {

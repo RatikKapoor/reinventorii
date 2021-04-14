@@ -5,7 +5,9 @@ import java.util.ArrayList;
 /**
  * a class for a manufacturer
  * 
+ * @author  Robert Brown, Risat Haque, Anand Patel, Ratik Kapoor
  * @since 1.1
+ */
  */
 public class Manufacturer {
     private String manuid;

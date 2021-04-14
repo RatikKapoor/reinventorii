@@ -13,6 +13,13 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvException;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 
+/**
+ * IllegalFurnitureTypeException: Custom Exception for better testing and future
+ * implementation.
+ * 
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
+ * @since 1.1
+ */
 @RestController
 public class RESTManager {
     public Database database = null;

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Tests for inventory.sql database
  * 
  * @version 1.1
- * @author Risat Haque
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 
 @SpringBootTest
