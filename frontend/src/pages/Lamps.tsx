@@ -18,6 +18,7 @@ import { Lamp } from "../interfaces/FurnitureTypes";
 /**
  * Page for listing of all lamps
  * @returns page to be rendered
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 const Lamps: React.FC = () => {
   const [lamps, setLamps] = useState<Array<Lamp>>();

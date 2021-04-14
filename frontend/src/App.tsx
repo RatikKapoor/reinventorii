@@ -40,6 +40,7 @@ import Filings from "./pages/Filing";
 /**
  * main react application container
  * @returns main react app to be rendered
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 const App: React.FC = () => (
   <IonApp>

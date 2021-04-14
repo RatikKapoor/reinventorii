@@ -14,6 +14,7 @@ interface ContainerProps {
  * Lamp List Item Component
  * @param params lamp information to be passed
  * @returns Lamp componenet to be rendered
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 const LampComponent: React.FC<ContainerProps> = ({ lamp }) => {
   return (
