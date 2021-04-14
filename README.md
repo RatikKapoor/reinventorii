@@ -16,7 +16,7 @@ Check out our demonstration video on [YouTube](https://youtu.be/KbdvFVaVgr0)
 
 ### Software Architecture
 
-[Detailed in docs/UML.md](docs/UML.md)
+[Detailed in `docs/UML.md`](docs/UML.md)
 
 ## Getting Started
 
