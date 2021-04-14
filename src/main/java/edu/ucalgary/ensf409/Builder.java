@@ -587,7 +587,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("base")) {
                     if (Lamp.class.cast(item).getBase()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a base
                         if (!ids.contains(Lamp.class.cast(item).getId())) {
                             prices.add(Lamp.class.cast(item).getPrice());
                             priceAndIds.put(Lamp.class.cast(item).getId(), Lamp.class.cast(item).getPrice());
@@ -596,7 +596,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("legs")) {
                     if (Desk.class.cast(item).getLegs()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a legs
                         if (!ids.contains(Desk.class.cast(item).getId())) {
                             prices.add(Desk.class.cast(item).getPrice());
                             priceAndIds.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
@@ -605,7 +605,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("top")) {
                     if (Desk.class.cast(item).getTop()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a top
                         if (!ids.contains(Desk.class.cast(item).getId())) {
                             prices.add(Desk.class.cast(item).getPrice());
                             priceAndIds.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
@@ -614,7 +614,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("drawer")) {
                     if (Desk.class.cast(item).getDrawer()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a drawer
                         if (!ids.contains(Desk.class.cast(item).getId())) {
                             prices.add(Desk.class.cast(item).getPrice());
                             priceAndIds.put(Desk.class.cast(item).getId(), Desk.class.cast(item).getPrice());
@@ -623,7 +623,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("chairLegs")) {
                     if (Chair.class.cast(item).getLegs()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a legs
                         if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
@@ -632,7 +632,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("arms")) {
                     if (Chair.class.cast(item).getArms()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a arms
                         if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
@@ -641,7 +641,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("seat")) {
                     if (Chair.class.cast(item).getSeat()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a seat
                         if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
@@ -650,7 +650,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("cushion")) {
                     if (Chair.class.cast(item).getCushion()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a cushion
                         if (!ids.contains(Chair.class.cast(item).getId())) {
                             prices.add(Chair.class.cast(item).getPrice());
                             priceAndIds.put(Chair.class.cast(item).getId(), Chair.class.cast(item).getPrice());
@@ -659,7 +659,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("rails")) {
                     if (Filing.class.cast(item).getRails()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a rails
                         if (!ids.contains(Filing.class.cast(item).getId())) {
                             prices.add(Filing.class.cast(item).getPrice());
                             priceAndIds.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
@@ -668,7 +668,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("drawers")) {
                     if (Filing.class.cast(item).getDrawers()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a drawers
                         if (!ids.contains(Filing.class.cast(item).getId())) {
                             prices.add(Filing.class.cast(item).getPrice());
                             priceAndIds.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
@@ -677,7 +677,7 @@ public class Builder<T extends FurniturePart> {
                 }
                 if (componentType.equals("cabinet")) {
                     if (Filing.class.cast(item).getCabinet()) {
-                        // add prices of ids that have a bulb
+                        // add prices of ids that have a cabinet
                         if (!ids.contains(Filing.class.cast(item).getId())) {
                             prices.add(Filing.class.cast(item).getPrice());
                             priceAndIds.put(Filing.class.cast(item).getId(), Filing.class.cast(item).getPrice());
