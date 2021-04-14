@@ -67,10 +67,6 @@ public class Database {
         manufacturers = m;
         for (FurniturePart.Types type : FurniturePart.Types.values()) {
             try {
-                // String query = "SELECT DISTINCT ManuID FROM ?";
-                // PreparedStatement queryStatment = dbConnect.prepareStatement(query);
-                // queryStatment.setString(1, type.toString().toUpperCase().trim());
-                // results = queryStatment.executeQuery();
                 Statement queryStatment = dbConnect.createStatement();
                 results = queryStatment.executeQuery("SELECT ManuID FROM " + type.toString().toUpperCase());
                 while (results.next()) {
@@ -140,28 +136,6 @@ public class Database {
         }
         return m;
     }
-
-    /**
-     * a method to count the columns in a specific table of the database
-     * 
-     * @param table string table to count columns (corresponds to furniture item)
-     * @return number of columns (params) in the table
-     */
-    // public int countCols(String table) {
-    // int i = 0;
-    // try {
-    // String query = "DESCRIBE ?";
-    // PreparedStatement queryStatment = dbConnect.prepareStatement(query);
-    // queryStatment.setString(1, table.toUpperCase());
-    // results = queryStatment.executeQuery();
-    // while (results.next()) {
-    // i++;
-    // }
-    // } catch (SQLException e) {
-    // e.printStackTrace();
-    // }
-    // return i;
-    // }
 
     /**
      * a generic function for
