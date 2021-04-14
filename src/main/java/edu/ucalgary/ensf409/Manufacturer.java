@@ -3,7 +3,7 @@ package edu.ucalgary.ensf409;
 import java.util.ArrayList;
 
 /**
- * a class for a manufacturer
+ * A class for a manufacturer
  * 
  * @author Robert Brown, Risat Haque, Anand Patel, Ratik Kapoor
  * @since 1.1

@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import edu.ucalgary.ensf409.FurniturePart.Types;
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * Class App used to run program through main
+ * 
+ * @author Anand Patel, Robert Brown, Ratik Kapoor, Risat Haque
+ * @since 1.3
+ */
 public class App {
     public static void main(String[] args) throws Exception {
         Dotenv enviroment = Dotenv.load();
