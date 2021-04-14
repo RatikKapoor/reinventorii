@@ -12,6 +12,14 @@ Check out our demonstration video on [YouTube](https://youtu.be/KbdvFVaVgr0)
 - [Ionic React](https://ionicframework.com)
 - [Docker](https://www.docker.com)
 
+### Software Architecture
+
+The backend of our platform is built in Java using Spring Boot. The backend retrieves data from a MySQL database. The data is then made accessible through a REST endpoint. The React app runs a frontend that allows for the user to interact with the backend via the REST endpoint.
+
+#### Backend UML Diagram
+
+#### Frontend UML Diagram
+
 ## Getting Started
 
 ### Using Docker (recommended)
@@ -36,7 +44,7 @@ The MySQL server is hosted within the container. When running the container the 
 git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
 cd supply-chain-management-RatikKapoor
 
-# Build a production React app and start the Java backend
+# Build a production React app, start the Java backend, start a clean MySQL Server
 ./run
 
 # *** Note: if `./run` does not work you can start the production environment using the following command ***
@@ -51,22 +59,16 @@ To quit the development environment, simply press Ctrl+C and the Docker containe
 
 #### Prerequisites
 
-The MySQL server is hosted within the container. When running the container the server will automaticaally create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your machine using the port `26289`. The default username is `scm` and password is `ensf409`.
-
-**MySQL Database Login Information**
-| paramater | value |
-|----------------|---------------------------------|
-| database url | localhost:26289/INVENTORY |
-| username | scm |
-| password | ensf409 |
-
 Ensure that you have the standard Node.js development tools available to use and the Yarn Package Manager installed globally as well as Java JDK 11.
+
+A MySQL server must also be running on your machine or remotely. To set up the database run the `inventory.sql` file located in the `db` folder. Enter the appropriate login credentials into the `.env` folder.
 
 - [Java 11 SDK](https://www.oracle.com/ca-en/java/technologies/javase-jdk11-downloads.html)
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com)
 - [Ionic CLI](https://ionicframework.com/docs/cli)
 - [Node Serve](https://www.npmjs.com/package/serve)
+- [MySQL](https://dev.mysql.com/downloads/mysql/)
 
 #### Installation
 
@@ -115,6 +117,8 @@ _**NOTE:** Since this process is compiling **both** React and Java code in devel
 
 To develop on this repository locally:
 
+A MySQL server must also be running on your machine or remotely. To set up the database run the `inventory.sql` file located in the `db` folder. Enter the appropriate login credentials into the `.env` folder.
+
 ```bash
 # Clone this repo
 git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
@@ -129,9 +133,41 @@ yarn install
 ionic serve
 ```
 
+## Testing
+
+The same prerequisites as the "Getting Started" section are required.
+
+### Using Docker (Recommended)
+
+**Note:** once the tests have completed the MySQL server will be shut down with the rest of the container. If you wish to interact with the MySQL server use the Development or Run instructions.
+
+```bash
+# Clone this repo
+git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
+cd supply-chain-management-RatikKapoor
+
+# Build all unit tests
+./test
+```
+
+### Manual Method (Not Recommended)
+
+To test this repository locally:
+
+A MySQL server must also be running on your machine or remotely. To set up the database run the `inventory.sql` file located in the `db` folder. Enter the appropriate login credentials into the `.env` folder.
+
+```bash
+# Clone this repo
+git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
+cd supply-chain-management-RatikKapoor
+
+# Run Maven tests
+./mvnw clean test
+```
+
 ## Contributing
 
-Pull requests are welcome. Please use semantic commit messages and branch naming conventions using [this guide](https://www.conventionalcommits.org/en/v1.0.0/). Private branches should be named using the `semantic/name/purpose` convention. For example: `docs/ratik/update-readme` signifies that Ratik is responsible for this documentation change and the purpose of the branch is to update the README. For major changes, please open an issue first to discuss what you would like to change. Please base all pull requests off of the main branch as they will be rebase merged. Before opening a pull request: check that there are no testing issues by running `./mvnw clean test`. The linear history requirement is enforced on main.
+Currently, pull requests should be limited to the contributors part of the University project. Please use semantic commit messages and branch naming conventions using [this guide](https://www.conventionalcommits.org/en/v1.0.0/). Private branches should be named using the `semantic/name/purpose` convention. For example: `docs/ratik/update-readme` signifies that Ratik is responsible for this documentation change and the purpose of the branch is to update the README. For major changes, please open an issue first to discuss what you would like to change. Please base all pull requests off of the main branch as they will be rebase merged. Before opening a pull request: check that there are no testing issues by running `./test`. The linear history requirement is enforced on main.
 
 Please make sure to update tests as appropriate.
 
