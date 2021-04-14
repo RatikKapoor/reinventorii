@@ -15,6 +15,7 @@ import edu.ucalgary.ensf409.FurniturePart.Types;
  * 
  * @version 1.1
  * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.1
  */
 @SpringBootTest
 public class BuilderTest {

@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * 
  * @version 1.2
  * @author Risat Haque, Ratik Kapoor, Robert Brown, Anand Patel
+ * @since 1.2
  */
 @SpringBootTest
 public class ChairTest {
