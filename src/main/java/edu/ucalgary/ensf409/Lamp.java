@@ -29,10 +29,10 @@ public class Lamp extends FurniturePart {
      * @param base   string base of lamp (will be converted to boolean)
      * @param bulb   stirng bulb of lamp (will be converted to boolean)
      * @param price  int price of lamp
-     * @param manuid string manufacturer id of lamp
+     * @param manuId string manufacturer id of lamp
      */
-    public Lamp(String id, String type, String base, String bulb, int price, String manuid) {
-        super(id, type, price, manuid);
+    public Lamp(String id, String type, String base, String bulb, int price, String manuId) {
+        super(id, type, price, manuId);
 
         this.base = stringToBoolean(base);
         this.bulb = stringToBoolean(bulb);

@@ -2,7 +2,6 @@ package edu.ucalgary.ensf409;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
@@ -25,7 +24,7 @@ public class ManufacturerTest {
     public void testManufacturer_getManuID_SetWithConstructor() {
 
         Manufacturer aTestManufacturer = new Manufacturer("001", "Academic Desks", "236-145-2542", "BC");
-        String actual = aTestManufacturer.getManuid();
+        String actual = aTestManufacturer.getManuId();
         String expect = "001";
 
         assertEquals("Cannot retrieve ManuID from Manufacturer", expect, actual);

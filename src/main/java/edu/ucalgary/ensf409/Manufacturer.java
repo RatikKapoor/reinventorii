@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @since 1.1
  */
 public class Manufacturer {
-    private String manuid;
+    private String manuId;
     private String name;
     private String phone;
     private String province;
@@ -23,12 +23,12 @@ public class Manufacturer {
         this.types = types;
     }
 
-    public String getManuid() {
-        return this.manuid;
+    public String getManuId() {
+        return this.manuId;
     }
 
-    public void setManuid(String manuid) {
-        this.manuid = manuid;
+    public void setManuId(String manuId) {
+        this.manuId = manuId;
     }
 
     public String getName() {
@@ -58,15 +58,15 @@ public class Manufacturer {
     /**
      * a constructor for manufacturer with ArrayList Types
      * 
-     * @param manuid
+     * @param manuId
      * @param name
      * @param phone
      * @param province
      * @param types
      */
-    public Manufacturer(String manuid, String name, String phone, String province,
+    public Manufacturer(String manuId, String name, String phone, String province,
             ArrayList<FurniturePart.Types> types) {
-        this.manuid = manuid;
+        this.manuId = manuId;
         this.name = name;
         this.phone = phone;
         this.province = province;
@@ -76,13 +76,13 @@ public class Manufacturer {
     /**
      * Constructor without ArrayList Types
      * 
-     * @param manuid
+     * @param manuId
      * @param name
      * @param phone
      * @param province
      */
-    public Manufacturer(String manuid, String name, String phone, String province) {
-        this.manuid = manuid;
+    public Manufacturer(String manuId, String name, String phone, String province) {
+        this.manuId = manuId;
         this.name = name;
         this.phone = phone;
         this.province = province;
@@ -92,6 +92,6 @@ public class Manufacturer {
      * a method to print the data in a manufacturer object to console
      */
     public String printManufacturer() {
-        return this.manuid + " " + this.name + " " + this.phone + " " + this.province;
+        return this.manuId + " " + this.name + " " + this.phone + " " + this.province;
     }
 }

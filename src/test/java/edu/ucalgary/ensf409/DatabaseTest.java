@@ -5,7 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.ucalgary.ensf409.FurniturePart.Types;
 import io.github.cdimascio.dotenv.Dotenv;
-import io.github.cdimascio.dotenv.DotenvException;
 
 import static org.junit.Assert.*;
 
@@ -86,7 +85,7 @@ public class DatabaseTest {
             testDb.connect();
             testDb.storeManufacturers(); // Checking This Method
             for (int i = 0; i < testDb.getManufacturers().size(); i++) {
-                actual.add(testDb.getManufacturers().get(i).getManuid());
+                actual.add(testDb.getManufacturers().get(i).getManuId());
             }
             testDb.disconnect();
         } catch (SQLException e) {
@@ -124,7 +123,7 @@ public class DatabaseTest {
             testDb.connect();
             testDb.storeManufacturers(); // Checking This Method
             for (int i = 0; i < testDb.getManufacturers().size(); i++) {
-                actual.add(testDb.getManufacturers().get(i).getManuid());
+                actual.add(testDb.getManufacturers().get(i).getManuId());
             }
             if (expect != actual) { // Check whether they don't match. Expecting this to pass
                 err = true;
