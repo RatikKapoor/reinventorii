@@ -1,12 +1,12 @@
 package edu.ucalgary.ensf409;
 
 import java.util.ArrayList;
-
 import edu.ucalgary.ensf409.FurniturePart.Types;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Class App used to run program through main
+ * Class App used to run program through main Note: this class is not used in
+ * the implementation
  * 
  * @author Anand Patel, Robert Brown, Ratik Kapoor, Risat Haque
  * @since 1.3
@@ -16,8 +16,6 @@ public class App {
         Dotenv enviroment = Dotenv.load();
         Database test = new Database("jdbc:mysql://" + enviroment.get("DB_URL"), enviroment.get("DB_USER"),
                 enviroment.get("DB_PASS"));
-        // Database test = new Database("jdbc:mysql://server.ratik.me:25565", "root",
-        // "eNsF409");
         test.connect();
         // test.getListByType(Types.Lamp, "Study").forEach(item -> {
         // System.out.println(item.getId());
