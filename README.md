@@ -2,6 +2,8 @@
 
 # Reinventorii
 
+![Header](docs/header.png)
+
 This project creates a platform for employees at the University of Calgary to manage their furniture. By using this advanced Supply Chain Management software, the university will be able to prevent reusable materials from entering the landfill and thus preventing waste.
 
 Check out our demonstration video on [YouTube](https://youtu.be/KbdvFVaVgr0)
@@ -14,11 +16,7 @@ Check out our demonstration video on [YouTube](https://youtu.be/KbdvFVaVgr0)
 
 ### Software Architecture
 
-The backend of our platform is built in Java using Spring Boot. The backend retrieves data from a MySQL database. The data is then made accessible through a REST endpoint. The React app runs a frontend that allows for the user to interact with the backend via the REST endpoint.
-
-#### Backend UML Diagram
-
-#### Frontend UML Diagram
+[Detailed in docs/UML.md](docs/uml.md)
 
 ## Getting Started
 
@@ -28,7 +26,7 @@ The backend of our platform is built in Java using Spring Boot. The backend retr
 
 Ensure that you have Docker and `docker-compose` installed on your development computer: [Docker website](https://www.docker.com). Windows computers will need to use WSL2 (Windows Subsystem for Linux) as a backend following [this guide](https://docs.docker.com/docker-for-windows/wsl/).
 
-The MySQL server is hosted within the container. When running the container the server will automaticaally create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your machine using the port `26289`. The default username is `scm` and password is `ensf409`.
+The MySQL server is hosted within the container. When running the container the server will automatically create a database based on the `inventory.sql` file located in the `db` folder. You can also connect to the server from your machine using the port `26289`. The default username is `scm` and password is `ensf409`.
 
 **MySQL Database Login Information**
 | paramater | value |
@@ -44,16 +42,44 @@ The MySQL server is hosted within the container. When running the container the 
 git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
 cd supply-chain-management-RatikKapoor
 
-# Build a production React app, start the Java backend, start a clean MySQL Server
+# Start the production React app, start the Java backend, start a clean MySQL Server
 ./run
 
+# *** Note: Windows users using command prompt (as opposed to powershell or git bash) can simply use the `run`
+# command within the root directory
+
 # *** Note: if `./run` does not work you can start the production environment using the following command ***
-docker-compose up --build
+docker-compose up --build --force-recreate
 ```
 
-_**NOTE:** Since this process is compiling **both** React and Java code in production mode, it may take 2-3 minutes to fully compile (depending on your computer specs). Once building is finished, browse to [http://localhost:5000](http://localhost:5000) to view the application._
+_**NOTE:** Since this process is creating **all** React, Java, and MySQL containers, it may take 2-3 minutes to fully build (depending on your computer specs, Windows machines will be slower). Once building is finished, browse to [http://localhost:5000](http://localhost:5000) to view the application._
 
-To quit the development environment, simply press Ctrl+C and the Docker containers will shut down.
+To quit the production environment, simply press Ctrl+C and the Docker containers will shut down.
+
+#### Connecting with MySQL workbench
+
+The docker container that's hosting the MySQL server has it's port exposed on port `26289`. To connect simply use the credentials shown in the database login information table above. Example:
+
+![MySQL Workbench Example](docs/mysqlworkbench.png)
+
+#### Using a new database
+
+To use a new database in the production app, simply replace the `db/inventory.sql` file. Please keep the original file for testing purposes as tests expect the `inventory.sql` that comes with this repo.
+
+#### Running tests
+
+The unit testing environment for this project has also been dockerized. Just like `./run`, testing will use the `db/inventory.sql` file and spawn a clean database. Please ensure you are using the correct `inventory.sql` file for testing, as tests have been coded to expect the file that comes with this repo.
+
+```bash
+# Run all tests contained in src/test/**
+./test
+
+# *** Note: Windows users using command prompt (as opposed to powershell or git bash) can simply use the `test`
+# command within the root directory
+
+# *** Note: if `./test` does not work you can start the production environment using the following command ***
+docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --force-recreate
+```
 
 ### Manual method (not recommended)
 
@@ -89,6 +115,38 @@ yarn build
 serve -s build
 ```
 
+## Testing
+
+The same prerequisites as the "Getting Started" section are required.
+
+### Using Docker (Recommended)
+
+**Note:** once the tests have completed the MySQL server will be shut down with the rest of the container. If you wish to interact with the MySQL server use the Development or Run instructions.
+
+The unit testing environment for this project has also been dockerized. Just like `./run`, testing will use the `db/inventory.sql` file and spawn a clean database. Please ensure you are using the correct `inventory.sql` file for testing, as tests have been coded to expect the file that comes with this repo.
+
+```bash
+# Run all tests contained in src/test/**
+./test
+
+# *** Note: Windows users using command prompt (as opposed to powershell or git bash) can simply use the `test`
+# command within the root directory
+
+# *** Note: if `./test` does not work you can start the production environment using the following command ***
+docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --force-recreate
+```
+
+### Manual Method (Not Recommended)
+
+To test this repository locally:
+
+A MySQL server must also be running on your machine or remotely. To set up the database run the `inventory.sql` file located in the `db` folder. Enter the appropriate login credentials into the `.env` folder.
+
+```bash
+# Run Maven tests
+./mvnw clean test
+```
+
 ## Development
 
 The same prerequisites as the "Getting Started" section are required.
@@ -106,7 +164,7 @@ cd supply-chain-management-RatikKapoor
 ./dev
 
 # *** Note: if `./dev` does not work you can start the development environment using the following command ***
-docker-compose -f docker-compose.dev.yml up --build
+docker-compose -f docker-compose.dev.yml up --build --force-recreate
 ```
 
 _**NOTE:** Since this process is compiling **both** React and Java code in development mode, it may take 2-3 minutes to fully compile (depending on your computer specs). Once building is finished, browse to [http://localhost:3000](http://localhost:3000) to view the application._
@@ -131,38 +189,6 @@ cd supply-chain-management-RatikKapoor
 cd frontend
 yarn install
 ionic serve
-```
-
-## Testing
-
-The same prerequisites as the "Getting Started" section are required.
-
-### Using Docker (Recommended)
-
-**Note:** once the tests have completed the MySQL server will be shut down with the rest of the container. If you wish to interact with the MySQL server use the Development or Run instructions.
-
-```bash
-# Clone this repo
-git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
-cd supply-chain-management-RatikKapoor
-
-# Build all unit tests
-./test
-```
-
-### Manual Method (Not Recommended)
-
-To test this repository locally:
-
-A MySQL server must also be running on your machine or remotely. To set up the database run the `inventory.sql` file located in the `db` folder. Enter the appropriate login credentials into the `.env` folder.
-
-```bash
-# Clone this repo
-git clone https://github.com/March-27-Hackathon/supply-chain-management-RatikKapoor.git
-cd supply-chain-management-RatikKapoor
-
-# Run Maven tests
-./mvnw clean test
 ```
 
 ## Contributing
