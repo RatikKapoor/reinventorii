@@ -18,6 +18,7 @@ import { Filing } from "../interfaces/FurnitureTypes";
 /**
  * Page for listing of all filings
  * @returns page to be rendered
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 const Filings: React.FC = () => {
   const [filings, setFilings] = useState<Array<Filing>>();

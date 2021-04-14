@@ -18,6 +18,7 @@ import { Chair } from "../interfaces/FurnitureTypes";
 /**
  * Page for listing of all chairs
  * @returns page to be rendered
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 const Chairs: React.FC = () => {
   const [chairs, setChairs] = useState<Array<Chair>>();

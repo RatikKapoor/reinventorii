@@ -26,6 +26,11 @@ import {
   Manufacturer,
 } from "../interfaces/FurnitureTypes";
 
+/**
+ * Item order page
+ * @returns Item order page
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
+ */
 const OrderItem: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<string>("");
   const [selectedType, setSelectedType] = useState<string>("");

@@ -18,6 +18,7 @@ import { Desk } from "../interfaces/FurnitureTypes";
 /**
  * Page for listing of all desks
  * @returns page to be rendered
+ * @author Ratik Kapoor, Robert Brown, Risat Haque, Anand Patel
  */
 const Desks: React.FC = () => {
   const [desks, setDesks] = useState<Array<Desk>>();
